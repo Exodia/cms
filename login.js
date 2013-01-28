@@ -9,7 +9,7 @@ Ext.onReady(function () {
     var form = Ext.create('Ext.form.Panel', {
         title:'登陆系统',
         bodyPadding:15,
-        width:300,
+        width:270,
 
         url:'save-form.php',
 
@@ -25,12 +25,14 @@ Ext.onReady(function () {
         items:[
             {
                 fieldLabel:'用户名',
+                labelWidth:45,
                 name:'userName',
                 blankText:'请输入用户名',
                 allowBlank:false
             },
             {
                 fieldLabel:'密码',
+                labelWidth:45,
                 name:'password',
                 blankText:'请输入密码',
                 inputType:'password',
