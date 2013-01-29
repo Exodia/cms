@@ -4,20 +4,34 @@ Ext.application({
 
     appFolder:'app',
     controllers:[
-        'Users'
+        'Users',
+        'Orders'
     ],
     launch:function () {
         Ext.create('Ext.container.Viewport', {
             layout:'fit',
-            items:[
+            border: 5,
+            style: {
+                borderColor: '#dfe9f6',
+                borderStyle: 'solid'
+            },
+
+            items:
                 {
                     xtype:'tabpanel',
                     activeTab:0,
                     header:{
-                       height:50
+                       height:40
                     },
                     title:'<p style="color:red; font: 20px">LOGO</p>',
                     titleAlign:'center',
+                    defaults:{
+                        bodyStyle:'background-color:#dfe9f6',
+                        layout: {
+                            type: 'vbox',
+                            align:'stretch'
+                        }
+                    },
                     items:[
                         {
                             xtype:'userpanel'
@@ -30,7 +44,7 @@ Ext.application({
                         }
                     ]
                 }
-            ]
+
         });
     }
 });

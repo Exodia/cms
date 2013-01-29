@@ -16,5 +16,9 @@ Ext.define('AM.view.order.Panel', {
     extend:'Ext.panel.Panel',
     alias:'widget.orderpanel',
     title:'订单管理',
-    items:[]
+    items:[
+        {
+            xtype:'orderlist'
+        }
+    ]
 });

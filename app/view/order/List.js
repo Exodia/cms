@@ -4,9 +4,9 @@
  * Date: 13-1-26
  * Time: 下午5:46
  */
-Ext.define('AM.view.user.List', {
+Ext.define('AM.view.order.List', {
     extend:'Ext.grid.Panel',
-    alias:'widget.userlist',
+    alias:'widget.orderlist',
     frame:true,
     store:'Users',
     flex: 1,
