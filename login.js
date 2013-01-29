@@ -10,8 +10,9 @@ Ext.onReady(function () {
         title:'登陆系统',
         bodyPadding:15,
         width:270,
+        standardSubmit: true,
 
-        url:'save-form.php',
+        url:'index.html',
 
         frame:true,
         layout:'anchor',
@@ -49,14 +50,15 @@ Ext.onReady(function () {
                 handler:function () {
                     var form = this.up('form').getForm();
                     if (form.isValid()) {
-                        form.submit({
+                    /*    form.submit({
                             success:function (form, action) {
                                 Ext.Msg.alert('Success', action.result.msg);
                             },
                             failure:function (form, action) {
                                 Ext.Msg.alert('Failed', action.result.msg);
                             }
-                        });
+                        });*/
+                        form.submit();
                     }
                 }
             }
