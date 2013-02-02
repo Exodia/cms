@@ -1,7 +1,63 @@
 {
-    "success": true,
-    "users": [
-        {"id": 1, "name": "Ed",    "email": "ed@sencha.com"},
-        {"id": 2, "name": "Tommy", "email": "tommy@sencha.com"}
+    "success":true,
+    "users":[
+        {
+            "id":1000,
+            "name":"张XX",
+            "user_type":"管理员",
+            "address":"福建省福州市XX路",
+            "contact":"159xxxxxxxxx",
+            "email":"ed@sencha.com"
+        },
+        {
+            "id":10001,
+            "name":"李XX",
+            "user_type":"发运员",
+            "address":"福建省福州市XX路",
+            "contact":"159xxxxxxxxx",
+            "email":"tt@sencha.com"
+        },{
+            "id":10002,
+            "name":"李XX",
+            "user_type":"发运员",
+            "address":"福建省福州市XX路",
+            "contact":"159xxxxxxxxx",
+            "email":"tt@sencha.com"
+        },{
+            "id":10003,
+            "name":"李XX",
+            "user_type":"发运员",
+            "address":"福建省福州市XX路",
+            "contact":"159xxxxxxxxx",
+            "email":"tt@sencha.com"
+        },{
+            "id":10004,
+            "name":"李XX",
+            "user_type":"发运员",
+            "address":"福建省福州市XX路",
+            "contact":"159xxxxxxxxx",
+            "email":"tt@sencha.com"
+        },{
+            "id":10005,
+            "name":"李XX",
+            "user_type":"发运员",
+            "address":"福建省福州市XX路",
+            "contact":"159xxxxxxxxx",
+            "email":"tt@sencha.com"
+        },{
+            "id":10006,
+            "name":"李XX",
+            "user_type":"发运员",
+            "address":"福建省福州市XX路",
+            "contact":"159xxxxxxxxx",
+            "email":"tt@sencha.com"
+        },{
+            "id":10007,
+            "name":"李XX",
+            "user_type":"发运员",
+            "address":"福建省福州市XX路",
+            "contact":"159xxxxxxxxx",
+            "email":"tt@sencha.com"
+        }
     ]
 }

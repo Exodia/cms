@@ -1,13 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-    <title>请先登陆</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="libs/ext/resources/css/ext-all.css">
-    <script type="text/javascript" src="libs/ext/ext-debug.js"></script>
-    <script type="text/javascript" src="login.js"></script>
+    <title>管理系统</title>
+    <link rel="stylesheet" href="login.css">
 </head>
-<body style="background: #f2f2f2">
-
+<body>
+<div class="logo"></div>
+<div class="b1">
+        <form action="index.html" method="post" id="login-form">
+            <div>
+                <label>用户名：</label><input type="text" name="id" value="" class="text" size="20" tabindex="1">
+            </div>
+            <div>
+                <label>密码：</label><input type="password" name="pass_word" value="" class="text" size="20"
+                                         tabindex="2">
+            </div>
+            <div class="btn-wrap"><input type="submit" value="" class="login-btn"></div>
+            <div id="errmsg">
+            </div>
+        </form>
+</div>
+<div class="copy-right"></div>
 </body>
 </html>

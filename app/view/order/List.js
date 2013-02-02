@@ -7,7 +7,6 @@
 Ext.define('AM.view.order.List', {
     extend:'Ext.grid.Panel',
     alias:'widget.orderlist',
-    frame:true,
     store:'Users',
     flex: 1,
     initComponent:function () {

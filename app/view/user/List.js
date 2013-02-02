@@ -7,15 +7,17 @@
 Ext.define('AM.view.user.List', {
     extend:'Ext.grid.Panel',
     alias:'widget.userlist',
-    frame:true,
     store:'Users',
     flex: 1,
     initComponent:function () {
         this.columns = [
-            {header:'Name', dataIndex:'name', flex:1},
+            {header:'工号', dataIndex:'id', flex:1},
+            {header:'用户名', dataIndex:'name', flex:1},
+            {header:'职位', dataIndex:'user_type', flex:1},
+            {header:'住址', dataIndex:'address', flex:1},
+            {header:'联系方式', dataIndex:'contact', flex:1},
             {header:'Email', dataIndex:'email', flex:1}
         ];
-
         this.callParent(arguments);
     }
 });

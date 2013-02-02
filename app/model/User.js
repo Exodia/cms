@@ -6,5 +6,5 @@
  */
 Ext.define('AM.model.User', {
     extend: 'Ext.data.Model',
-    fields: ['name', 'email']
+    fields: ['id', 'name', 'user_type', 'address', 'contact', 'email']
 });

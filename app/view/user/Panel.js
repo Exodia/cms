@@ -8,7 +8,8 @@
 Ext.define('AM.view.user.Panel', {
     extend:'Ext.panel.Panel',
     alias:'widget.userpanel',
-    title:'用户管理',
+    title:'用户列表',
+    border:false,
     items:[
         {
             xtype:'userlist'
