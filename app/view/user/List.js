@@ -10,7 +10,7 @@ Ext.define('AM.view.user.List', {
     store:'Users',
     flex: 1,
     selModel: {
-      mode:'multi'
+      mode:'simple'
     },
     selType:'checkboxmodel',
     dockedItems: [{
@@ -48,7 +48,6 @@ Ext.define('AM.view.user.List', {
     },
     initComponent:function () {
         this.columns = [
-            {xtype: 'rownumberer'},
             {header:'工号', dataIndex:'id', flex:1},
             {header:'姓名', dataIndex:'name', flex:0.5},
             {header:'职位', dataIndex:'user_type', flex:0.5},
