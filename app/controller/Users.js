@@ -18,9 +18,6 @@ Ext.define('AM.controller.Users', {
 
     init:function () {
         this.control({
-            'viewport userlist':{
-                itemdblclick:this.editUser
-            },
             'useredit button[action=save]':{
                 click:this.updateUser
             }

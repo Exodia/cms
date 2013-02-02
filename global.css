@@ -1,0 +1,84 @@
+.x-grouptabpanel .x-grouptab-row .x-grid-cell-inner {
+    _font-size: 12px;
+}
+.icon-delete {
+    background: url(img/delete.png);
+}
+.icon-add{
+    background: url(img/add.png);
+}
+.icon-edit {
+    background: url(img/edit.png);
+}
+.x-tree-icon.x-tree-icon-parent.x-icon-users{
+    display: inline;
+    background: url(img/users.png);
+}
+
+.x-tree-icon.x-tree-icon-parent.x-icon-orders {
+    display: inline;
+    background: url(img/order.gif);
+}
+
+.x-tree-icon.x-tree-icon-parent.x-icon-contracts {
+    display: inline;
+    background: url(img/contract.gif);
+}
+
+.x-tree-icon.x-tree-icon-parent.x-icon-trans {
+    display: inline;
+    background: url(img/tran.gif);
+}
+
+.x-tree-icon.x-tree-icon-parent.x-icon-invoices {
+    display: inline;
+    background: url(img/invoice.gif);
+}
+
+.x-tree-icon.x-tree-icon-parent.x-icon-composite {
+    display: inline;
+    background: url(img/composite.gif);
+}
+
+.x-tree-icon.x-tree-icon-parent.x-icon-customs {
+    display: inline;
+    background: url(img/custom.gif);
+}
+
+.x-tree-icon.x-tree-icon-parent.x-icon-data {
+    display: inline;
+    background: url(img/data.gif);
+}
+
+
+.x-icon-users {
+    background: url(img/users.png);
+}
+
+.x-icon-orders {
+    background: url(img/order.gif);
+}
+
+.x-icon-contracts {
+    background: url(img/contract.gif);
+}
+
+.x-icon-trans {
+    background: url(img/tran.gif);
+}
+
+.x-icon-invoices {
+    background: url(img/invoice.gif);
+}
+
+.x-icon-composite{
+    background: url(img/composite.gif);
+}
+
+.x-icon-customs {
+    background: url(img/custom.gif);
+}
+
+.x-icon-data {
+    background: url(img/data.gif);
+}
