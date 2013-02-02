@@ -3,7 +3,12 @@ Ext.Loader.setPath({
 });
 
 Ext.application({
-    requires:['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'AM.view.user.Panel', 'AM.view.order.Panel', 'AM.view.contract.Panel'],
+    requires:['Ext.container.Viewport', 'Ext.ux.GroupTabPanel',
+        'AM.view.user.Panel', 'AM.view.order.Panel', 'AM.view.contract.Panel',
+        'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
+        'AM.view.composite.Panel', 'AM.view.custom.Panel', 'AM.view.datamgr.Panel'
+
+    ],
     name:'AM',
 
     appFolder:'app',
@@ -19,7 +24,6 @@ Ext.application({
                 activeGroup:0,
                 items:[
                     {
-                        mainItem:0,
                         items:[
                             {
                                 title:'用户管理',
@@ -54,7 +58,7 @@ Ext.application({
                                 title:'发运管理',
                                 iconCls:'x-icon-trans',
                                 style:'padding:5px;',
-                                xtype:'contractpanel'
+                                xtype:'transportpanel'
                             }
                         ]
                     },{
@@ -63,7 +67,7 @@ Ext.application({
                                 title:'发票管理',
                               iconCls:'x-icon-invoices',
                                 style:'padding:5px;',
-                                xtype:'contractpanel'
+                                xtype:'invoicepanel'
                             }
                         ]
                     },{
@@ -72,7 +76,7 @@ Ext.application({
                                 title:'综合管理',
                                 iconCls:'x-icon-composite',
                                 style:'padding:5px;',
-                                xtype:'contractpanel'
+                                xtype:'compositepanel'
                             }
                         ]
                     },{
@@ -81,7 +85,7 @@ Ext.application({
                                 title:'客户管理',
                                 iconCls:'x-icon-customs',
                                 style:'padding:5px;',
-                                xtype:'contractpanel'
+                                xtype:'custompanel'
                             }
                         ]
                     },{
@@ -90,7 +94,7 @@ Ext.application({
                                 title:'数据管理',
                                  iconCls:'x-icon-data',
                                 style:'padding:5px;',
-                                xtype:'contractpanel'
+                                xtype:'datamgrpanel'
                             }
                         ]
                     }
