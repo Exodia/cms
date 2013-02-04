@@ -18,6 +18,16 @@ Ext.define('AM.controller.Users', {
 
     init:function () {
         this.control({
+            '#J_UserAdd': {
+                click: function() {
+                    Ext.widget('useredit');
+                }
+            },
+
+            'userlist': {
+                itemdblclick: this.editUser
+            },
+
             'useredit button[action=save]':{
                 click:this.updateUser
             }
@@ -31,7 +41,8 @@ Ext.define('AM.controller.Users', {
 
         record.set(values);
         win.close();
-        this.getUsersStore().sync();
+//        this.getUsersStore().sync();
+        this.getUsersStore().add(values);
     },
 
     editUser:function (grid, record) {
