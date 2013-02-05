@@ -8,12 +8,25 @@ Ext.define('AM.store.Users', {
     extend: 'Ext.data.Store',
     model: 'AM.model.User',
     autoLoad: true,
+    onCreateRecords: function(records, operation, success) {
+        console.log(records);
+    },
+
+    onUpdateRecords: function(records, operation, success) {
+        console.log(records);
+    },
+
+    onDestroyRecords: function(records, operation, success) {
+        console.log(records);
+    },
 
     proxy: {
         type: 'ajax',
         api: {
+            create: 'data/createUser.json',
             read: 'data/users.json',
-            update: 'data/updateUsers.json'
+            update: 'data/updateUsers.json',
+            destroy: 'data/destroyUsers.json'
         },
         reader: {
             type: 'json',

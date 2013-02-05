@@ -36,18 +36,28 @@ Ext.define('AM.controller.Users', {
     updateUser:function (button) {
         var win = button.up('window'),
             form = win.down('form'),
+            values = form.getValues(),
             record = form.getRecord(),
-            values = form.getValues();
+            store = this.getUsersStore();
 
-        record.set(values);
+        record ? record.set(values) : store.insert(0, values);
         win.close();
-//        this.getUsersStore().sync();
-        this.getUsersStore().add(values);
+        console.log(store.getNewRecords());
+        store.sync({
+            callback: function() {
+                alert('complete')
+            },
+            success: function() {
+                alert('success');
+            },
+            failure: function() {
+                alert('failure');
+            }
+        });
     },
 
     editUser:function (grid, record) {
         var view = Ext.widget('useredit');
-
         view.down('form').loadRecord(record);
     }
 });

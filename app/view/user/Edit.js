@@ -8,7 +8,7 @@ Ext.define('AM.view.user.Edit', {
     extend: 'Ext.window.Window',
     alias: 'widget.useredit',
     modal:true,
-    title: 'Edit User',
+    title: '编辑用户',
     layout: 'fit',
     autoShow: true,
 
@@ -26,10 +26,11 @@ Ext.define('AM.view.user.Edit', {
                 },
                 items: [
                     {
-                        xtype: 'textfield',
+                        xtype: 'numberfield',
                         name : 'id',
                         fieldLabel: '工号',
                         labelWidth: 60,
+                        minValue:0,
                         width: 260,
                         padding:5
                     },

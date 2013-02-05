@@ -19,33 +19,21 @@ Ext.define('AM.view.user.List', {
             iconCls: 'icon-add',
             itemId: 'J_UserAdd',
             text: '新增用户',
-            scope: this,
-            handler: this.onAdd
+            scope: this
         }, '-',{
             iconCls: 'icon-edit',
             itemId: 'J_UserEdit',
             text: '编辑',
             disabled: true,
-            scope: this,
-            handler: this.onEdit
+            scope: this
         },'-', {
             iconCls: 'icon-delete',
             itemId: 'J_UserDelete',
             text: '删除',
             scope: this,
-            disabled:true,
-            handler: this.onDelete
+            disabled:true
         }]
     }],
-    onAdd: function() {
-
-    },
-    onEdit: function() {
-
-    },
-    onDelete: function() {
-
-    },
     initComponent:function () {
         this.columns = [
             {header:'工号', dataIndex:'id', flex:1},
