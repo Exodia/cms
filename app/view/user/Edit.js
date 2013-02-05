@@ -18,7 +18,6 @@ Ext.define('AM.view.user.Edit', {
                 xtype: 'form',
                 width: 350,
                 padding:"10 10 10 35",
-                url:'data/updateUsers.json',
                 frame: true,
                 layout:'anchor',
                 defaults:{
@@ -27,7 +26,7 @@ Ext.define('AM.view.user.Edit', {
                 items: [
                     {
                         xtype: 'numberfield',
-                        name : 'id',
+                        name : 'work_num',
                         fieldLabel: '工号',
                         labelWidth: 60,
                         minValue:0,

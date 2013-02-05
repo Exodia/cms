@@ -36,7 +36,7 @@ Ext.define('AM.view.user.List', {
     }],
     initComponent:function () {
         this.columns = [
-            {header:'工号', dataIndex:'id', flex:1},
+            {header:'工号', dataIndex:'work_num', flex:1},
             {header:'姓名', dataIndex:'name', flex:0.5},
             {header:'职位', dataIndex:'user_type', flex:0.5},
             {header:'住址', dataIndex:'address', flex:2},

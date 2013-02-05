@@ -15,23 +15,47 @@ Ext.define('AM.controller.Users', {
         'Users'
     ],
     models:['User'],
-
+    refs:[
+        {
+            ref:'list',
+            selector:'userlist'
+        },
+        {
+            ref:'editButton',
+            selector:'#J_UserEdit'
+        },
+        {
+            ref:'delButton',
+            selector:'#J_UserDelete'
+        }
+    ],
     init:function () {
         this.control({
-            '#J_UserAdd': {
-                click: function() {
+            '#J_UserAdd':{
+                click:function () {
                     Ext.widget('useredit');
                 }
             },
 
-            'userlist': {
-                itemdblclick: this.editUser
+            '#J_UserEdit':function () {
+
+            },
+
+            'userlist':{
+                selectionchange:this.checkEnable
             },
 
             'useredit button[action=save]':{
                 click:this.updateUser
             }
         });
+    },
+    checkEnable:function (sm) {
+        var len = sm.getSelection().length;
+
+        this.getEditButton().setDisabled(len !== 1);
+        this.getDelButton().setDisabled(len == 0);
+
     },
     updateUser:function (button) {
         var win = button.up('window'),
@@ -40,18 +64,11 @@ Ext.define('AM.controller.Users', {
             record = form.getRecord(),
             store = this.getUsersStore();
 
-        record ? record.set(values) : store.insert(0, values);
+        record ? record.set(values) : store.add(values);
         win.close();
-        console.log(store.getNewRecords());
         store.sync({
-            callback: function() {
-                alert('complete')
-            },
-            success: function() {
-                alert('success');
-            },
-            failure: function() {
-                alert('failure');
+            failure:function () {
+                Ext.msg.alert('操作失败，请重试');
             }
         });
     },
