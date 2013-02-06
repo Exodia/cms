@@ -55,19 +55,17 @@ Ext.define('AM.controller.Users', {
     },
     checkEnable:function (sm) {
         var len = sm.getSelection().length;
-
         this.getEditButton().setDisabled(len !== 1);
         this.getDelButton().setDisabled(len == 0);
-
     },
 
     delUser:function () {
-
-        this.application.confirm('注意', '确认要删除这些员工？', function(btnId) {
-            if(btnId == 'ok') {
-                var sm = this.getList().getSelectionModel();
-                this.getUsersStore().remove(sm.getSelection());
-                this.sync();
+        this.application.confirm('注意', '确认要删除这些员工？', function (btnId) {
+            if (btnId == 'ok') {
+                var sm = this.getList().getSelectionModel(),
+                    store = this.getUsersStore();
+                store.remove(sm.getSelection());
+                this.application.sync(store, this);
             }
         }, this);
     },
@@ -85,25 +83,12 @@ Ext.define('AM.controller.Users', {
         }
         record ? record.set(values) : store.add(values);
         win.close();
-        this.sync();
+        this.application.sync(store, this);
     },
 
     editUser:function () {
         var view = Ext.widget('useredit'),
             record = this.getList().getSelectionModel().getSelection()[0];
         view.down('form').loadRecord(record);
-    },
-
-    sync: function() {
-        var store = this.getUsersStore();
-        store.sync({
-            failure: function () {
-                this.application.error('错误', '操作失败，请重试！');
-                store.rejectChanges();
-                var sm = this.getList().getSelectionModel();
-                sm.select(sm.getSelection());
-            },
-            scope:this
-        });
     }
 });
