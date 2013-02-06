@@ -5,7 +5,6 @@
  * Time: 下午6:29
  */
 Ext.define('AM.model.User', {
-    extend: 'Ext.data.Model',
-
-    fields: ['id', 'work_num' ,'name', 'user_type', 'address', 'contact', 'email']
+    extend:'Ext.data.Model',
+    fields:['id', 'work_num' , 'name', 'user_type','address', 'contact', 'email']
 });

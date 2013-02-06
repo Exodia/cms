@@ -5,7 +5,7 @@
             "id":1,
             "work_num":10000,
             "name":"张XX",
-            "user_type":"管理员",
+            "user_type":0,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"ed@sencha.com"
@@ -14,7 +14,7 @@
             "id":2,
             "work_num":10001,
             "name":"李XX",
-            "user_type":"发运员",
+            "user_type": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com"
@@ -23,7 +23,7 @@
             "id":3,
             "work_num":10003,
             "name":"李XX",
-            "user_type":"发运员",
+            "user_type": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com"
@@ -33,7 +33,7 @@
             "id":4,
             "work_num":10004,
             "name":"李XX",
-            "user_type":"发运员",
+            "user_type": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com"
@@ -42,7 +42,7 @@
             "id":5,
             "work_num":10005,
             "name":"李XX",
-            "user_type":"发运员",
+            "user_type": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com"
@@ -51,7 +51,7 @@
             "id":6,
             "work_num":10006,
             "name":"李XX",
-            "user_type":"发运员",
+            "user_type":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com"
@@ -60,7 +60,7 @@
             "id":7,
             "work_num":10007,
             "name":"李XX",
-            "user_type":"发运员",
+            "user_type":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com"
@@ -69,7 +69,7 @@
             "id":8,
             "work_num":10008,
             "name":"李XX",
-            "user_type":"发运员",
+            "user_type":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com"
@@ -78,7 +78,7 @@
             "id":9,
             "work_num":10009,
             "name":"李XX",
-            "user_type":"发运员",
+            "user_type":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com"

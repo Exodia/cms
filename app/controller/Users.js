@@ -6,7 +6,6 @@
  */
 Ext.define('AM.controller.Users', {
     extend:'Ext.app.Controller',
-
     views:[
         'user.List',
         'user.Edit'
@@ -37,8 +36,12 @@ Ext.define('AM.controller.Users', {
                 }
             },
 
-            '#J_UserEdit':function () {
+            '#J_UserEdit':{
+                click:this.editUser
+            },
 
+            '#J_UserDelete':{
+                click:this.delUser
             },
 
             'userlist':{
@@ -57,6 +60,18 @@ Ext.define('AM.controller.Users', {
         this.getDelButton().setDisabled(len == 0);
 
     },
+
+    delUser:function () {
+
+        this.application.confirm('注意', '确认要删除这些员工？', function(btnId) {
+            if(btnId == 'ok') {
+                var sm = this.getList().getSelectionModel();
+                this.getUsersStore().remove(sm.getSelection());
+                this.sync();
+            }
+        }, this);
+    },
+
     updateUser:function (button) {
         var win = button.up('window'),
             form = win.down('form'),
@@ -64,17 +79,31 @@ Ext.define('AM.controller.Users', {
             record = form.getRecord(),
             store = this.getUsersStore();
 
+        if (!form.getForm().isValid()) {
+            Ext.Msg.alert('错误', '数据非法，请重新填写！');
+            return;
+        }
         record ? record.set(values) : store.add(values);
         win.close();
-        store.sync({
-            failure:function () {
-                Ext.msg.alert('操作失败，请重试');
-            }
-        });
+        this.sync();
     },
 
-    editUser:function (grid, record) {
-        var view = Ext.widget('useredit');
+    editUser:function () {
+        var view = Ext.widget('useredit'),
+            record = this.getList().getSelectionModel().getSelection()[0];
         view.down('form').loadRecord(record);
+    },
+
+    sync: function() {
+        var store = this.getUsersStore();
+        store.sync({
+            failure: function () {
+                this.application.error('错误', '操作失败，请重试！');
+                store.rejectChanges();
+                var sm = this.getList().getSelectionModel();
+                sm.select(sm.getSelection());
+            },
+            scope:this
+        });
     }
 });

@@ -8,7 +8,9 @@ Ext.define('AM.view.user.List', {
     extend:'Ext.grid.Panel',
     alias:'widget.userlist',
     store:'Users',
-    flex: 1,
+    statics:{
+      userTypes:['管理员', '发运员']
+    },
     selModel: {
       mode:'simple'
     },
@@ -38,7 +40,9 @@ Ext.define('AM.view.user.List', {
         this.columns = [
             {header:'工号', dataIndex:'work_num', flex:1},
             {header:'姓名', dataIndex:'name', flex:0.5},
-            {header:'职位', dataIndex:'user_type', flex:0.5},
+            {header:'职位', dataIndex:'user_type', flex:0.5, renderer: function(v) {
+                 return AM.view.user.List.userTypes[v];
+            }},
             {header:'住址', dataIndex:'address', flex:2},
             {header:'联系方式', dataIndex:'contact', flex:1},
             {header:'Email', dataIndex:'email', flex:1}
