@@ -44,6 +44,17 @@ Ext.application({
             icon:Ext.MessageBox.WARNING
         });
     },
+    sync: function(store, controller) {
+        store.sync({
+            failure: function () {
+                this.application.error('错误', '操作失败，请重试！');
+                store.rejectChanges();
+                var sm = this.getList().getSelectionModel();
+                sm.select(sm.getSelection());
+            },
+            scope:controller
+        });
+    },
     launch:function () {
         Ext.create('Ext.container.Viewport', {
             layout:'fit',
