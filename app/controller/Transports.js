@@ -32,7 +32,9 @@ Ext.define('AM.controller.Transports', {
         this.control({
             '#J_TransportAdd':{
                 click:function () {
-                    Ext.widget('transportedit');
+                    Ext.widget('transportedit', {
+                        title: '新增物流信息'
+                    });
                 }
             },
 

@@ -32,7 +32,9 @@ Ext.define('AM.controller.Users', {
         this.control({
             '#J_UserAdd':{
                 click:function () {
-                    Ext.widget('useredit');
+                    Ext.widget('useredit', {
+                        title: '新增用户'
+                    });
                 }
             },
 
