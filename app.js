@@ -14,7 +14,8 @@ Ext.application({
     appFolder:'app',
     controllers:[
         'Users',
-        'Orders'
+        'Orders',
+        'Transports'
     ],
 
     error:function (title, msg, fn, scope) {

@@ -12,14 +12,14 @@ Ext.define('AM.store.Users', {
     proxy: {
         type: 'ajax',
         api: {
-            create: 'data/createUser.json',
-            read: 'data/users.json',
-            update: 'data/updateUsers.json',
-            destroy: 'data/destroyUsers.json'
+            create: 'data/user/createUser.json',
+            read: 'data/user/users.json',
+            update: 'data/user/updateUsers.json',
+            destroy: 'data/user/destroyUsers.json'
         },
         reader: {
             type: 'json',
-            root: 'users',
+            root: 'data',
             successProperty: 'success'
         }
     }

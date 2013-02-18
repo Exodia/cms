@@ -4,52 +4,52 @@
  * Date: 13-1-26
  * Time: 下午5:39
  */
-Ext.define('AM.controller.Users', {
+Ext.define('AM.controller.Transports', {
     extend:'Ext.app.Controller',
     views:[
-        'user.List',
-        'user.Edit'
+        'transport.List',
+        'transport.Edit'
     ],
     stores:[
-        'Users'
+        'Transports'
     ],
-    models:['User'],
+    models:['Transport'],
     refs:[
         {
             ref:'list',
-            selector:'userlist'
+            selector:'transportlist'
         },
         {
             ref:'editButton',
-            selector:'#J_UserEdit'
+            selector:'#J_TransportEdit'
         },
         {
             ref:'delButton',
-            selector:'#J_UserDelete'
+            selector:'#J_TransportDelete'
         }
     ],
     init:function () {
         this.control({
-            '#J_UserAdd':{
+            '#J_TransportAdd':{
                 click:function () {
-                    Ext.widget('useredit');
+                    Ext.widget('transportedit');
                 }
             },
 
-            '#J_UserEdit':{
-                click:this.editUser
+            '#J_TransportEdit':{
+                click:this.editTransport
             },
 
-            '#J_UserDelete':{
-                click:this.delUser
+            '#J_TransportDelete':{
+                click:this.delTransport
             },
 
-            'userlist':{
+            'transportlist':{
                 selectionchange:this.checkEnable
             },
 
-            'useredit button[action=save]':{
-                click:this.updateUser
+            'transportedit button[action=save]':{
+                click:this.updateTransport
             }
         });
     },
@@ -59,23 +59,23 @@ Ext.define('AM.controller.Users', {
         this.getDelButton().setDisabled(len == 0);
     },
 
-    delUser:function () {
+    delTransport:function () {
         this.application.confirm('注意', '确认要删除所选信息？', function (btnId) {
             if (btnId == 'ok') {
                 var sm = this.getList().getSelectionModel(),
-                    store = this.getUsersStore();
+                    store = this.getTransportsStore();
                 store.remove(sm.getSelection());
                 this.application.sync(store, this);
             }
         }, this);
     },
 
-    updateUser:function (button) {
+    updateTransport:function (button) {
         var win = button.up('window'),
             form = win.down('form'),
             values = form.getValues(),
             record = form.getRecord(),
-            store = this.getUsersStore();
+            store = this.getTransportsStore();
 
         if (!form.getForm().isValid()) {
             Ext.Msg.alert('错误', '数据非法，请重新填写！');
@@ -86,8 +86,8 @@ Ext.define('AM.controller.Users', {
         this.application.sync(store, this);
     },
 
-    editUser:function () {
-        var view = Ext.widget('useredit'),
+    editTransport:function () {
+        var view = Ext.widget('transportedit'),
             record = this.getList().getSelectionModel().getSelection()[0];
         view.down('form').loadRecord(record);
     }
