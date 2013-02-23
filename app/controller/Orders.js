@@ -11,9 +11,9 @@ Ext.define('AM.controller.Orders', {
         'order.List'
     ],
     stores:[
-        'Users'
+        'Orders'
     ],
-    models:['User'],
+    models:['Order'],
 
     init:function () {
 

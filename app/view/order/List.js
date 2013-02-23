@@ -7,12 +7,12 @@
 Ext.define('AM.view.order.List', {
     extend:'Ext.grid.Panel',
     alias:'widget.orderlist',
-    store:'Users',
+    store:'Orders',
     flex: 1,
     initComponent:function () {
         this.columns = [
-            {header:'Name', dataIndex:'name', flex:1},
-            {header:'Email', dataIndex:'email', flex:1}
+            {header:'Name', dataIndex:'id', flex:1},
+            {header:'Email', dataIndex:'custom', flex:1}
         ];
 
         this.callParent(arguments);
