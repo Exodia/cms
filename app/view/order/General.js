@@ -9,10 +9,15 @@ Ext.define('AM.view.order.General', {
             xtype:'orderlist'
     }],
     buttons:[{
-        text: '新增订单'
+        text: '新增订单',
+        itemId: 'J_OrderAdd'
     },{
-        text: '查看详情'
+        text: '查看详情',
+        itemId: 'J_OrderView',
+        disabled: true
     }, {
-        text: '变更订单'
+        text: '变更订单',
+        itemId: 'J_OrderEdit',
+        disabled: true
     }]
 });

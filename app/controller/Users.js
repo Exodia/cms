@@ -48,6 +48,10 @@ Ext.define('AM.controller.Users', {
                 click:this.delUser
             },
 
+            '#J_UserSearch': {
+                click: this.searchUser
+            },
+
             'userlist':{
                 selectionchange:this.checkEnable
             },
@@ -94,5 +98,9 @@ Ext.define('AM.controller.Users', {
         var view = Ext.widget('useredit'),
             record = this.getList().getSelectionModel().getSelection()[0];
         view.down('form').loadRecord(record);
+    },
+
+    searchUser: function() {
+
     }
 });

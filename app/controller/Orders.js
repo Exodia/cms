@@ -17,6 +17,21 @@ Ext.define('AM.controller.Orders', {
     ],
     models:['Order'],
 
+    refs:[
+        {
+            ref:'list',
+            selector:'orderlist'
+        },
+        {
+            ref:'editButton',
+            selector:'#J_OrderEdit'
+        },
+        {
+            ref:'delButton',
+            selector:'#J_UserDelete'
+        }
+    ],
+
     init:function () {
 
     }
