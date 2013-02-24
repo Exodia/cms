@@ -44,10 +44,6 @@ Ext.define('AM.view.user.List', {
                 },
                 '->',
                 {
-                    xtype:'textfield',
-                    emptyText:'输入工号或者姓名查询'
-                },
-                {
                     xtype:'combo',
                     queryMode:'local',
                     listeners: {
@@ -72,7 +68,13 @@ Ext.define('AM.view.user.List', {
                     editable:false,
                     forceSelection:true,
                     width:80
-                }, Ext.create('Ext.Button', {
+                },
+                {
+                    xtype:'textfield',
+                    itemId: 'J_SearchText',
+                    emptyText:'输入工号或者姓名查询'
+                },
+                Ext.create('Ext.Button', {
                     itemId: 'J_UserSearch',
                     text: '查询',
                     cls: 'x-btn-default-small'

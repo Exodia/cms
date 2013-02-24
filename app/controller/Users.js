@@ -28,6 +28,14 @@ Ext.define('AM.controller.Users', {
         {
             ref:'delButton',
             selector:'#J_UserDelete'
+        },
+        {
+            ref: 'searchCombo',
+            selector: 'userlist combo'
+        },
+        {
+            ref: 'searchField',
+            selector: '#J_SearchText'
         }
     ],
     init:function () {
@@ -101,6 +109,18 @@ Ext.define('AM.controller.Users', {
     },
 
     searchUser: function() {
+        var store = this.getUsersStore(),
+            value = this.getSearchField().getValue();
+        store.isFiltered() && store.clearFilter();
 
+        if(!value) {
+            return;
+        }
+
+        if(this.getSearchCombo().getRawValue() == '按工号') {
+            store.filter('work_num', parseInt(value));
+        } else {
+            store.filter('name', value);
+        }
     }
 });
