@@ -48,26 +48,7 @@ Ext.define('AM.view.user.Edit', {
                         margin:'0 20 0 0'
                     },
                     {
-                        xtype:'combo',
-                        name:'user_type',
-                        fieldLabel:'职位',
-                        queryMode:'local',
-                        fields:['user_type', 'des'],
-                        queryMode:'local',
-                        store:Ext.create('Ext.data.Store', {
-                            fields:['user_type', 'des'],
-                            data:[
-                                {user_type:0, des:'管理员'},
-                                {user_type:1, des:'发运员'}
-                            ]
-                        }),
-                        valueField:'user_type',
-                        displayField:'des',
-                        editable:false,
-                        forceSelection:true,
-                        labelWidth:30,
-                        width:120,
-                        padding:5
+                        xtype:'usertype'
                     },
                     {
                         xtype:'textfield',
@@ -99,6 +80,9 @@ Ext.define('AM.view.user.Edit', {
                         vtypeText:'请输入合法的Email地址',
                         allowBlank:true,
                         padding:5
+                    },
+                    {
+                        xtype: 'salegroup'
                     }
                 ]
             }

@@ -45,7 +45,9 @@ Ext.define('AM.view.user.List', {
             }},
             {header:'住址', dataIndex:'address', flex:2},
             {header:'联系方式', dataIndex:'contact', flex:1},
-            {header:'Email', dataIndex:'email', flex:1}
+            {header:'Email', dataIndex:'email', flex:1},
+            {header:'销售组', dataIndex:'sale_group', flex:0.5}
+
         ];
         this.callParent(arguments);
     }

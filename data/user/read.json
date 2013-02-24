@@ -8,7 +8,8 @@
             "user_type":0,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
-            "email":"ed@sencha.com"
+            "email":"ed@sencha.com",
+            "sale_group": 0
         },
         {
             "id":2,
@@ -17,7 +18,9 @@
             "user_type": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
-            "email":"tt@sencha.com"
+            "email":"tt@sencha.com",
+            "sale_group": 0
+
         },
         {
             "id":3,
@@ -26,7 +29,9 @@
             "user_type": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
-            "email":"tt@sencha.com"
+            "email":"tt@sencha.com",
+            "sale_group": 0
+
         },
         {
 
@@ -36,7 +41,9 @@
             "user_type": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
-            "email":"tt@sencha.com"
+            "email":"tt@sencha.com",
+            "sale_group": 0
+
         },
         {
             "id":5,
@@ -45,7 +52,9 @@
             "user_type": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
-            "email":"tt@sencha.com"
+            "email":"tt@sencha.com",
+            "sale_group": 1
+
         },
         {
             "id":6,
@@ -54,7 +63,9 @@
             "user_type":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
-            "email":"tt@sencha.com"
+            "email":"tt@sencha.com",
+            "sale_group": "销售1组"
+
         },
         {
             "id":7,
@@ -63,7 +74,9 @@
             "user_type":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
-            "email":"tt@sencha.com"
+            "email":"tt@sencha.com",
+            "sale_group": 2
+
         },
         {
             "id":8,
@@ -72,7 +85,9 @@
             "user_type":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
-            "email":"tt@sencha.com"
+            "email":"tt@sencha.com",
+            "sale_group": 2
+
         },
         {
             "id":9,
@@ -81,7 +96,9 @@
             "user_type":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
-            "email":"tt@sencha.com"
+            "email":"tt@sencha.com",
+            "sale_group": 3
+
         }
     ]
 }

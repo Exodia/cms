@@ -13,7 +13,7 @@ Ext.define('AM.store.Users', {
         type: 'ajax',
         api: {
             create: 'data/user/createUser.json',
-            read: 'data/user/users.json',
+            read: 'data/user/read.json',
             update: 'data/user/updateUsers.json',
             destroy: 'data/user/destroyUsers.json'
         },
