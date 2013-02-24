@@ -9,7 +9,8 @@ Ext.define('AM.view.user.List', {
     alias:'widget.userlist',
     store:'Users',
     statics:{
-      userTypes:['管理员', '发运员']
+      userTypes:['营销员', '合同管理员', '发票管理员', '发运员'],
+      saleGroup:['城轨', '机车', '动车', '新产业', '销售管理']
     },
     selModel: {
       mode:'simple'
@@ -46,7 +47,9 @@ Ext.define('AM.view.user.List', {
             {header:'住址', dataIndex:'address', flex:2},
             {header:'联系方式', dataIndex:'contact', flex:1},
             {header:'Email', dataIndex:'email', flex:1},
-            {header:'销售组', dataIndex:'sale_group', flex:0.5}
+            {header:'销售组', dataIndex:'sale_group', flex:0.5, renderer: function(v) {
+                return AM.view.user.List.saleGroup[v];
+            }}
 
         ];
         this.callParent(arguments);
