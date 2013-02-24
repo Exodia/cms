@@ -9,6 +9,87 @@
             "sale_group": "销售1组",
             "salesman" : "销售员1",
             "total_price": 10000,
+            "status": 0,
+            "detail": {
+                "id":1,
+                "material_code": 1,
+                "material_name": "测试物料名称",
+                "type": 1,
+                "unit": "件",
+                "amount": 10,
+                "unit_price": 200,
+                "unit_tax_price": 234,
+                "dateline": 1361612863319
+            }
+        },{
+            "id":2,
+            "project": 1,
+            "date": 1361612863319,
+            "custom": "350424-张XX",
+            "sale_group": "销售1组",
+            "salesman" : "销售员1",
+            "total_price": 10000,
+            "status": 0,
+            "detail": {
+                "id":1,
+                "material_code": 1,
+                "material_name": "测试物料名称",
+                "type": 1,
+                "unit": "件",
+                "amount": 10,
+                "unit_price": 200,
+                "unit_tax_price": 234,
+                "dateline": 1361612863319
+            }
+        },{
+            "id":3,
+            "project": 1,
+            "date": 1361612863319,
+            "custom": "350424-张XX",
+            "sale_group": "销售1组",
+            "salesman" : "销售员1",
+            "total_price": 10000,
+            "status": 0,
+            "detail": {
+                "id":1,
+                "material_code": 1,
+                "material_name": "测试物料名称",
+                "type": 1,
+                "unit": "件",
+                "amount": 10,
+                "unit_price": 200,
+                "unit_tax_price": 234,
+                "dateline": 1361612863319
+            }
+        },{
+            "id":4,
+            "project": 1,
+            "date": 1361612863319,
+            "custom": "350424-张XX",
+            "sale_group": "销售1组",
+            "salesman" : "销售员1",
+            "total_price": 10000,
+            "status": 0,
+            "detail": {
+                "id":1,
+                "material_code": 1,
+                "material_name": "测试物料名称",
+                "type": 1,
+                "unit": "件",
+                "amount": 10,
+                "unit_price": 200,
+                "unit_tax_price": 234,
+                "dateline": 1361612863319
+            }
+        },{
+            "id":5,
+            "project": 1,
+            "date": 1361612863319,
+            "custom": "350424-张XX",
+            "sale_group": "销售1组",
+            "salesman" : "销售员1",
+            "total_price": 10000,
+            "status": 0,
             "detail": {
                 "id":1,
                 "material_code": 1,

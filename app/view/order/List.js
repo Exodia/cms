@@ -18,7 +18,8 @@ Ext.define('AM.view.order.List', {
             }},
             {header:'销售客户', dataIndex:'custom', flex:1},
             {header:'销售员', dataIndex:'salesman', flex:1},
-            {header:'订单总额(元)', dataIndex:'total_price', flex:1}
+            {header:'订单总额(元)', dataIndex:'total_price', flex:1},
+            {header:'状态', dataIndex:'status', flex:1}
         ];
 
         this.callParent(arguments);
