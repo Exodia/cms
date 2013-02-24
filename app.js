@@ -76,6 +76,7 @@ Ext.application({
                     {
                         items:[
                             {
+                                active: true,
                                 title:'订单管理',
                                 iconCls:'x-icon-orders',
                                 style:'padding:5px;',

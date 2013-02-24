@@ -8,7 +8,9 @@
 Ext.define('AM.controller.Orders', {
     extend:'Ext.app.Controller',
     views:[
-        'order.List'
+        'order.List',
+        'order.General',
+        'order.Audit'
     ],
     stores:[
         'Orders'

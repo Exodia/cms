@@ -8,6 +8,7 @@
             "custom": "350424-张XX",
             "sale_group": "销售1组",
             "salesman" : "销售员1",
+            "total_price": 10000,
             "detail": {
                 "id":1,
                 "material_code": 1,

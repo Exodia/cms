@@ -1,13 +1,8 @@
-/**
- * Created with JetBrains WebStorm.
- * User: tafeng.dxx
- * Date: 13-1-26
- * Time: 下午5:46
- */
-Ext.define('AM.view.order.List', {
+Ext.define('AM.view.order.Audit', {
     extend:'Ext.grid.Panel',
-    alias:'widget.orderlist',
+    alias:'widget.orderaudit',
     store:'Orders',
+    title:'订单审核',
     flex: 1,
     initComponent:function () {
         this.columns = [
