@@ -13,7 +13,7 @@ Ext.define('AM.model.Order', {
     fields:['id', 'project', 'date', 'custom','sale_group', 'salesman'],
 
     hasMany:{
-        model: 'AM.model.Order.Detail',
+        model: 'AM.model.OrderDetail',
         name: 'detail'
     }
 });
@@ -29,7 +29,7 @@ Ext.define('AM.model.Order', {
  unit_tax_price: 含税单价
  deadline: 客户要求交货日期
  * */
-Ext.define('AM.model.Order.Detail', {
+Ext.define('AM.model.OrderDetail', {
     extend:'Ext.data.Model',
     fields:[
         'id', 'material_code', 'material_name', 'type','unit',
@@ -37,4 +37,3 @@ Ext.define('AM.model.Order.Detail', {
     ]
 });
 
-/*项目号、销售日期、销售客户、销售人、订单总额订单号、项目号、销售日期、销售客户、销售人、订单总额*/

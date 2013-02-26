@@ -9,6 +9,8 @@ Ext.define('AM.controller.Orders', {
     extend:'Ext.app.Controller',
     views:[
         'order.List',
+        'order.DetailList',
+        'order.Detail',
         'order.General',
         'order.Audit'
     ],
@@ -19,6 +21,14 @@ Ext.define('AM.controller.Orders', {
 
     refs:[
         {
+            ref: 'panel',
+            selector: 'orderpanel'
+        },
+       /* {
+            ref: 'orderGeneral',
+            selector: 'ordergeneral'
+        },*/
+        {
             ref:'list',
             selector:'orderlist'
         },
@@ -27,12 +37,37 @@ Ext.define('AM.controller.Orders', {
             selector:'#J_OrderEdit'
         },
         {
-            ref:'delButton',
-            selector:'#J_UserDelete'
+            ref:'addButton',
+            selector:'#J_OrderAdd'
+        },
+        {
+            ref:'viewButton',
+            selector:'#J_OrderView'
         }
     ],
 
-    init:function () {
+    checkEnable: function(sm) {
+        var len = sm.getSelection().length;
+        this.getEditButton().setDisabled(len !== 1);
+        this.getViewButton().setDisabled(len !== 1);
+    },
+    addOrder: function() {
+        var tab = Ext.widget('orderdetail', {
+            title: '新增订单'
+        });
 
+        var panel = this.getPanel();
+        panel.add(tab);
+        panel.setActiveTab(tab);
+    },
+    init:function () {
+         this.control({
+             'orderlist': {
+                 'selectionchange': this.checkEnable
+             },
+             '#J_OrderAdd': {
+                 'click': this.addOrder
+             }
+         });
     }
 });
