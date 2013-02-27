@@ -7,7 +7,16 @@
 Ext.define('AM.view.order.DetailList', {
     extend:'Ext.grid.Panel',
     alias:'widget.order_detail_list',
-//    store: Ext.create('AM.store.Orders').detail(),
+    store: Ext.create('Ext.data.Store', {
+        model: 'AM.model.OrderDetail'
+    }),
+    selType: 'cellmodel',
+    plugins: [
+        Ext.create('Ext.grid.plugin.CellEditing', {
+            clicksToEdit: 1,
+            pluginId: 'edit_plugin'
+        })
+    ],
     columns:[
         {
             header:'物质编码',
@@ -27,7 +36,8 @@ Ext.define('AM.view.order.DetailList', {
         {
             header:'计量单位',
             dataIndex:'unit',
-            width:50
+            editor: 'textfield',
+            width:60
         },
         {
             header:'数量',
@@ -76,6 +86,7 @@ Ext.define('AM.view.order.DetailList', {
             itemId: '',
             handler: this.delOrderItem,
             text:'删除',
+            disabled: true,
             scope:this
         });
 
@@ -87,8 +98,19 @@ Ext.define('AM.view.order.DetailList', {
         this.callParent(arguments);
     },
 
-   addOrderItem: function() {
+    listeners: {
+      selectionchange: function(sm) {
+          var len = sm.getSelection().length;
+          this.delOrderBtn.setDisabled(len == 0);
+      }
+    },
 
+   addOrderItem: function() {
+        var store = this.getStore(),
+            record = Ext.create('AM.model.OrderDetail', {id: null}),
+            editor = this.getPlugin('edit_plugin');
+        store.add(record);
+       editor.startEdit(record, this.columns[3]);
    },
    delOrderItem: function() {
 
