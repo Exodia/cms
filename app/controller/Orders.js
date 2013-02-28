@@ -15,9 +15,10 @@ Ext.define('AM.controller.Orders', {
         'order.Audit'
     ],
     stores:[
+        'Customs',
         'Orders'
     ],
-    models:['Order'],
+    models:['Custom', 'Order'],
 
     refs:[
         {
@@ -60,6 +61,9 @@ Ext.define('AM.controller.Orders', {
         panel.add(tab);
         panel.setActiveTab(tab);
     },
+    saveOrder: function(btn) {
+       console.log(btn.up('orderdetail'));
+    },
     init:function () {
          this.control({
              'orderlist': {
@@ -67,6 +71,9 @@ Ext.define('AM.controller.Orders', {
              },
              '#J_OrderAdd': {
                  'click': this.addOrder
+             },
+             'orderdetail button[action=save]': {
+                 'click': this.saveOrder
              }
          });
     }
