@@ -6,7 +6,7 @@
  */
 Ext.define('AM.view.order.Form', {
     extend:'Ext.form.Panel',
-    requires:['AM.view.SaleGroup'],
+    requires:['AM.view.SaleGroup', 'AM.view.Custom'],
     alias:'widget.orderform',
     layout:'border',
     collapsible:true,
@@ -34,25 +34,7 @@ Ext.define('AM.view.order.Form', {
             xtype:'datefield'
         },
         {
-            fieldLabel:'订货客户',
-            store: 'Customs',
-            queryMode:'local',
-            displayField: 'name',
-            tpl: Ext.create('Ext.XTemplate',
-                '<tpl for=".">',
-                '<div class="x-boundlist-item">{id} - {name}</div>',
-                '</tpl>'
-            ),
-            displayTpl: Ext.create('Ext.XTemplate',
-                '<tpl for=".">',
-                '{id} - {name}',
-                '</tpl>'
-            ),
-            forceSelection: true,
-            typeAhead: true,
-            valueField: 'id',
-            name:'custom',
-            xtype:'combo'
+            xtype:'custom'
         },
         {
             fieldLabel:'销售组',
