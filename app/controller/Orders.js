@@ -15,6 +15,7 @@ Ext.define('AM.controller.Orders', {
         'order.Audit'
     ],
     stores:[
+        'Materials',
         'Customs',
         'Orders'
     ],

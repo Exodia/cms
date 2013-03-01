@@ -6,6 +6,7 @@
  */
 Ext.define('AM.view.order.DetailList', {
     extend:'Ext.grid.Panel',
+    requires:['AM.view.MaterialCode'],
     alias:'widget.order_detail_list',
     store: Ext.create('Ext.data.Store', {
         model: 'AM.model.OrderDetail'
