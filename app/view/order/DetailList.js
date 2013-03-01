@@ -21,6 +21,7 @@ Ext.define('AM.view.order.DetailList', {
         {
             header:'物质编码',
             dataIndex:'detail.material_code',
+            editor: 'materialcode',
             flex:1
         },
         {
@@ -110,7 +111,7 @@ Ext.define('AM.view.order.DetailList', {
             record = Ext.create('AM.model.OrderDetail', {id: null}),
             editor = this.getPlugin('edit_plugin');
         store.add(record);
-       editor.startEdit(record, this.columns[3]);
+       editor.startEdit(record, this.columns[0]);
    },
    delOrderItem: function() {
 
