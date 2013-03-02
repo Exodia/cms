@@ -8,21 +8,44 @@ Ext.define('AM.view.order.DetailList', {
     extend:'Ext.grid.Panel',
     requires:['AM.view.MaterialCode'],
     alias:'widget.order_detail_list',
-    store: Ext.create('Ext.data.Store', {
-        model: 'AM.model.OrderDetail'
+    store:Ext.create('Ext.data.Store', {
+        model:'AM.model.OrderDetail'
     }),
-    selType: 'cellmodel',
-    plugins: [
+
+    statics: {
+        TAX: 0.17,
+        floatRender: function(v) {
+            if(!v) {
+                return '';
+            }
+            alert(v.toFixed(2))
+            return v.toFixed(2);
+        }
+    },
+
+    selType:'cellmodel',
+    plugins:[
         Ext.create('Ext.grid.plugin.CellEditing', {
-            clicksToEdit: 1,
-            pluginId: 'edit_plugin'
+            clicksToEdit:1,
+            pluginId:'edit_plugin'
         })
     ],
     columns:[
         {
             header:'物质编码',
             dataIndex:'detail.material_code',
-            editor: 'materialcode',
+            editor:{
+                allowBlank:false,
+                xtype:'materialcode',
+                name: 'material_code'
+            },
+            renderer:function (value) {
+                if (!value) {
+                    return ''
+                }
+
+                return value;
+            },
             flex:1
         },
         {
@@ -33,88 +56,178 @@ Ext.define('AM.view.order.DetailList', {
         {
             header:'规格型号',
             dataIndex:'type',
-            flex:1
+            width: 60
         },
         {
             header:'计量单位',
             dataIndex:'unit',
-            editor: 'textfield',
+            editor:'textfield',
             width:60
         },
         {
             header:'数量',
             dataIndex:'amount',
+            editor:{
+                xtype:'numberfield',
+                minValue:1,
+                allowDecimals:false,
+                allowBlank:false,
+                name: 'amount'
+            },
             flex:0.5
         },
         {
             header:'单价(元)',
             dataIndex:'unit_price',
+            editor:{
+                xtype:'numberfield',
+                minValue:0,
+                allowBlank:false,
+                name: 'unit_price'
+            },
             flex:0.5
         },
         {
             header:'含税单价(元)',
             dataIndex:'unit_tax_price',
-            flex:0.5
+            renderer: function(v) {
+                alert(v.toFixed(2))
+            },
+            width: 100
         },
         {
             header:'金额(元)',
             dataIndex:'price',
+            renderer: this.self.floatRender,
             flex:0.5
         },
         {
             header:'含税金额(元)',
             dataIndex:'tax_price',
-            flex:0.5
+            renderer: this.self.floatRender,
+            width: 120
         },
         {
             header:'客户要求交货日期',
             dataIndex:'detail.deadline',
-            flex:1,
+            editor:{
+                xtype:'datefield',
+                allowBlank:false
+            },
+            width:140,
             renderer:function (v) {
+                if (!v) {
+                    return '';
+                }
                 return Ext.Date.format(new Date(v), 'Y年m月d日 H:i');
             }
         }
     ],
-    onRender: function() {
+    onRender:function () {
         this.addOrderBtn = new Ext.Button({
             iconCls:'icon-add',
-            handler: this.addOrderItem,
+            handler:this.addOrderItem,
             text:'新增',
             scope:this
         });
 
         this.delOrderBtn = new Ext.Button({
-            iconCls: 'icon-delete',
-            itemId: '',
-            handler: this.delOrderItem,
+            iconCls:'icon-delete',
+            itemId:'',
+            handler:this.delOrderItem,
             text:'删除',
-            disabled: true,
+            disabled:true,
             scope:this
         });
 
         this.addDocked({
-            xtype: 'toolbar',
-            items: [this.addOrderBtn,  this.delOrderBtn]
+            xtype:'toolbar',
+            items:[this.addOrderBtn, this.delOrderBtn]
         });
+
 
         this.callParent(arguments);
     },
 
-    listeners: {
-      selectionchange: function(sm) {
-          var len = sm.getSelection().length;
-          this.delOrderBtn.setDisabled(len == 0);
-      }
+    listeners:{
+        selectionchange:function (sm) {
+            var len = sm.getSelection().length;
+            this.delOrderBtn.setDisabled(len == 0);
+
+        },
+
+
+        edit:function (editor, e) {
+            var record = e.record,
+                field = e.field,
+                column = e.column,
+                colEditor = column.getEditor(record);
+
+            switch (field) {
+                case 'material_code':
+                    var rec = colEditor.getModelData();
+                    record.set({
+                        'material_name':rec[0].get('name'),
+                        'type':rec[0].get('type'),
+                        'unit':rec[0].get('unit')
+                    });
+
+                    break;
+
+                case 'amount':
+                case 'unit_price':
+                    var amount = record.get('amount'),
+                        unit_price = record.get('unit_price');
+
+                    if(unit_price && unit_price > 0) {
+                        record.set('unit_tax_price', unit_price * (this.self.TAX + 1));
+                        amount && amount > 0 && this.setPrice(record);
+                    }
+
+                    break;
+
+
+            }
+        }
     },
 
-   addOrderItem: function() {
+    addOrderItem:function () {
         var store = this.getStore(),
-            record = Ext.create('AM.model.OrderDetail', {id: null}),
+            record = Ext.create('AM.model.OrderDetail', {id:null}),
             editor = this.getPlugin('edit_plugin');
         store.add(record);
-       editor.startEdit(record, this.columns[0]);
-   },
-   delOrderItem: function() {
+        editor.startEdit(record, this.columns[0]);
 
-   }
+        this._bindEditorEvents(record);
+    },
+    delOrderItem:function () {
+
+    },
+
+    setPrice:function (record) {
+        var amount = record.get('amount'),
+            unit_price = record.get('unit_price'),
+            unit_tax_price = record.get('unit_tax_price');
+
+        record.set({
+            price: amount * unit_price,
+            tax_price: amount * unit_tax_price
+        });
+    },
+
+    validate:function () {
+
+    },
+    _bindEditorEvents:function (record) {
+        var materialCodeCombo = this.columns[0].getEditor(record);
+
+        materialCodeCombo.on('select', function (combo, rec) {
+            record.set({
+                'material_name':rec[0].get('name'),
+                'type':rec[0].get('type'),
+                'unit':rec[0].get('unit')
+            });
+
+        });
+    }
 });

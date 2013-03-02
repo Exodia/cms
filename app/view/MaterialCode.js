@@ -10,8 +10,8 @@ Ext.define('AM.view.MaterialCode', {
     alias:'widget.materialcode',
     store: 'Materials',
     forceSelection: true,
-    queryMode: 'local',
+//    queryMode: 'local',
     typeAhead: true,
-    valueField: 'id',
+    valueField: 'code',
     displayField: 'code'
 });
