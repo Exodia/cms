@@ -11,18 +11,23 @@ Ext.define('AM.view.order.Detail', {
     title:'订单详情',
     closable: true,
     layout: 'border',
-    items: [{
-        xtype: 'orderform',
-        resizable: true,
-        region: 'west'
-    },{
-        xtype:'order_detail_list',
-        region: 'center'
-    }, {
-        region: 'south',
-        buttons:[{
-           text: '保存',
-           action: 'save'
+    initComponent: function() {
+        this.items = [{
+            xtype: 'orderform',
+            order: this.order,
+            resizable: true,
+            region: 'west'
+        },{
+            xtype:'order_detail_list',
+            order: this.order,
+            region: 'center'
+        }, {
+            region: 'south',
+            buttons:[{
+                text: '保存',
+                action: 'save'
+            }]
         }]
-    }]
+        this.callParent(arguments);
+    }
 });

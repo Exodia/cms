@@ -56,7 +56,8 @@ Ext.define('AM.controller.Orders', {
     },
     addOrder: function() {
         var tab = Ext.widget('orderdetail', {
-            title: '新增订单'
+            title: '新增订单',
+            order: this.getStore('Orders').add({})[0]
         });
 
         var panel = this.getPanel();
