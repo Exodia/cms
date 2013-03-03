@@ -11,6 +11,8 @@ Ext.define('AM.view.TplCombobox', {
     queryMode:'local',
     displayField: 'name',
     valueNotFoundText: '未找到匹配结果',
+    allowBlank: false,
+    forceSelection: true,
     tpl: Ext.create('Ext.XTemplate',
         '<tpl for=".">',
         '<div class="x-boundlist-item">{id} - {name}</div>',
@@ -21,7 +23,6 @@ Ext.define('AM.view.TplCombobox', {
         '{id} - {name}',
         '</tpl>'
     ),
-    forceSelection: true,
     typeAhead: true,
     valueField: 'id'
 });

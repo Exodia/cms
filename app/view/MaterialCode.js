@@ -10,12 +10,12 @@ Ext.define('AM.view.MaterialCode', {
     requires: ['AM.store.Materials'],
     alias:'widget.materialcode',
     store: 'Materials',
-//    valueNotFoundText: '未找到匹配结果',
-    forceSelection: true,
+//    forceSelection: true,
+
     queryMode: 'local',
     typeAhead: true,
     valueField: 'code',
-    displayField: 'code',
+    displayField: 'code'/*,
     listeners: {
         focus: function() {
             var self = this,
@@ -35,6 +35,6 @@ Ext.define('AM.view.MaterialCode', {
                 self.fireEvent('select', self, store.getRange());
             }
         }
-    }
+    }*/
 
 });

@@ -7,8 +7,10 @@
  */
 Ext.define('AM.view.Custom', {
     extend: 'AM.view.TplCombobox',
+    requires:['AM.store.Customs'],
     alias:'widget.custom',
     name:'custom',
+    allowBlank: false,
     fieldLabel:'订货客户',
     store: 'Customs'
 });

@@ -4,7 +4,7 @@ Ext.Loader.setPath({
 });
 
 Ext.application({
-    requires:['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
+    requires:['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.ux.Spotlight','Ext.window.MessageBox',
         'AM.view.user.Panel', 'AM.view.order.Panel'/*, 'AM.view.contract.Panel',*/
      /*   'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
         'AM.view.composite.Panel', 'AM.view.custom.Panel', 'AM.view.datamgr.Panel'*/
@@ -18,6 +18,16 @@ Ext.application({
 //        'Transports'
     ],
 
+    spot: Ext.create('Ext.ux.Spotlight', {
+        easing: 'easeOut',
+        duration: 300
+    }),
+    spotShow: function(el) {
+       this.spot.show(el);
+    },
+    spotHide: function(el) {
+        this.spot.hide(el);
+    },
     error:function (title, msg, fn, scope) {
         Ext.Msg.show({
             title:title,
