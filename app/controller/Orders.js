@@ -54,17 +54,14 @@ Ext.define('AM.controller.Orders', {
         this.getEditButton().setDisabled(len !== 1);
         this.getViewButton().setDisabled(len !== 1);
     },
-    addOrder: function() {
-        var tab = Ext.widget('orderdetail', {
-            title: '新增订单'
-        });
 
-        var panel = this.getPanel();
-        panel.add(tab);
-        panel.setActiveTab(tab);
-    },
-    saveOrder: function(btn) {
-       console.log(btn.up('orderdetail'));
+    saveOrder: function(btn, isNew) {
+       var detailPanel =  btn.up('orderdetail'),
+            form = deaitlPanel.down('orderform'),
+            list = detailPanel.down('order_detail_list');
+
+
+
     },
     init:function () {
          this.control({
@@ -72,10 +69,29 @@ Ext.define('AM.controller.Orders', {
                  'selectionchange': this.checkEnable
              },
              '#J_OrderAdd': {
-                 'click': this.addOrder
+                 'click': function() {
+                     var tab = Ext.widget('orderdetail', {
+                         title: '新增订单'
+                     });
+
+                     var panel = this.getPanel();
+                     panel.add(tab);
+                     panel.setActiveTab(tab);
+                 }
              },
-             'orderdetail button[action=save]': {
-                 'click': this.saveOrder
+             'orderdetail button[action=add_save]': {
+                 'click':  function(btn) {
+                     var detailPanel =  btn.up('orderdetail'),
+                         form = detailPanel.down('orderform'),
+                         list = detailPanel.down('order_detail_list'),
+                         record = Ext.create('AM.model.Order');
+
+
+                     record.set(form.getForm().getFieldValues());
+                     record.detail().add( list.getStore().getNewRecords());
+                     this.getStore('Orders').add(record);
+                     this.application.sync(this.getStore('Orders'), this)
+                 }
              }
          });
     }

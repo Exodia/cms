@@ -9,9 +9,8 @@ Ext.define('AM.view.order.DetailList', {
     requires:['AM.view.MaterialCode'],
     alias:'widget.order_detail_list',
     store:Ext.create('Ext.data.Store', {
-        model:'AM.model.OrderDetail'
+       model: 'AM.model.OrderDetail'
     }),
-
     statics: {
         TAX: 0.17,
         floatRender: function(v) {
@@ -187,7 +186,7 @@ Ext.define('AM.view.order.DetailList', {
 
     addOrderItem:function () {
         var store = this.getStore(),
-            record = Ext.create('AM.model.OrderDetail', {id:null}),
+            record = Ext.create('AM.model.OrderDetail'),
             editor = this.getPlugin('edit_plugin');
         store.add(record);
         editor.startEdit(record, this.columns[0]);

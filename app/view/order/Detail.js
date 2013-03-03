@@ -22,7 +22,7 @@ Ext.define('AM.view.order.Detail', {
         region: 'south',
         buttons:[{
            text: '保存',
-           action: 'save'
+           action: 'add_save'
         }]
     }]
 });
