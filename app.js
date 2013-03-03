@@ -3,11 +3,42 @@ Ext.Loader.setPath({
     'App.util':'./app/util'
 });
 
+Ext.require('Ext.data.writer.Json', function() {
+    Ext.data.writer.Json.override({
+        getRecordData:function (record) {
+            var me = this, i, association, childStore, data = {};
+            data = me.callParent([record]);
+
+            /* Iterate over all the hasMany associations */
+            for (i = 0; i < record.associations.length; i++) {
+                association = record.associations.get(i);
+                if (association.type == 'hasMany') {
+                    data[association.name] = [];
+                    childStore = eval('record.' + association.name + '()');
+
+                    //Iterate over all the children in the current association
+                    childStore.each(function (childRecord) {
+
+                        //Recursively get the record data for children (depth first)
+                        var childData = this.getRecordData.call(this, childRecord);
+                        if (childRecord.dirty | childRecord.phantom | (childData != null)) {
+                            data[association.name].push(childData);
+                            record.setDirty();
+                        }
+                    }, me);
+                }
+            }
+            return data;
+        }
+    });
+});
+
+
 Ext.application({
     requires:['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
         'AM.view.user.Panel', 'AM.view.order.Panel'/*, 'AM.view.contract.Panel',*/
-     /*   'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
-        'AM.view.composite.Panel', 'AM.view.custom.Panel', 'AM.view.datamgr.Panel'*/
+        /*   'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
+         'AM.view.composite.Panel', 'AM.view.custom.Panel', 'AM.view.datamgr.Panel'*/
     ],
     name:'AM',
 
@@ -45,9 +76,9 @@ Ext.application({
             icon:Ext.MessageBox.WARNING
         });
     },
-    sync: function(store, controller) {
+    sync:function (store, controller) {
         store.sync({
-            failure: function () {
+            failure:function () {
                 this.application.error('错误', '操作失败，请重试！');
                 store.rejectChanges();
                 var sm = this.getList().getSelectionModel();
@@ -76,7 +107,7 @@ Ext.application({
                     {
                         items:[
                             {
-                                active: true,
+                                active:true,
                                 title:'订单管理',
                                 iconCls:'x-icon-orders',
                                 style:'padding:5px;',

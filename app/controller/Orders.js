@@ -65,7 +65,7 @@ Ext.define('AM.controller.Orders', {
         panel.setActiveTab(tab);
     },
     saveOrder: function(btn) {
-       console.log(btn.up('orderdetail'));
+       this.application.sync(this.getStore('Orders'), this);
     },
     init:function () {
          this.control({

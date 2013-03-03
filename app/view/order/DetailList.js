@@ -8,12 +8,6 @@ Ext.define('AM.view.order.DetailList', {
     extend:'Ext.grid.Panel',
     requires:['AM.view.MaterialCode'],
     alias:'widget.order_detail_list',
-   /* store: Ext.create('Ext.data.Store', {
-        fields: ['id', 'material_code', 'material_name', 'type','unit',
-            'amount', 'unit_price', 'unit_tax_price', 'deadline']
-    }),*/
-
-//    store: Ext.create('AM.model.Order').detail(),
     statics: {
         TAX: 0.17,
         floatRender: function(v) {
@@ -38,7 +32,7 @@ Ext.define('AM.view.order.DetailList', {
         this.columns = [
             {
                 header:'物质编码',
-                dataIndex:'detail.material_code',
+                dataIndex:'material_code',
                 editor:{
                     allowBlank:false,
                     xtype:'materialcode',
@@ -94,7 +88,7 @@ Ext.define('AM.view.order.DetailList', {
                 header:'金额(元)',
                 dataIndex:'price',
                 renderer: this.self.floatRender,
-                flex:0.5
+                width: 110
             },
             {
                 header:'含税金额(元)',
@@ -163,11 +157,11 @@ Ext.define('AM.view.order.DetailList', {
 
             switch (field) {
                 case 'material_code':
-                    var rec = colEditor.getModelData();
+                    var rec = colEditor.findRecordByValue(colEditor.getValue());
                     record.set({
-                        'material_name':rec[0].get('name'),
-                        'type':rec[0].get('type'),
-                        'unit':rec[0].get('unit')
+                        'material_name':rec.get('name'),
+                        'type':rec.get('type'),
+                        'unit':rec.get('unit')
                     });
 
                     break;
@@ -191,12 +185,10 @@ Ext.define('AM.view.order.DetailList', {
 
     addOrderItem:function () {
         var store = this.getStore(),
-            record = store.add({}),
+            record = store.add({})[0],
             editor = this.editorPlugin;
-//        store.add(record);
         editor.startEdit(record, this.columns[0]);
 
-        this._bindEditorEvents(record);
     },
     delOrderItem:function () {
 
@@ -215,17 +207,5 @@ Ext.define('AM.view.order.DetailList', {
 
     validate:function () {
 
-    },
-    _bindEditorEvents:function (record) {
-        var materialCodeCombo = this.columns[0].getEditor(record);
-
-        materialCodeCombo.on('select', function (combo, rec) {
-            record.set({
-                'material_name':rec[0].get('name'),
-                'type':rec[0].get('type'),
-                'unit':rec[0].get('unit')
-            });
-
-        });
     }
 });
