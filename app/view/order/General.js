@@ -1,5 +1,6 @@
 Ext.define('AM.view.order.General', {
     extend:'Ext.panel.Panel',
+    requires:['AM.view.order.List'],
     alias:'widget.ordergeneral',
     title:'订单总览',
     border:false,

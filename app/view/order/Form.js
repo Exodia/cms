@@ -6,7 +6,7 @@
  */
 Ext.define('AM.view.order.Form', {
     extend:'Ext.form.Panel',
-    requires:['AM.view.SaleGroup', 'AM.view.Custom'],
+    requires:['AM.view.SaleGroup', 'AM.view.Custom', 'AM.view.SalesMan'],
     alias:'widget.orderform',
     layout:'border',
     collapsible:true,

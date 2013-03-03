@@ -8,8 +8,8 @@
 Ext.define('AM.controller.Orders', {
     extend:'Ext.app.Controller',
     views:[
-        'order.List',
-        'order.DetailList',
+      /*  'order.List',
+        'order.DetailList',*/
         'order.Detail',
         'order.General',
         'order.Audit'
@@ -17,6 +17,7 @@ Ext.define('AM.controller.Orders', {
     stores:[
         'Materials',
         'Customs',
+//        'SalesMen',
         'Orders'
     ],
     models:['Custom', 'Order'],

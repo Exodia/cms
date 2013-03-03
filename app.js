@@ -5,17 +5,17 @@ Ext.Loader.setPath({
 
 Ext.application({
     requires:['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
-        'AM.view.user.Panel', 'AM.view.order.Panel', 'AM.view.contract.Panel',
-        'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
-        'AM.view.composite.Panel', 'AM.view.custom.Panel', 'AM.view.datamgr.Panel'
+        'AM.view.user.Panel', 'AM.view.order.Panel'/*, 'AM.view.contract.Panel',*/
+     /*   'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
+        'AM.view.composite.Panel', 'AM.view.custom.Panel', 'AM.view.datamgr.Panel'*/
     ],
     name:'AM',
 
     appFolder:'app',
     controllers:[
         'Users',
-        'Orders',
-        'Transports'
+        'Orders'
+//        'Transports'
     ],
 
     error:function (title, msg, fn, scope) {
@@ -90,7 +90,7 @@ Ext.application({
                                 title:'合同管理',
                                 iconCls:'x-icon-contracts',
                                 style:'padding:5px;',
-                                xtype:'contractpanel'
+                                xtype:'panel'
                             }
                         ]
                     },
@@ -100,7 +100,7 @@ Ext.application({
                                 title:'发运管理',
                                 iconCls:'x-icon-trans',
                                 style:'padding:5px;',
-                                xtype:'transportpanel'
+                                xtype:'panel'
                             }
                         ]
                     },
@@ -110,7 +110,7 @@ Ext.application({
                                 title:'发票管理',
                                 iconCls:'x-icon-invoices',
                                 style:'padding:5px;',
-                                xtype:'invoicepanel'
+                                xtype:'panel'
                             }
                         ]
                     },
@@ -120,7 +120,7 @@ Ext.application({
                                 title:'综合管理',
                                 iconCls:'x-icon-composite',
                                 style:'padding:5px;',
-                                xtype:'compositepanel'
+                                xtype:'panel'
                             }
                         ]
                     },
@@ -130,7 +130,7 @@ Ext.application({
                                 title:'客户管理',
                                 iconCls:'x-icon-customs',
                                 style:'padding:5px;',
-                                xtype:'custompanel'
+                                xtype:'panel'
                             }
                         ]
                     },
@@ -140,7 +140,7 @@ Ext.application({
                                 title:'数据管理',
                                 iconCls:'x-icon-data',
                                 style:'padding:5px;',
-                                xtype:'datamgrpanel'
+                                xtype:'panel'
                             }
                         ]
                     }
