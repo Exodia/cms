@@ -34,8 +34,7 @@ Ext.define('AM.view.order.Form', {
             xtype:'datefield'
         },
         {
-            xtype:'custom',
-            allowBlank: false
+            xtype:'custom'
         },
         {
             fieldLabel:'销售组',
@@ -47,7 +46,7 @@ Ext.define('AM.view.order.Form', {
         {
             fieldLabel:'销售员',
             name:'salesman',
-            xtype:'salesman'
+            xtype:'combo'
         }
     ]
 });

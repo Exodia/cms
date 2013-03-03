@@ -15,12 +15,6 @@ Ext.define('AM.store.Orders', {
             type: 'json',
             root: 'data',
             successProperty: 'success'
-        },
-        writer: {
-            type: 'json',
-            root: 'data',
-            successProperty: 'success',
-            encode: true
         }
     }
 });

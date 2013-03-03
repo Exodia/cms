@@ -24,8 +24,7 @@ Ext.define('AM.view.SaleGroup', {
     valueField:'sale_group',
     displayField:'des',
     editable:false,
-    allowBlank: false,
-//    forceSelection:true,
+    forceSelection:true,
     labelWidth:60,
     width:140,
     padding:5

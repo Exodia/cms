@@ -8,9 +8,12 @@ Ext.define('AM.view.order.DetailList', {
     extend:'Ext.grid.Panel',
     requires:['AM.view.MaterialCode'],
     alias:'widget.order_detail_list',
-    store:Ext.create('Ext.data.Store', {
-       model: 'AM.model.OrderDetail'
-    }),
+   /* store: Ext.create('Ext.data.Store', {
+        fields: ['id', 'material_code', 'material_name', 'type','unit',
+            'amount', 'unit_price', 'unit_tax_price', 'deadline']
+    }),*/
+
+//    store: Ext.create('AM.model.Order').detail(),
     statics: {
         TAX: 0.17,
         floatRender: function(v) {
@@ -22,14 +25,16 @@ Ext.define('AM.view.order.DetailList', {
     },
 
     selType:'cellmodel',
-    plugins:[
-        Ext.create('Ext.grid.plugin.CellEditing', {
-            clicksToEdit:1,
-            pluginId:'edit_plugin'
-        })
-    ],
 
     initComponent: function() {
+        this.store = this.order.detail();
+
+        this.editorPlugin = Ext.create('Ext.grid.plugin.CellEditing', {
+            clicksToEdit:1
+        });
+
+        this.plugins = [this.editorPlugin];
+
         this.columns = [
             {
                 header:'物质编码',
@@ -186,9 +191,9 @@ Ext.define('AM.view.order.DetailList', {
 
     addOrderItem:function () {
         var store = this.getStore(),
-            record = Ext.create('AM.model.OrderDetail'),
-            editor = this.getPlugin('edit_plugin');
-        store.add(record);
+            record = store.add({}),
+            editor = this.editorPlugin;
+//        store.add(record);
         editor.startEdit(record, this.columns[0]);
 
         this._bindEditorEvents(record);
