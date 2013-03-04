@@ -75,7 +75,7 @@ Ext.define('AM.controller.Orders', {
              '#J_OrderAdd': {
                  'click': this.addOrder
              },
-             'orderdetail button[action=save]': {
+             'orderdetail button[action=add_save]': {
                  'click': this.saveOrder
              }
          });

@@ -10,6 +10,10 @@
 .icon-edit {
     background: url(img/edit.png);
 }
+.icon-print {
+    background: url(img/printer.png);
+}
+
 .x-tree-icon.x-tree-icon-parent.x-icon-users{
     display: inline;
     background: url(img/users.png);

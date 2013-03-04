@@ -1,0 +1,54 @@
+table {
+    empty-cells: show;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto 5px auto;
+}
+
+strong {
+    font-size: 18px;
+}
+
+td {
+    padding: 5px;
+}
+
+.order-id strong {
+    font-size: 12px;
+}
+
+.order-item {
+    text-align: center;
+}
+
+.order td {
+    /*padding: 5px;*/
+    white-space: nowrap;
+    width: 200px;
+}
+
+.order td.large {
+    width: 300px;
+}
+
+.order .order-id {
+    font-size: 12px;
+    text-align: right;
+}
+
+.order .company {
+    text-align: center;
+}
+
+.order-record p {
+    text-align: center;
+}
+
+.order-record .name {
+    margin-right: 15px;
+}
+
+.order-record .order-date {
+    position: relative;
+    left: 100px;
+}
