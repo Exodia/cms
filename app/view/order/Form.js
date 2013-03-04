@@ -48,5 +48,10 @@ Ext.define('AM.view.order.Form', {
             name:'salesman',
             xtype:'combo'
         }
-    ]
+    ],
+    onRender: function() {
+        this.order && this.loadRecord(this.order.getData());
+        console.log(this.order.getData())
+        this.callParent(arguments);
+    }
 });

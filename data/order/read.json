@@ -17,9 +17,11 @@
                 "type": 1,
                 "unit": "件",
                 "amount": 10,
+                "tax_price": 2000,
+                "price": 2340,
                 "unit_price": 200,
                 "unit_tax_price": 234,
-                "dateline": 1361612863319
+                "deadline": 1361612863319
             }]
         },{
             "id":2,
@@ -38,8 +40,10 @@
                 "unit": "件",
                 "amount": 10,
                 "unit_price": 200,
+                "tax_price": 2000,
+                "price": 2340,
                 "unit_tax_price": 234,
-                "dateline": 1361612863319
+                "deadline": 1361612863319
             }]
         },{
             "id":3,
@@ -59,7 +63,9 @@
                 "amount": 10,
                 "unit_price": 200,
                 "unit_tax_price": 234,
-                "dateline": 1361612863319
+                "tax_price": 2000,
+                "price": 2340,
+                "deadline": 1361612863319
             }]
         },{
             "id":4,
@@ -79,7 +85,9 @@
                 "amount": 10,
                 "unit_price": 200,
                 "unit_tax_price": 234,
-                "dateline": 1361612863319
+                "tax_price": 2000,
+                "price": 2340,
+                "deadline": 1361612863319
             }]
         },{
             "id":5,
@@ -99,7 +107,9 @@
                 "amount": 10,
                 "unit_price": 200,
                 "unit_tax_price": 234,
-                "dateline": 1361612863319
+                "tax_price": 2000,
+                "price": 2340,
+                "deadline": 1361612863319
             }]
         }
     ]

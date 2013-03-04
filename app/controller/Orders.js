@@ -57,7 +57,8 @@ Ext.define('AM.controller.Orders', {
     addOrder: function() {
         var tab = Ext.widget('orderdetail', {
             title: '新增订单',
-            order: this.getStore('Orders').add({})[0]
+            order: this.getStore('Orders').add({})[0],
+            orderStatus: 'edit'
         });
 
         var panel = this.getPanel();
@@ -66,6 +67,16 @@ Ext.define('AM.controller.Orders', {
     },
     saveOrder: function(btn) {
        this.application.sync(this.getStore('Orders'), this);
+    },
+    viewOrder: function(btn) {
+        var tab = Ext.widget('orderdetail', {
+            order: this.getList().getSelectionModel().getSelection()[0],
+            orderStatus: 'view'
+        });
+
+        var panel = this.getPanel();
+        panel.add(tab);
+        panel.setActiveTab(tab);
     },
     init:function () {
          this.control({
@@ -77,6 +88,9 @@ Ext.define('AM.controller.Orders', {
              },
              'orderdetail button[action=add_save]': {
                  'click': this.saveOrder
+             },
+             '#J_OrderView': {
+                 'click': this.viewOrder
              }
          });
     }

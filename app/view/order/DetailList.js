@@ -23,11 +23,13 @@ Ext.define('AM.view.order.DetailList', {
     initComponent: function() {
         this.store = this.order.detail();
 
-        this.editorPlugin = Ext.create('Ext.grid.plugin.CellEditing', {
-            clicksToEdit:1
-        });
+        if(this.orderStatus == 'edit') {
+            this.editorPlugin = Ext.create('Ext.grid.plugin.CellEditing', {
+                clicksToEdit:1
+            });
 
-        this.plugins = [this.editorPlugin];
+            this.plugins = [this.editorPlugin];
+        }
 
         this.columns = [
             {
@@ -80,7 +82,7 @@ Ext.define('AM.view.order.DetailList', {
             },
             {
                 header:'含税单价(元)',
-                dataIndex:'unit_tax_price',
+                dataIndex: 'unit_tax_price',
                 renderer: this.self.floatRender,
                 width: 100
             },
@@ -98,7 +100,7 @@ Ext.define('AM.view.order.DetailList', {
             },
             {
                 header:'客户要求交货日期',
-                dataIndex:'detail.deadline',
+                dataIndex:'deadline',
                 editor:{
                     xtype:'datefield',
                     allowBlank:false
@@ -116,39 +118,40 @@ Ext.define('AM.view.order.DetailList', {
     },
 
     onRender:function () {
-        this.addOrderBtn = new Ext.Button({
-            iconCls:'icon-add',
-            handler:this.addOrderItem,
-            text:'新增',
-            scope:this
-        });
+        if(this.orderStatus == 'edit') {
+            this.addOrderBtn = new Ext.Button({
+                iconCls:'icon-add',
+                handler:this.addOrderItem,
+                text:'新增',
+                scope:this
+            });
 
-        this.delOrderBtn = new Ext.Button({
-            iconCls:'icon-delete',
-            itemId:'',
-            handler:this.delOrderItem,
-            text:'删除',
-            disabled:true,
-            scope:this
-        });
+            this.delOrderBtn = new Ext.Button({
+                iconCls:'icon-delete',
+                itemId:'',
+                handler:this.delOrderItem,
+                text:'删除',
+                disabled:true,
+                scope:this
+            });
 
-        this.addDocked({
-            xtype:'toolbar',
-            items:[this.addOrderBtn, this.delOrderBtn]
-        });
+            this.addDocked({
+                xtype:'toolbar',
+                items:[this.addOrderBtn, this.delOrderBtn]
+            });
+
+            this.on('selectionchange', function (sm) {
+                var len = sm.getSelection().length;
+                this.delOrderBtn.setDisabled(len == 0);
+
+            });
+        }
 
 
         this.callParent(arguments);
     },
 
     listeners:{
-        selectionchange:function (sm) {
-            var len = sm.getSelection().length;
-            this.delOrderBtn.setDisabled(len == 0);
-
-        },
-
-
         edit:function (editor, e) {
             var record = e.record,
                 field = e.field,
