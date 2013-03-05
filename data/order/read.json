@@ -3,114 +3,158 @@
     "data":[
         {
             "id":1,
-            "project": 1,
-            "date": 1361612863319,
-            "custom": "350424-张XX",
-            "sale_group": "销售1组",
-            "salesman" : "销售员1",
-            "total_price": 10000,
-            "status": 0,
-            "detail": [{
+            "project":1,
+            "date":1361612863319,
+            "custom": {
                 "id":1,
-                "material_code": 1,
-                "material_name": "测试物料名称",
-                "type": 1,
-                "unit": "件",
-                "amount": 10,
-                "tax_price": 2000,
-                "price": 2340,
-                "unit_price": 200,
-                "unit_tax_price": 234,
-                "deadline": 1361612863319
-            }]
-        },{
+                "name":"张XX"
+            },
+            "sale_group":1,
+            "salesman": {
+                "id":1,
+                "name":"客户张XX"
+            },
+            "total_price":10000,
+            "status":0,
+            "detail":[
+                {
+                    "id":1,
+                    "material_code":1,
+                    "material_name":"测试物料名称",
+                    "type":1,
+                    "unit":"件",
+                    "amount":10,
+                    "tax_price":2000,
+                    "price":2340,
+                    "unit_price":200,
+                    "unit_tax_price":234,
+                    "deadline":1361612863319
+                }
+            ]
+        },
+        {
             "id":2,
-            "project": 1,
-            "date": 1361612863319,
-            "custom": "350424-张XX",
-            "sale_group": "销售1组",
-            "salesman" : "销售员1",
-            "total_price": 10000,
-            "status": 0,
-            "detail": [{
+            "project":1,
+            "date":1361612863319,
+            "sale_group":0,
+            "custom": {
+                "id":2,
+                "name":"张XX"
+            },
+            "salesman":{
                 "id":1,
-                "material_code": 1,
-                "material_name": "测试物料名称",
-                "type": 1,
-                "unit": "件",
-                "amount": 10,
-                "unit_price": 200,
-                "tax_price": 2000,
-                "price": 2340,
-                "unit_tax_price": 234,
-                "deadline": 1361612863319
-            }]
-        },{
+                "name":"李XX"
+            },
+            "total_price":10000,
+            "status":0,
+            "detail":[
+                {
+                    "id":1,
+                    "material_code":1,
+                    "material_name":"测试物料名称",
+                    "type":1,
+                    "unit":"件",
+                    "amount":10,
+                    "unit_price":200,
+                    "tax_price":2000,
+                    "price":2340,
+                    "unit_tax_price":234,
+                    "deadline":1361612863319
+                }
+            ]
+        },
+        {
             "id":3,
-            "project": 1,
-            "date": 1361612863319,
-            "custom": "350424-张XX",
-            "sale_group": "销售1组",
-            "salesman" : "销售员1",
-            "total_price": 10000,
-            "status": 0,
-            "detail": [{
+            "project":1,
+            "date":1361612863319,
+            "custom": {
                 "id":1,
-                "material_code": 1,
-                "material_name": "测试物料名称",
-                "type": 1,
-                "unit": "件",
-                "amount": 10,
-                "unit_price": 200,
-                "unit_tax_price": 234,
-                "tax_price": 2000,
-                "price": 2340,
-                "deadline": 1361612863319
-            }]
-        },{
+                "name":"张XX"
+            },
+            "sale_group":"销售1组",
+            "salesman":{
+                "id":3,
+                "name":"张XX"
+            },
+            "total_price":10000,
+            "status":0,
+            "detail":[
+                {
+                    "id":1,
+                    "material_code":1,
+                    "material_name":"测试物料名称",
+                    "type":1,
+                    "unit":"件",
+                    "amount":10,
+                    "unit_price":200,
+                    "unit_tax_price":234,
+                    "tax_price":2000,
+                    "price":2340,
+                    "deadline":1361612863319
+                }
+            ]
+        },
+        {
             "id":4,
-            "project": 1,
-            "date": 1361612863319,
-            "custom": "350424-张XX",
-            "sale_group": "销售1组",
-            "salesman" : "销售员1",
-            "total_price": 10000,
-            "status": 0,
-            "detail": [{
+            "project":1,
+            "date":1361612863319,
+            "custom": {
                 "id":1,
-                "material_code": 1,
-                "material_name": "测试物料名称",
-                "type": 1,
-                "unit": "件",
-                "amount": 10,
-                "unit_price": 200,
-                "unit_tax_price": 234,
-                "tax_price": 2000,
-                "price": 2340,
-                "deadline": 1361612863319
-            }]
-        },{
+                "name":"张XX"
+            },
+            "sale_group":"销售1组",
+            "salesman":{
+                "id":1,
+                "name":"张XX"
+            },
+            "total_price":10000,
+            "status":0,
+            "detail":[
+                {
+                    "id":1,
+                    "material_code":1,
+                    "material_name":"测试物料名称",
+                    "type":1,
+                    "unit":"件",
+                    "amount":10,
+                    "unit_price":200,
+                    "unit_tax_price":234,
+                    "tax_price":2000,
+                    "price":2340,
+                    "deadline":1361612863319
+                }
+            ]
+        },
+        {
             "id":5,
-            "project": 1,
-            "date": 1361612863319,
-            "custom": "350424-张XX",
-            "sale_group": "销售1组",
-            "salesman" : "销售员1",
-            "total_price": 10000,
-            "status": 0,
-            "detail": [{
+            "project":1,
+            "date":1361612863319,
+            "custom": {
                 "id":1,
-                "material_code": 1,
-                "material_name": "测试物料名称",
-                "type": 1,
-                "unit": "件",
-                "amount": 10,
-                "unit_price": 200,
-                "unit_tax_price": 234,
-                "tax_price": 2000,
-                "price": 2340,
-                "deadline": 1361612863319
-            }]
+                "name":"张XX"
+            },
+            "sale_group":"销售1组",
+            "salesman":{
+                "id":1,
+                "name":"张XX"
+            },
+            "total_price":10000,
+            "status":0,
+            "detail":[
+                {
+                    "id":1,
+                    "material_code":1,
+                    "material_name":"测试物料名称",
+                    "type":1,
+                    "unit":"件",
+                    "amount":10,
+                    "unit_price":200,
+                    "unit_tax_price":234,
+                    "tax_price":2000,
+                    "price":2340,
+                    "deadline":1361612863319
+                }
+            ]
         }
     ]
 }

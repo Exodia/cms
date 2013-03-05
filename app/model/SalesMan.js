@@ -4,7 +4,7 @@
  * Date: 13-2-18
  * Time: 下午4:56
  */
-Ext.define('AM.model.Custom', {
+Ext.define('AM.model.SalesMan', {
     extend:'Ext.data.Model',
     fields:['id', 'name']
 });

@@ -14,44 +14,55 @@ Ext.define('AM.view.order.Form', {
     region:'west',
     layout:'vbox',
     padding:15,
+    autoScroll:true,
     defaultType:'textfield',
-    defaults:{
-        labelAlign:'top',
-        margin: '15 0',
-        width:150
-    },
+
     width:200,
-    items:[
-        {
-            fieldLabel:'项目号',
-            name:'project',
-            allowBlank:false
-        },
-        {
-            fieldLabel:'订单日期',
-            name:'date',
-            format: 'Y年m月d日',
-            xtype:'datefield'
-        },
-        {
-            xtype:'custom'
-        },
-        {
-            fieldLabel:'销售组',
+    initComponent:function () {
+        this.defaults = {
+            labelAlign:'top',
+            margin:'15 0',
             width:150,
-            padding:0,
-            name:'sale_group',
-            xtype:'salegroup'
-        },
-        {
-            fieldLabel:'销售员',
-            name:'salesman',
-            xtype:'combo'
-        }
-    ],
-    onRender: function() {
-        this.order && this.loadRecord(this.order.getData());
-        console.log(this.order.getData())
+            readOnly: this.orderStatus === 'view'
+        };
+
+        this.items = [
+            {
+                fieldLabel:'项目号',
+                name:'project',
+                allowBlank:false
+            },
+            {
+                fieldLabel:'订单日期',
+                name:'date',
+                format:'Y年m月d日',
+                xtype:'datefield'
+            },
+            {
+                xtype:'custom',
+                name:'custom'
+            },
+            {
+                fieldLabel:'销售组',
+                width:150,
+                padding:0,
+                name:'sale_group',
+                xtype:'salegroup'
+            },
+            {
+                fieldLabel:'销售员',
+                name:'salesman',
+//                xtype: 'combo'
+                xtype:'salesman'
+            }
+        ];
+
+        console.log(this.orderStatus)
+        this.orderStatus === 'view' && this.items.unshift({
+            fieldLabel:'订单编号',
+            name:'id'
+        });
+
         this.callParent(arguments);
     }
 });

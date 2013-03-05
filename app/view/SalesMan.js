@@ -12,4 +12,5 @@ Ext.define('AM.view.SalesMan', {
     name:'salesman',
     fieldLabel:'订货客户',
     store: 'SalesMen'
+
 });

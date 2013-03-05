@@ -17,7 +17,7 @@ Ext.define('AM.controller.Orders', {
     stores:[
         'Materials',
         'Customs',
-//        'SalesMen',
+        'SalesMen',
         'Orders'
     ],
     models:['Custom', 'Order'],
@@ -68,7 +68,7 @@ Ext.define('AM.controller.Orders', {
     saveOrder: function(btn) {
        this.application.sync(this.getStore('Orders'), this);
     },
-    viewOrder: function(btn) {
+    viewOrder: function() {
         var tab = Ext.widget('orderdetail', {
             order: this.getList().getSelectionModel().getSelection()[0],
             orderStatus: 'view'
@@ -77,6 +77,13 @@ Ext.define('AM.controller.Orders', {
         var panel = this.getPanel();
         panel.add(tab);
         panel.setActiveTab(tab);
+
+        var form = tab.down('orderform'),
+            data = tab.order.getData();
+        form.loadRecord(tab.order);
+        form.down('datefield').setValue(new Date(data.date));
+        form.down('custom').setValue(data.custom.id);
+        form.down('salesman').setValue(data.salesman.id);
     },
     init:function () {
          this.control({

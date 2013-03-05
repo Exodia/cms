@@ -15,7 +15,7 @@ Ext.define('AM.view.order.Detail', {
         this.items = [{
             xtype: 'orderform',
             order: this.order,
-
+            orderStatus: this.orderStatus,
             resizable: true,
             region: 'west'
         },{
