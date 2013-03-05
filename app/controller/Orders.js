@@ -79,9 +79,16 @@ Ext.define('AM.controller.Orders', {
         form.down('salesman').setValue(data.salesman.id);
     },
     printOrder: function(btn) {
-        var data = btn.up('orderdetail').order.getData(),
+        var order = btn.up('orderdetail').order,
+            data = order.getData(),
+            detail = order.detail(),
             tpl = document.getElementById('printTpl').innerHTML;
 
+        data.detail = [];
+        detail.each(function(rec) {
+           data.detail.push(rec.getData());
+        });
+        console.log(data);
         var t = new Ext.XTemplate(tpl);
         var w = window.open('');
         w.document.write(t.apply(data));

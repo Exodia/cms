@@ -37,7 +37,7 @@ Ext.define('AM.model.OrderDetail', {
         {
             name:'deadline',
             type: 'date',
-            dateFormat: 'U'
+            dateFormat: 'U000'
         }
     ]
 });

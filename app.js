@@ -1,5 +1,3 @@
-document.domain = "taobao.com";
-
 Ext.Loader.setPath({
     'Ext.ux':'./libs/ext/examples/ux',
     'App.util':'./app/util'
