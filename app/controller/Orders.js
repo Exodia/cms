@@ -1,10 +1,3 @@
-/**
- * Created with JetBrains WebStorm.
- * User: exodia
- * Date: 13-1-29
- * Time: 下午10:39
- * To change this template use File | Settings | File Templates.
- */
 Ext.define('AM.controller.Orders', {
     extend:'Ext.app.Controller',
     views:[
@@ -85,6 +78,10 @@ Ext.define('AM.controller.Orders', {
         form.down('custom').setValue(data.custom.id);
         form.down('salesman').setValue(data.salesman.id);
     },
+    printOrder: function(btn) {
+        var data = btn.up('orderdetail').order.getData();
+
+    },
     init:function () {
          this.control({
              'orderlist': {
@@ -95,6 +92,9 @@ Ext.define('AM.controller.Orders', {
              },
              'orderdetail button[action=add_save]': {
                  'click': this.saveOrder
+             },
+             'orderdetail button[action=print]': {
+                 'click': this.printOrder
              },
              '#J_OrderView': {
                  'click': this.viewOrder

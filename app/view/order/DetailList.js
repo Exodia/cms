@@ -1,9 +1,3 @@
-/**
- * Created with JetBrains WebStorm.
- * User: tafeng.dxx
- * Date: 13-2-26
- * Time: 上午11:13
- */
 Ext.define('AM.view.order.DetailList', {
     extend:'Ext.grid.Panel',
     requires:['AM.view.MaterialCode'],
@@ -110,7 +104,7 @@ Ext.define('AM.view.order.DetailList', {
                     if (!v) {
                         return '';
                     }
-                    return Ext.Date.format(new Date(v), 'Y年m月d日 H:i');
+                    return Ext.Date.format(new Date(v), 'Y年m月d日');
                 }
             }
         ];

@@ -1,15 +1,3 @@
-/**
- * Created with JetBrains WebStorm.
- * User: tafeng.dxx
- * Date: 13-2-18
- * Time: 下午5:07
- */
-/**
- * Created with JetBrains WebStorm.
- * User: tafeng.dxx
- * Date: 13-1-26
- * Time: 下午5:46
- */
 Ext.define('AM.view.transport.List', {
     extend:'Ext.grid.Panel',
     alias:'widget.transportlist',

@@ -1,9 +1,3 @@
-/**
- * Created with JetBrains WebStorm.
- * User: tafeng.dxx
- * Date: 13-2-26
- * Time: 上午11:11
- */
 Ext.define('AM.view.order.Form', {
     extend:'Ext.form.Panel',
     requires:['AM.view.SaleGroup', 'AM.view.Custom', 'AM.view.SalesMan'],

@@ -1,9 +1,3 @@
-/**
- * Created with JetBrains WebStorm.
- * User: tafeng.dxx
- * Date: 13-1-26
- * Time: 下午5:39
- */
 Ext.define('AM.controller.Transports', {
     extend:'Ext.app.Controller',
     views:[

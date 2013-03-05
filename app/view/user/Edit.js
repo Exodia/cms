@@ -1,9 +1,3 @@
-/**
- * Created with JetBrains WebStorm.
- * User: tafeng.dxx
- * Date: 13-1-26
- * Time: 下午6:00
- */
 Ext.define('AM.view.user.Edit', {
     extend:'Ext.window.Window',
     alias:'widget.useredit',
