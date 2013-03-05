@@ -10,5 +10,126 @@
     <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
+<script type="tpl" id="printTpl">
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="print.css" media="print,screen">
+    </head>
+    <body>
+    <table class="order" border="1">
+        <tr>
+            <td class="order-id" colspan="4">
+                <strong>销售订单编号：{id}</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="company" colspan="4">
+                <strong>南车株洲电力机车有限公司电气设备分公司</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="title" colspan="4">
+                <strong>销 售 订 单</strong>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="large">收货单位: {custom.name}</td>
+            <td>联系人名:</td>
+            <td class="large">结算单位: {custom.name}</td>
+        </tr>
+        <tr>
+            <td>原始依据：</td>
+            <td>单位地址: {custom.address}</td>
+            <td>联系电话：{custom.contact_method}</td>
+            <td>发运方式：</td>
+        </tr>
+        <tr>
+            <td>共一页 第一页</td>
+            <td>发运到站:</td>
+            <td>邮政编码:471002</td>
+            <td>发票形式: 增值税发票</td>
+        </tr>
+
+    </table>
+    <table border="1" class="order-item">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>产品名称</th>
+            <th>图号规格</th>
+            <th>单位</th>
+            <th>含税单价（元）</th>
+            <th>含税总价（元）</th>
+            <th>工作号（项目号）</th>
+            <th>客户意向交货期</th>
+            <th>生产计划交库期</th>
+            <th>生产实际交库期</th>
+            <th>备注</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <tpl for="detail">
+                <td>{#}</td>
+                <td>{material_name}</td>
+                <td>{type}</td>
+                <td>{unit}</td>
+                <td>{amount}</td>
+                <td>{unit_tax_price}</td>
+                <td>{tax_price}</td>
+                <td>{parent.project}</td>
+                <td>{deadline}</td>
+                <td></td>
+                <td></td>
+            </tpl>
+        </tr>
+        </tbody>
+    </table>
+    <table border="1" class="order-record">
+        <tr>
+            <td><strong>办 单 评 审 记 录</strong></td>
+        </tr>
+        <tr>
+            <td><p>市场营销部办单人员：<span class="name">{salesman.name}</span>{salesman.contact}
+                <span class="date">办单日期：{date}</span></p></td>
+        </tr>
+        <tr>
+            <td>
+                <p>1、产品研发部根据客户采购信息确认相关技术要求及设计周期能否满足要求（针对新产品及设计变更）。
+                    <span>签字：</span><span class="date">日期：&nbsp;&nbsp;月&nbsp;&nbsp;日</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    2、生产管理部（项目管理组）审核客户意向交货期、根据实际生产情况提供计划交库期。
+                    <span>签字：</span><span class="date">日期：&nbsp;&nbsp;月&nbsp;&nbsp;日</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    3、综合管理部（经营计划组）提供/审核对外配件销售价格、审核并在金蝶中开通项目号。
+                    <span>签字：</span><span class="date">日期：&nbsp;&nbsp;月&nbsp;&nbsp;日</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    市场营销部主管领导审核：
+                    <span class="date">日期：&nbsp;&nbsp;月&nbsp;&nbsp;日</span>
+                </p>
+            </td>
+        </tr>
+    </table>
+    </body>
+    </html>
+</script>
 </body>
 </html>

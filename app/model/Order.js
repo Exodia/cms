@@ -10,7 +10,7 @@
  */
 Ext.define('AM.model.Order', {
     extend:'Ext.data.Model',
-    fields:['id', 'project', 'date', 'custom','sale_group', 'salesman'],
+    fields:['id', 'project', 'date', 'custom','sale_group', 'salesman', 'total_price', 'status'],
 
     hasMany:{
         model: 'AM.model.OrderDetail',

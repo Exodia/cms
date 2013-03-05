@@ -51,7 +51,6 @@ Ext.define('AM.view.order.Form', {
             }
         ];
 
-        console.log(this.orderStatus)
         this.orderStatus === 'view' && this.items.unshift({
             fieldLabel:'订单编号',
             name:'id'
