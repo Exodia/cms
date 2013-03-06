@@ -1,3 +1,7 @@
+body {
+    background-color: #4E78B1;
+}
+
 .x-grouptabpanel .x-grouptab-row .x-grid-cell-inner {
     _font-size: 12px;
 }
@@ -85,4 +89,28 @@
 
 .x-icon-data {
     background: url(img/data.gif);
+}
+
+#navBar {
+    height: 30px;
+    padding-right: 15px;
+    line-height: 30px;
+    text-align: right;
+    background: #4E78B1;
+    color: white;
+    font-weight: bold;
+}
+
+#navBar a {
+    color: #bcedf1;
+    text-decoration: none;
+}
+
+#viewInfo {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+#changePwd {
+    margin-right: 10px;
 }

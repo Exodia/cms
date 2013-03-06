@@ -36,7 +36,8 @@ Ext.require('Ext.data.writer.Json', function() {
 
 Ext.application({
     requires:['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
-        'AM.view.user.Panel', 'AM.view.order.Panel'/*, 'AM.view.contract.Panel',*/
+        'AM.view.NavBar', 'AM.view.user.Panel', 'AM.view.order.Panel'
+        /*, 'AM.view.contract.Panel',*/
         /*   'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
          'AM.view.composite.Panel', 'AM.view.custom.Panel', 'AM.view.datamgr.Panel'*/
     ],
@@ -89,10 +90,21 @@ Ext.application({
     },
     launch:function () {
         Ext.create('Ext.container.Viewport', {
-            layout:'fit',
-            items:{
+//            layout:'fit',
+            layout: {
+                type: 'vbox',
+                align: 'stretch'
+            },
+            items:[{
+                xtype: 'navbar',
+                height: 30
+            },{
                 xtype:'grouptabpanel',
+                flex: 1,
                 activeGroup:0,
+                style: {
+                  borderTop: 'none'
+                },
                 items:[
                     {
                         items:[
@@ -176,7 +188,7 @@ Ext.application({
                         ]
                     }
                 ]
-            }
+            }]
 
         });
     }
