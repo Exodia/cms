@@ -108,7 +108,7 @@ Ext.define('AM.view.order.DetailList', {
                     t = new Date(v);
                   console.log(t);
                   console.log(Ext.Date.format(t, 'Y年m月d日'))*/
-                  return Ext.Date.format(new Date(v), 'Y年m月d日 H:i');
+                  return Ext.Date.format(new Date(v), 'Y年m月d日');
                 },
                 width:140
 

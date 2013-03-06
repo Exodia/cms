@@ -11,7 +11,7 @@ Ext.define('AM.view.order.List', {
                 if (!v) {
                     return '';
                 }
-                return Ext.Date.format(new Date(v), 'Y年m月d日 H:i');
+                return Ext.Date.format(new Date(v), 'Y年m月d日');
             }},
             {header:'销售客户', dataIndex:'custom', flex:1, renderer:function (v) {
                 return v.name;

@@ -4,7 +4,7 @@
         {
             "id":1,
             "project":1,
-            "date":1361612863319,
+            "date":"2013-10-10",
             "custom": {
                 "id":1,
                 "name":"张XX"
@@ -28,14 +28,14 @@
                     "price":2340,
                     "unit_price":200,
                     "unit_tax_price":234,
-                    "deadline":1361612863319
+                    "deadline": "2013-10-10"
                 }
             ]
         },
         {
             "id":2,
             "project":1,
-            "date":1361612863319,
+            "date":"2013-10-10",
             "sale_group":0,
             "custom": {
                 "id":2,
@@ -59,14 +59,14 @@
                     "tax_price":2000,
                     "price":2340,
                     "unit_tax_price":234,
-                    "deadline":1361612863319
+                    "deadline": "2013-10-10"
                 }
             ]
         },
         {
             "id":3,
             "project":1,
-            "date":1361612863319,
+            "date":"2013-10-10",
             "custom": {
                 "id":1,
                 "name":"张XX"
@@ -90,14 +90,14 @@
                     "unit_tax_price":234,
                     "tax_price":2000,
                     "price":2340,
-                    "deadline":1361612863319
+                    "deadline": "2013-10-10"
                 }
             ]
         },
         {
             "id":4,
             "project":1,
-            "date":1361612863319,
+            "date":"2013-10-10",
             "custom": {
                 "id":1,
                 "name":"张XX"
@@ -121,14 +121,14 @@
                     "unit_tax_price":234,
                     "tax_price":2000,
                     "price":2340,
-                    "deadline":1361612863319
+                    "deadline": "2013-10-10"
                 }
             ]
         },
         {
             "id":5,
             "project":1,
-            "date":1361612863319,
+            "date":"2013-10-10",
             "custom": {
                 "id":1,
                 "name":"张XX"
@@ -152,7 +152,7 @@
                     "unit_tax_price":234,
                     "tax_price":2000,
                     "price":2340,
-                    "deadline":1361612863319
+                    "deadline": "2013-10-10"
                 }
             ]
         }

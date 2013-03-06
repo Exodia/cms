@@ -10,7 +10,13 @@
  */
 Ext.define('AM.model.Order', {
     extend:'Ext.data.Model',
-    fields:['id', 'project', 'date', 'custom','sale_group', 'salesman', 'total_price', 'status'],
+    fields:['id', 'project',
+        {
+            name:'date',
+            type: 'date',
+            dateFormat: 'Y-m-d'
+        },
+        'custom','sale_group', 'salesman', 'total_price', 'status'],
 
     hasMany:{
         model: 'AM.model.OrderDetail',
@@ -37,7 +43,7 @@ Ext.define('AM.model.OrderDetail', {
         {
             name:'deadline',
             type: 'date',
-            dateFormat: 'timestamp'
+            dateFormat: 'Y-m-d'
         }
     ]
 });
