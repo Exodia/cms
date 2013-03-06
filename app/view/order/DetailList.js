@@ -97,7 +97,7 @@ Ext.define('AM.view.order.DetailList', {
                 dataIndex:'deadline',
                 editor:{
                     xtype:'datefield',
-//                    format: 'Y年m月d日',
+                    format: 'Y月m年d日',
                     allowBlank:false
                 },
                 renderer: function(v) {
@@ -108,7 +108,7 @@ Ext.define('AM.view.order.DetailList', {
                     t = new Date(v);
                   console.log(t);
                   console.log(Ext.Date.format(t, 'Y年m月d日'))*/
-                  return Ext.Date.format(v, 'Y年m月d日');
+                  return Ext.Date.format(new Date(v), 'Y年m月d日 H:i');
                 },
                 width:140
 

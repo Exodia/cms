@@ -6,7 +6,7 @@ Ext.define('AM.store.Orders', {
     proxy: {
         type: 'ajax',
         api: {
-            create: 'data/order/create.json',
+            create: 'data/order/read1.php',
             read: 'data/order/read.json',
 //            read: 'http://d.taobao.com:8080/order/queryAll.action?_dc=1362491636705&page=1&start=0&limit=25',
             update: 'data/order/update.json',
