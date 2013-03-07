@@ -30,6 +30,7 @@ Ext.define('AM.view.order.Form', {
                 fieldLabel:'订单日期',
                 name:'date',
                 format:'Y年m月d日',
+                submitFormat: 'Y-m-d',
                 xtype:'datefield'
             },
             {
