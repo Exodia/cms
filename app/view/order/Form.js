@@ -46,7 +46,6 @@ Ext.define('AM.view.order.Form', {
             {
                 fieldLabel:'销售员',
                 name:'salesman',
-//                xtype: 'combo'
                 xtype:'salesman'
             }
         ];

@@ -45,6 +45,7 @@ Ext.application({
 
     appFolder:'app',
     controllers:[
+        'NavBar',
         'Users',
         'Orders'
 //        'Transports'
@@ -90,7 +91,6 @@ Ext.application({
     },
     launch:function () {
         Ext.create('Ext.container.Viewport', {
-//            layout:'fit',
             layout: {
                 type: 'vbox',
                 align: 'stretch'
