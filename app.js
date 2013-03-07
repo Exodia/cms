@@ -1,6 +1,7 @@
 Ext.Loader.setPath({
     'Ext.ux':'./libs/ext/examples/ux',
-    'App.util':'./app/util'
+    'App.util':'./app/util',
+    'App.widget': './app/widget'
 });
 
 Ext.require('Ext.data.writer.Json', function() {

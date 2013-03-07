@@ -1,7 +1,7 @@
 Ext.define('AM.view.NavBar', {
-   extend: 'Ext.panel.Panel',
-   alias: 'widget.navbar',
-   border: false,
-//   margin: '10 0 0 0',
-   html: document.getElementById('navTpl').innerHTML
+    extend: 'Ext.panel.Panel',
+    requires: ['AM.widget.PwdDialog'],
+    alias: 'widget.navbar',
+    border: false,
+    html: document.getElementById('navTpl').innerHTML
 });
