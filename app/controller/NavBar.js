@@ -3,6 +3,51 @@ Ext.define('AM.controller.NavBar', {
     views: [
         'NavBar'
     ],
+    validate: function (form) {
+        var values = form.getValues();
+        return values.confirm_password === values.new_password;
+    },
+    savePwd: function (btn) {
+        var url = AM.API['changePwd'],
+            form = btn.up('form');
+        if (this.validate(form)) {
+            form.submit({
+                url: url,
+                success: function () {
+                    Ext.Msg.alert('注意', '密码修改成功！');
+                    form.up('pwddialog').close();
+                },
+                failure: function (form, action) {
+                    switch (action.failureType) {
+                        case Ext.form.action.Action.CONNECT_FAILURE:
+                            this.application.error('错误', '网络连接失败，请重试！');
+                            break;
+                        case Ext.form.action.Action.SERVER_INVALID:
+                            Ext.Msg.alert('错误', action.result.msg);
+                    }
+                },
+                scope: this
+            })
+        }
+
+    },
+    validate: function (form) {
+        var values = form.getValues();
+        if(!values.password) {
+            this.application.error('错误', '原密码不得为空！');
+            return false;
+        }
+        if (values.confirm_password.length < 4 || values.new_password < 4) {
+            this.application.error('错误', '密码长度不得小于4个字符！');
+            return false;
+        }
+        if (values.confirm_password !== values.new_password) {
+            this.application.error('错误', '两次密码输入不一致！');
+            return false;
+        }
+
+        return true;
+    },
     init: function () {
         this.control({
             'navbar': {
@@ -11,6 +56,9 @@ Ext.define('AM.controller.NavBar', {
                         Ext.widget('pwddialog');
                     });
                 }
+            },
+            'pwddialog button[action=save_pwd]': {
+                'click': this.savePwd
             }
         });
     }

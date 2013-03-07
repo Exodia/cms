@@ -1,4 +1,4 @@
 Ext.namespace('AM');
 AM.API = {
-    changePwd: './data/changePwd.json'
+    changePwd: './data/fail.json'
 }

@@ -36,7 +36,8 @@ Ext.define('AM.widget.PwdDialog', {
                buttons: [
                    {
                        text: '保存',
-                       handler: this.savePwd
+                       action: 'save_pwd'
+
                    }, {
                        text: '取消',
                        handler: this.close,
@@ -45,22 +46,6 @@ Ext.define('AM.widget.PwdDialog', {
                ]
 
            }];
-        this.callParent(arguments);
-    },
-    validate: function() {
-
-    },
-    savePwd: function(btn) {
-        var url = AM.API['changePwd'],
-            form = btn.down('form');
-        if(this.validate()) {
-            form.submit({
-                url: url,
-                success: function() {
-
-                }
-            })
-        }
-
+       this.callParent(arguments);
     }
 });
