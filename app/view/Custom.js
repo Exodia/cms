@@ -1,15 +1,12 @@
-/**
- * Created with JetBrains WebStorm.
- * User: exodia
- * Date: 13-2-24
- * Time: 下午3:14
- * To change this template use File | Settings | File Templates.
- */
 Ext.define('AM.view.Custom', {
     extend: 'Ext.form.field.Trigger',
+    requires: ['AM.view.CustomWindow'],
     alias:'widget.custom',
     name:'customName',
     editable: false,
-    fieldLabel:'订货客户'
+    fieldLabel:'订货客户',
+    onTriggerClick: function() {
+        Ext.Msg.alert('Status', 'You clicked my trigger!');
+    }
 //    store: 'Customs'
 });
