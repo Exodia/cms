@@ -16,6 +16,11 @@ Ext.define('AM.view.order.DetailList', {
 
     initComponent: function() {
         this.store = this.order.detail();
+        this.store.load({
+            params: {
+                'order_id': this.order.get('id')
+            }
+        });
 
         if(this.orderStatus == 'edit') {
             this.editorPlugin = Ext.create('Ext.grid.plugin.CellEditing', {

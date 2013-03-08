@@ -11,6 +11,7 @@ Ext.define('AM.controller.Orders', {
         'Materials',
         'Customs',
         'SalesMen',
+        'OrderDetails',
         'Orders'
     ],
     models:['Custom', 'Order'],
