@@ -19,7 +19,7 @@ Ext.define('AM.view.order.Detail', {
             region: 'center'
         }];
 
-        if(this.orderStatus == 'edit') {
+        if(this.orderStatus !== 'view') {
             this.items.push({
                 region: 'south',
                 buttons:[{

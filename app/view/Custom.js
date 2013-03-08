@@ -6,9 +6,10 @@
  * To change this template use File | Settings | File Templates.
  */
 Ext.define('AM.view.Custom', {
-    extend: 'AM.view.TplCombobox',
+    extend: 'Ext.form.field.Trigger',
     alias:'widget.custom',
-    name:'custom',
-    fieldLabel:'订货客户',
-    store: 'Customs'
+    name:'customName',
+    editable: false,
+    fieldLabel:'订货客户'
+//    store: 'Customs'
 });

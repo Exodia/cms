@@ -51,21 +51,48 @@ Ext.define('AM.controller.Orders', {
     addOrder: function () {
         var tab = Ext.widget('orderdetail', {
             title: '新增订单',
-            order: this.getStore('Orders').add({})[0],
-            orderStatus: 'edit'
+            order: this.getStore('Orders').add({
+                salesManName: LoginUser.name,
+                salesManId : LoginUser.id,
+                saleGroup: LoginUser.saleGroup
+            })[0],
+            orderStatus: 'add'
         });
 
         var panel = this.getPanel();
         panel.add(tab);
         panel.setActiveTab(tab);
+
+        tab.down('orderform').loadRecord(tab.order);
     },
     saveOrder: function (btn) {
         var form = btn.up('orderdetail').down('orderform'),
             record = form.order,
             values = form.getValues();
         record.set(values);
+        record.setDirty();
         this.application.sync(this.getStore('Orders'), this);
     },
+    actionOrder: function(cmd) {
+       var title = cmd === 'edit'? '变更订单' : '查看订单';
+        return function(btn) {
+            var tab = Ext.widget('orderdetail', {
+                title: title,
+                order: this.getList().getSelectionModel().getSelection()[0],
+                orderStatus: cmd
+            });
+
+            var panel = this.getPanel();
+            panel.add(tab);
+            panel.setActiveTab(tab);
+
+            var form = tab.down('orderform'),
+                data = tab.order.getData();
+            form.loadRecord(tab.order);
+            form.down('datefield').setValue(new Date(data.date));
+        }
+    },
+
     viewOrder: function () {
         var tab = Ext.widget('orderdetail', {
             order: this.getList().getSelectionModel().getSelection()[0],
@@ -118,7 +145,10 @@ Ext.define('AM.controller.Orders', {
                 'click': this.printOrder
             },
             '#J_OrderView': {
-                'click': this.viewOrder
+                'click': this.actionOrder('view')
+            },
+            '#J_OrderEdit': {
+                click: this.actionOrder('edit')
             }
         });
     }

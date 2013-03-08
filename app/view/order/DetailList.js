@@ -16,13 +16,17 @@ Ext.define('AM.view.order.DetailList', {
 
     initComponent: function() {
         this.store = this.order.detail();
-        this.store.load({
-            params: {
-                'order_id': this.order.get('id')
-            }
-        });
 
-        if(this.orderStatus == 'edit') {
+        if(this.orderStatus === 'view' || this.orderStatus === 'edit') {
+            this.store.load({
+                params: {
+                    'order_id': this.order.get('id')
+                }
+            });
+        }
+
+
+        if(this.orderStatus == 'edit' || this.orderStatus == 'add') {
             this.editorPlugin = Ext.create('Ext.grid.plugin.CellEditing', {
                 clicksToEdit:1
             });
@@ -109,10 +113,7 @@ Ext.define('AM.view.order.DetailList', {
                   if(!v) {
                       return v;
                   }
-                  /*  a = v;
-                    t = new Date(v);
-                  console.log(t);
-                  console.log(Ext.Date.format(t, 'Y年m月d日'))*/
+
                   return Ext.Date.format(new Date(v), 'Y年m月d日');
                 },
                 width:140
@@ -123,7 +124,7 @@ Ext.define('AM.view.order.DetailList', {
     },
 
     onRender:function () {
-        if(this.orderStatus == 'edit') {
+        if(this.orderStatus == 'edit' || this.orderStatus === 'add') {
             this.addOrderBtn = new Ext.Button({
                 iconCls:'icon-add',
                 handler:this.addOrderItem,
@@ -199,7 +200,10 @@ Ext.define('AM.view.order.DetailList', {
 
     },
     delOrderItem:function () {
+        var store = this.getStore(),
+            record = this.getSelectionModel().getSelection()[0];
 
+        store.remove(record);
     },
 
     setPrice:function (record) {

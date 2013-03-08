@@ -5,15 +5,11 @@
             "id": 1,
             "project": 1,
             "date": "2013-10-10",
-            "custom": {
-                "id": 1,
-                "name": "张XX"
-            },
-            "sale_group": 1,
-            "salesman": {
-                "id": 1,
-                "name": "客户张XX"
-            },
+            "customId": 222,
+            "customName": "张XX",
+            "saleGroup": 1,
+            "salesManId": 1,
+            "salesManName": "XXX",
             "total_price": 10000,
             "status": 0
         },
@@ -21,15 +17,11 @@
             "id": 2,
             "project": 1,
             "date": "2013-10-10",
-            "sale_group": 0,
-            "custom": {
-                "id": 2,
-                "name": "张XX"
-            },
-            "salesman": {
-                "id": 1,
-                "name": "李XX"
-            },
+            "saleGroup": 0,
+            "customId": 222,
+            "customName": "张XX",
+            "salesManId": 1,
+            "salesManName": "XXX",
             "total_price": 10000,
             "status": 0
         },
@@ -37,15 +29,11 @@
             "id": 3,
             "project": 1,
             "date": "2013-10-10",
-            "custom": {
-                "id": 1,
-                "name": "张XX"
-            },
-            "sale_group": "销售1组",
-            "salesman": {
-                "id": 3,
-                "name": "张XX"
-            },
+            "customId": 222,
+            "customName": "张XX",
+            "saleGroup": "销售1组",
+            "salesManId": 1,
+            "salesManName": "XXX",
             "total_price": 10000,
             "status": 0
         },
@@ -53,15 +41,11 @@
             "id": 4,
             "project": 1,
             "date": "2013-10-10",
-            "custom": {
-                "id": 1,
-                "name": "张XX"
-            },
-            "sale_group": "销售1组",
-            "salesman": {
-                "id": 1,
-                "name": "张XX"
-            },
+            "customId": 222,
+            "customName": "张XX",
+            "saleGroup": "销售1组",
+            "salesManId": 1,
+            "salesManName": "XXX",
             "total_price": 10000,
             "status": 0
         },
@@ -69,15 +53,11 @@
             "id": 5,
             "project": 1,
             "date": "2013-10-10",
-            "custom": {
-                "id": 1,
-                "name": "张XX"
-            },
-            "sale_group": "销售1组",
-            "salesman": {
-                "id": 1,
-                "name": "张XX"
-            },
+            "customId": 222,
+            "customName": "张XX",
+            "saleGroup": "销售1组",
+            "salesManId": 1,
+            "salesManName": "XXX",
             "total_price": 10000,
             "status": 0
         }

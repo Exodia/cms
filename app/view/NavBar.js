@@ -3,5 +3,5 @@ Ext.define('AM.view.NavBar', {
     requires: ['AM.widget.PwdDialog'],
     alias: 'widget.navbar',
     border: false,
-    html: document.getElementById('navTpl').innerHTML
+    html: document.getElementById('navTpl').innerHTML.replace(/{.*}/, LoginUser.name)
 });

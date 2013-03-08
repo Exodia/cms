@@ -34,25 +34,39 @@ Ext.define('AM.view.order.Form', {
                 xtype:'datefield'
             },
             {
-                xtype:'custom',
-                name:'custom'
+                xtype:'custom'
             },
             {
                 fieldLabel:'销售组',
+                readOnly: true,
+                disabled: true,
                 width:150,
                 padding:0,
-                name:'sale_group',
-                xtype:'salegroup'
+                name:'saleGroup',
+                xtype:'textfield'
             },
             {
                 fieldLabel:'销售员',
-                name:'salesman',
-                xtype:'salesman'
+                readOnly: true,
+                disabled: true,
+                name:'salesManName',
+                xtype:'textfield'
+            },
+            {
+                name:'customId',
+                xtype:'textfield',
+                inputType: 'hidden'
+            },
+            {
+                name:'salesManId',
+                xtype:'textfield',
+                inputType: 'hidden'
             }
         ];
 
         this.orderStatus === 'view' && this.items.unshift({
             fieldLabel:'订单编号',
+            disabled: true,
             name:'id'
         });
 

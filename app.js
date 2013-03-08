@@ -81,12 +81,18 @@ Ext.application({
     },
     sync:function (store, controller) {
         store.sync({
-            failure:function () {
+            failure:function (batch) {
+                console.log(batch.operations[0])
                 this.application.error('错误', '操作失败，请重试！');
                 store.rejectChanges();
                 var sm = this.getList().getSelectionModel();
                 sm.select(sm.getSelection());
             },
+            success: function(batch) {
+              var ret = Ext.JSON.decode(batch.operations[0].response.responseText);
+              ret.msg && Ext.Msg.alert('操作成功', ret.msg);
+            },
+
             scope:controller
         });
     },

@@ -16,12 +16,18 @@ Ext.define('AM.model.Order', {
             type: 'date',
             dateFormat: 'Y-m-d'
         },
-        'custom','sale_group', 'salesman', 'total_price', 'status'],
+        'customId', 'customName', 'saleGroup', 'salesManId', 'salesManName', 'total_price', 'status'],
 
     hasMany:{
         model: 'AM.model.OrderDetail',
         foreignKey: 'order_id',
         associationKey: 'detail',
         name: 'detail'
+    },
+    hasOne: {
+        model: 'AM.model.Custom',
+        foreignKey: 'customId',
+        associationKey: 'customId',
+        getterName: 'Custom'
     }
 });
