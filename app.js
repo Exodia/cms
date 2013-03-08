@@ -37,7 +37,7 @@ Ext.require('Ext.data.writer.Json', function() {
 
 Ext.application({
     requires:['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
-        'AM.view.NavBar', 'AM.view.user.Panel', 'AM.view.order.Panel'
+        'AM.view.NavBar', 'AM.view.user.Panel', 'AM.view.order.Panel','AM.view.datamgr.Panel'
         /*, 'AM.view.contract.Panel',*/
         /*   'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
          'AM.view.composite.Panel', 'AM.view.custom.Panel', 'AM.view.datamgr.Panel'*/
@@ -190,7 +190,7 @@ Ext.application({
                                 title:'数据管理',
                                 iconCls:'x-icon-data',
                                 style:'padding:5px;',
-                                xtype:'panel'
+                                xtype:'datamgrpanel'
                             }
                         ]
                     }
