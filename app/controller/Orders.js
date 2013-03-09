@@ -71,7 +71,7 @@ Ext.define('AM.controller.Orders', {
             values = form.getValues();
         record.set(values);
         record.setDirty();
-        this.application.sync(this.getStore('Orders'), this);
+        this.application.save(record, this);
     },
     actionOrder: function(cmd) {
        var title = cmd === 'edit'? '变更订单' : '查看订单';

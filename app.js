@@ -1,12 +1,12 @@
 Ext.Loader.setPath({
-    'Ext.ux':'./libs/ext/examples/ux',
-    'App.util':'./app/util',
+    'Ext.ux': './libs/ext/examples/ux',
+    'App.util': './app/util',
     'App.widget': './app/widget'
 });
 
-Ext.require('Ext.data.writer.Json', function() {
+Ext.require('Ext.data.writer.Json', function () {
     Ext.data.writer.Json.override({
-        getRecordData:function (record) {
+        getRecordData: function (record) {
             var me = this, i, association, childStore, data = {};
             data = me.callParent([record]);
 
@@ -36,166 +36,182 @@ Ext.require('Ext.data.writer.Json', function() {
 
 
 Ext.application({
-    requires:['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
-        'AM.view.NavBar', 'AM.view.user.Panel', 'AM.view.order.Panel','AM.view.datamgr.Panel'
+    requires: ['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
+        'AM.view.NavBar', 'AM.view.user.Panel', 'AM.view.order.Panel', 'AM.view.datamgr.Panel'
         /*, 'AM.view.contract.Panel',*/
         /*   'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
          'AM.view.composite.Panel', 'AM.view.custom.Panel', 'AM.view.datamgr.Panel'*/
     ],
-    name:'AM',
+    name: 'AM',
 
-    appFolder:'app',
-    controllers:[
+    appFolder: 'app',
+    controllers: [
         'NavBar',
         'Users',
         'Orders'
 //        'Transports'
     ],
 
-    error:function (title, msg, fn, scope) {
+    error: function (title, msg, fn, scope) {
         Ext.Msg.show({
-            title:title,
-            msg:msg,
-            fn:fn,
-            scope:scope,
-            buttons:Ext.MessageBox.OK,
-            buttonText:{
-                ok:'确定'
+            title: title,
+            msg: msg,
+            fn: fn,
+            scope: scope,
+            buttons: Ext.MessageBox.OK,
+            buttonText: {
+                ok: '确定'
             },
-            icon:Ext.MessageBox.ERROR
+            icon: Ext.MessageBox.ERROR
         });
     },
-    confirm:function (title, msg, fn, scope) {
+    confirm: function (title, msg, fn, scope) {
         Ext.Msg.show({
-            title:title,
-            msg:msg,
-            fn:fn,
-            scope:scope,
-            buttons:Ext.MessageBox.OKCANCEL,
-            buttonText:{
-                ok:'确定',
-                cancel:'取消'
+            title: title,
+            msg: msg,
+            fn: fn,
+            scope: scope,
+            buttons: Ext.MessageBox.OKCANCEL,
+            buttonText: {
+                ok: '确定',
+                cancel: '取消'
             },
-            icon:Ext.MessageBox.WARNING
+            icon: Ext.MessageBox.WARNING
         });
     },
-    sync:function (store, controller) {
+    sync: function (store, controller) {
         store.sync({
-            failure:function (batch) {
+            failure: function (batch) {
                 console.log(batch.operations[0])
                 this.application.error('错误', '操作失败，请重试！');
                 store.rejectChanges();
                 var sm = this.getList().getSelectionModel();
                 sm.select(sm.getSelection());
             },
-            success: function(batch) {
-              var ret = Ext.JSON.decode(batch.operations[0].response.responseText);
-              ret.msg && Ext.Msg.alert('操作成功', ret.msg);
+            success: function (batch) {
+                var ret = Ext.JSON.decode(batch.operations[0].response.responseText);
+                ret.msg && Ext.Msg.alert('操作成功', ret.msg);
             },
 
-            scope:controller
+            scope: controller
         });
     },
-    launch:function () {
+    save: function (record, controller) {
+        record.save({
+            failure: function (record, operation) {
+                this.application.error('错误', '操作失败，请重试！');
+            },
+            success: function (record, operation) {
+                var ret = Ext.JSON.decode(operation.response.responseText);
+                ret.msg && Ext.Msg.alert('操作成功', ret.msg);
+            },
+
+            scope: controller
+        });
+    },
+    launch: function () {
         Ext.create('Ext.container.Viewport', {
             layout: {
                 type: 'vbox',
                 align: 'stretch'
             },
-            items:[{
-                xtype: 'navbar',
-                height: 30
-            },{
-                xtype:'grouptabpanel',
-                flex: 1,
-                activeGroup:0,
-                style: {
-                  borderTop: 'none'
+            items: [
+                {
+                    xtype: 'navbar',
+                    height: 30
                 },
-                items:[
-                    {
-                        items:[
-                            {
-                                title:'用户管理',
-                                iconCls:'x-icon-users',
-                                style:'padding:5px;',
-                                leaf:true,
-                                xtype:'userpanel'
-                            }
-                        ]},
-                    {
-                        items:[
-                            {
-                                active:true,
-                                title:'订单管理',
-                                iconCls:'x-icon-orders',
-                                style:'padding:5px;',
-                                xtype:'orderpanel'
-                            }
-                        ]
+                {
+                    xtype: 'grouptabpanel',
+                    flex: 1,
+                    activeGroup: 0,
+                    style: {
+                        borderTop: 'none'
                     },
-                    {
-                        items:[
-                            {
-                                title:'合同管理',
-                                iconCls:'x-icon-contracts',
-                                style:'padding:5px;',
-                                xtype:'panel'
-                            }
-                        ]
-                    },
-                    {
-                        items:[
-                            {
-                                title:'发运管理',
-                                iconCls:'x-icon-trans',
-                                style:'padding:5px;',
-                                xtype:'panel'
-                            }
-                        ]
-                    },
-                    {
-                        items:[
-                            {
-                                title:'发票管理',
-                                iconCls:'x-icon-invoices',
-                                style:'padding:5px;',
-                                xtype:'panel'
-                            }
-                        ]
-                    },
-                    {
-                        items:[
-                            {
-                                title:'综合管理',
-                                iconCls:'x-icon-composite',
-                                style:'padding:5px;',
-                                xtype:'panel'
-                            }
-                        ]
-                    },
-                    {
-                        items:[
-                            {
-                                title:'客户管理',
-                                iconCls:'x-icon-customs',
-                                style:'padding:5px;',
-                                xtype:'panel'
-                            }
-                        ]
-                    },
-                    {
-                        items:[
-                            {
-                                title:'数据管理',
-                                iconCls:'x-icon-data',
-                                style:'padding:5px;',
-                                xtype:'datamgrpanel'
-                            }
-                        ]
-                    }
-                ]
-            }]
+                    items: [
+                        {
+                            items: [
+                                {
+                                    title: '用户管理',
+                                    iconCls: 'x-icon-users',
+                                    style: 'padding:5px;',
+                                    leaf: true,
+                                    xtype: 'userpanel'
+                                }
+                            ]},
+                        {
+                            items: [
+                                {
+                                    active: true,
+                                    title: '订单管理',
+                                    iconCls: 'x-icon-orders',
+                                    style: 'padding:5px;',
+                                    xtype: 'orderpanel'
+                                }
+                            ]
+                        },
+                        {
+                            items: [
+                                {
+                                    title: '合同管理',
+                                    iconCls: 'x-icon-contracts',
+                                    style: 'padding:5px;',
+                                    xtype: 'panel'
+                                }
+                            ]
+                        },
+                        {
+                            items: [
+                                {
+                                    title: '发运管理',
+                                    iconCls: 'x-icon-trans',
+                                    style: 'padding:5px;',
+                                    xtype: 'panel'
+                                }
+                            ]
+                        },
+                        {
+                            items: [
+                                {
+                                    title: '发票管理',
+                                    iconCls: 'x-icon-invoices',
+                                    style: 'padding:5px;',
+                                    xtype: 'panel'
+                                }
+                            ]
+                        },
+                        {
+                            items: [
+                                {
+                                    title: '综合管理',
+                                    iconCls: 'x-icon-composite',
+                                    style: 'padding:5px;',
+                                    xtype: 'panel'
+                                }
+                            ]
+                        },
+                        {
+                            items: [
+                                {
+                                    title: '客户管理',
+                                    iconCls: 'x-icon-customs',
+                                    style: 'padding:5px;',
+                                    xtype: 'panel'
+                                }
+                            ]
+                        },
+                        {
+                            items: [
+                                {
+                                    title: '数据管理',
+                                    iconCls: 'x-icon-data',
+                                    style: 'padding:5px;',
+                                    xtype: 'datamgrpanel'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
 
         });
     }
