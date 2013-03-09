@@ -15,7 +15,7 @@ Ext.define('AM.view.order.List', {
             }},
             {header: '销售客户', dataIndex: 'customName', flex: 1},
             {header: '销售员', dataIndex: 'salesManName', flex: 1},
-            {header: '订单总额(不含税)', dataIndex: 'total_price', flex: 1},
+            {header: '订单总额(不含税)', dataIndex: 'totalPrice', flex: 1},
             {header: '订单状态', dataIndex: 'status', flex: 1}
         ];
 

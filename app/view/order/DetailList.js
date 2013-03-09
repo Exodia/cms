@@ -37,17 +37,17 @@ Ext.define('AM.view.order.DetailList', {
         this.columns = [
             {
                 header:'物质编码',
-                dataIndex:'material_code',
+                dataIndex:'materialCode',
                 editor:{
                     allowBlank:false,
                     xtype:'material_code',
-                    name: 'material_code'
+                    name: 'materialCode'
                 },
                 flex:1
             },
             {
                 header:'物料名称',
-                dataIndex:'material_name',
+                dataIndex:'materialName',
                 flex:1
             },
             {
@@ -74,7 +74,7 @@ Ext.define('AM.view.order.DetailList', {
             },
             {
                 header:'单价(元)',
-                dataIndex:'unit_price',
+                dataIndex:'unitPrice',
                 editor:{
                     xtype:'numberfield',
                     minValue:0,
@@ -85,7 +85,7 @@ Ext.define('AM.view.order.DetailList', {
             },
             {
                 header:'含税单价(元)',
-                dataIndex: 'unit_tax_price',
+                dataIndex: 'unitTaxPrice',
                 renderer: this.self.floatRender,
                 width: 100
             },
@@ -97,7 +97,7 @@ Ext.define('AM.view.order.DetailList', {
             },
             {
                 header:'含税金额(元)',
-                dataIndex:'tax_price',
+                dataIndex:'taxPrice',
                 renderer: this.self.floatRender,
                 width: 120
             },
@@ -165,7 +165,7 @@ Ext.define('AM.view.order.DetailList', {
                 colEditor = column.getEditor(record);
 
             switch (field) {
-                case 'material_code':
+                case 'materialCode':
                     var rec = colEditor.findRecordByValue(colEditor.getValue());
                     record.set({
                         'material_name':rec.get('name'),
@@ -176,12 +176,12 @@ Ext.define('AM.view.order.DetailList', {
                     break;
 
                 case 'amount':
-                case 'unit_price':
+                case 'unitPrice':
                     var amount = record.get('amount'),
-                        unit_price = record.get('unit_price');
+                        unit_price = record.get('unitPrice');
 
                     if(unit_price && unit_price > 0) {
-                        record.set('unit_tax_price', unit_price * (this.self.TAX + 1));
+                        record.set('unitTaxPrice', unit_price * (this.self.TAX + 1));
                         amount && amount > 0 && this.setPrice(record);
                     }
 
@@ -208,12 +208,12 @@ Ext.define('AM.view.order.DetailList', {
 
     setPrice:function (record) {
         var amount = record.get('amount'),
-            unit_price = record.get('unit_price'),
-            unit_tax_price = record.get('unit_tax_price');
+            unit_price = record.get('unitPrice'),
+            unit_tax_price = record.get('unitTaxPrice');
 
         record.set({
             price: amount * unit_price,
-            tax_price: amount * unit_tax_price
+            taxPrice: amount * unit_tax_price
         });
     },
 

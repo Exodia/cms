@@ -19,7 +19,7 @@ Ext.define('AM.model.Order', {
         },
         'customId', 'customCompany',
         'saleGroup', 'salesManId', 'salesManName', 'salesManContact',
-        'total_price', 'status'
+        'totalPrice', 'status'
     ],
 
     proxy: {
@@ -31,7 +31,7 @@ Ext.define('AM.model.Order', {
 
     hasMany:{
         model: 'AM.model.OrderDetail',
-        foreignKey: 'order_id',
+        foreignKey: 'orderId',
         associationKey: 'detail',
         name: 'detail'
     },
