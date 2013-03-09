@@ -1,6 +1,6 @@
 Ext.define('AM.view.user.Edit', {
     extend:'Ext.window.Window',
-    alias:'widget.useredit',
+    alias:'widget.user_edit',
     modal:true,
     title:'编辑用户',
     layout:'fit',
@@ -19,13 +19,13 @@ Ext.define('AM.view.user.Edit', {
                     columns:2
                 },
                 defaults:{
-                    allowBlank:false
+                    allowBlank:false,
+                    xtype: 'textfield'
                 },
                 items:[
                     {
                         colspan:2,
-                        xtype:'numberfield',
-                        name:'work_num',
+                        name:'workNum',
                         fieldLabel:'工号',
                         labelWidth:60,
                         minValue:0,
@@ -33,7 +33,6 @@ Ext.define('AM.view.user.Edit', {
                         padding:5
                     },
                     {
-                        xtype:'textfield',
                         name:'name',
                         fieldLabel:'姓名',
                         labelWidth:60,
@@ -42,10 +41,10 @@ Ext.define('AM.view.user.Edit', {
                         margin:'0 20 0 0'
                     },
                     {
-                        xtype:'usertype'
+                        xtype:'user_type',
+                        name: 'userType'
                     },
                     {
-                        xtype:'textfield',
                         colspan:2,
                         name:'address',
                         fieldLabel:'住址',
@@ -55,7 +54,6 @@ Ext.define('AM.view.user.Edit', {
                         padding:5
                     },
                     {
-                        xtype:'textfield',
                         name:'contact',
                         colspan:2,
                         fieldLabel:'联系方式',
@@ -64,7 +62,6 @@ Ext.define('AM.view.user.Edit', {
                         padding:5
                     },
                     {
-                        xtype:'textfield',
                         colspan:2,
                         name:'email',
                         fieldLabel:'Email',
@@ -76,7 +73,8 @@ Ext.define('AM.view.user.Edit', {
                         padding:5
                     },
                     {
-                        xtype: 'salegroup'
+                        xtype: 'sale_group',
+                        name: 'saleGroup'
                     }
                 ]
             }

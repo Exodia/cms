@@ -12,12 +12,12 @@
  deadline: 客户要求交货日期
  * */
 Ext.define('AM.model.OrderDetail', {
-    extend:'Ext.data.Model',
-    fields:[
-        'id', 'order_id', 'material_code', 'material_name', 'type','unit',
+    extend: 'Ext.data.Model',
+    fields: [
+        'id', 'order_id', 'material_code', 'material_name', 'type', 'unit',
         'amount', 'unit_price', 'unit_tax_price', 'price', 'tax_price',
         {
-            name:'deadline',
+            name: 'deadline',
             type: 'date',
             dateFormat: 'Y-m-d'
         }
@@ -25,9 +25,7 @@ Ext.define('AM.model.OrderDetail', {
 
     proxy: {
         type: 'ajax',
-        api: {
-            read: AM.API['orderDetail'].read
-        },
+        api: AM.API['orderDetail'],
         filterParam: undefined,
         reader: {
             type: 'json',

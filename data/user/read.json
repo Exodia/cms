@@ -3,101 +3,101 @@
     "data":[
         {
             "id":1,
-            "work_num":10000,
+            "workNum":10000,
             "name":"张XX",
-            "user_type":0,
+            "userType":0,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"ed@sencha.com",
-            "sale_group": 0
+            "saleGroup": 0
         },
         {
             "id":2,
-            "work_num":10001,
+            "workNum":10001,
             "name":"李XX",
-            "user_type": 1,
+            "userType": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com",
-            "sale_group": 0
+            "saleGroup": 0
 
         },
         {
             "id":3,
-            "work_num":10003,
+            "workNum":10003,
             "name":"李XX",
-            "user_type": 1,
+            "userType": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com",
-            "sale_group": 0
+            "saleGroup": 0
 
         },
         {
 
             "id":4,
-            "work_num":10004,
+            "workNum":10004,
             "name":"李XX",
-            "user_type": 1,
+            "userType": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com",
-            "sale_group": 0
+            "saleGroup": 0
 
         },
         {
             "id":5,
-            "work_num":10005,
+            "workNum":10005,
             "name":"李XX",
-            "user_type": 1,
+            "userType": 1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com",
-            "sale_group": 1
+            "saleGroup": 1
 
         },
         {
             "id":6,
-            "work_num":10006,
+            "workNum":10006,
             "name":"李XX",
-            "user_type":1,
+            "userType":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com",
-            "sale_group": 2
+            "saleGroup": 2
 
         },
         {
             "id":7,
-            "work_num":10007,
+            "workNum":10007,
             "name":"李XX",
-            "user_type":1,
+            "userType":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com",
-            "sale_group": 2
+            "saleGroup": 2
 
         },
         {
             "id":8,
-            "work_num":10008,
+            "workNum":10008,
             "name":"李XX",
-            "user_type":1,
+            "userType":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com",
-            "sale_group": 2
+            "saleGroup": 2
 
         },
         {
             "id":9,
-            "work_num":10009,
+            "workNum":10009,
             "name":"李XX",
-            "user_type":1,
+            "userType":1,
             "address":"福建省福州市XX路",
             "contact":"159xxxxxxxxx",
             "email":"tt@sencha.com",
-            "sale_group": 3
+            "saleGroup": 3
 
         }
     ]

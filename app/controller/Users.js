@@ -36,7 +36,7 @@ Ext.define('AM.controller.Users', {
         this.control({
             '#J_UserAdd':{
                 click:function () {
-                    Ext.widget('useredit', {
+                    Ext.widget('user_edit', {
                         title: '新增用户'
                     });
                 }
@@ -58,7 +58,7 @@ Ext.define('AM.controller.Users', {
                 selectionchange:this.checkEnable
             },
 
-            'useredit button[action=save]':{
+            'user_edit button[action=save]':{
                 click:this.updateUser
             }
         });
@@ -97,7 +97,7 @@ Ext.define('AM.controller.Users', {
     },
 
     editUser:function () {
-        var view = Ext.widget('useredit'),
+        var view = Ext.widget('user_edit'),
             record = this.getList().getSelectionModel().getSelection()[0];
         view.down('form').loadRecord(record);
     },
@@ -112,7 +112,7 @@ Ext.define('AM.controller.Users', {
         }
 
         if(this.getSearchCombo().getRawValue() == '按工号') {
-            store.filter('work_num', parseInt(value));
+            store.filter('workNum', parseInt(value));
         } else {
             store.filter('name', value);
         }

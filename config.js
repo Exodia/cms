@@ -38,3 +38,6 @@ AM.Reader = {
     root: 'data',
     successProperty: 'success'
 };
+
+AM.UserType =  ['营销员', '合同管理员', '发票管理员', '发运员'];
+AM.SaleGroup  =['城轨', '机车', '动车', '新产业', '销售管理'];

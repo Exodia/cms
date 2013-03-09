@@ -25,17 +25,8 @@ Ext.define('AM.model.Order', {
     proxy: {
         type: 'ajax',
         api: AM.API['order'],
-        reader: {
-            type: 'json',
-            root: 'data',
-            successProperty: 'success'
-        },
-        writer: {
-            type: 'json',
-            root: 'data',
-            successProperty: 'success',
-            encode: true
-        }
+        reader: AM.Reader,
+        writer: AM.Writer
     },
 
     hasMany:{

@@ -2,10 +2,6 @@ Ext.define('AM.view.user.List', {
     extend:'Ext.grid.Panel',
     alias:'widget.userlist',
     store:'Users',
-    statics:{
-        userTypes:['营销员', '合同管理员', '发票管理员', '发运员'],
-        saleGroup:['城轨', '机车', '动车', '新产业', '销售管理']
-    },
     dockedItems:[
         {
             xtype:'toolbar',
@@ -74,16 +70,16 @@ Ext.define('AM.view.user.List', {
     ],
     initComponent:function () {
         this.columns = [
-            {header:'工号', dataIndex:'work_num', flex:1},
+            {header:'工号', dataIndex:'workNum', flex:1},
             {header:'姓名', dataIndex:'name', flex:0.5},
-            {header:'职位', dataIndex:'user_type', flex:0.5, renderer:function (v) {
-                return this.self.userTypes[v];
+            {header:'职位', dataIndex:'userType', flex:0.5, renderer:function (v) {
+                return AM.UserType[v];
             }},
             {header:'住址', dataIndex:'address', flex:2},
             {header:'联系方式', dataIndex:'contact', flex:1},
             {header:'Email', dataIndex:'email', flex:1},
-            {header:'销售组', dataIndex:'sale_group', flex:0.5, renderer:function (v) {
-                return this.self.saleGroup[v];
+            {header:'销售组', dataIndex:'saleGroup', flex:0.5, renderer:function (v) {
+                return AM.SaleGroup[v];
             }}
 
         ];

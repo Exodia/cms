@@ -1,19 +1,10 @@
-/**
- * Created with JetBrains WebStorm.
- * User: exodia
- * Date: 13-2-24
- * Time: 下午3:14
- * To change this template use File | Settings | File Templates.
- */
 Ext.define('AM.view.MaterialCode', {
-    extend:'Ext.form.field.ComboBox',
+    extend: 'AM.view.TplCombobox',
     requires:['AM.store.Materials'],
-    alias:'widget.materialcode',
+    alias:'widget.material_code',
     store:'Materials',
-//    valueNotFoundText: '未找到匹配结果',
     forceSelection:true,
-    queryMode:'local',
-    typeAhead:true,
+    minChars: 9,
     valueField:'code',
     displayField:'code'
 

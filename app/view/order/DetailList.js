@@ -40,7 +40,7 @@ Ext.define('AM.view.order.DetailList', {
                 dataIndex:'material_code',
                 editor:{
                     allowBlank:false,
-                    xtype:'materialcode',
+                    xtype:'material_code',
                     name: 'material_code'
                 },
                 flex:1
