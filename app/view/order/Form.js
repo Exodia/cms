@@ -1,7 +1,7 @@
 Ext.define('AM.view.order.Form', {
     extend: 'Ext.form.Panel',
     requires: ['AM.view.SaleGroup', 'AM.view.CustomField', 'AM.view.SalesMan', 'AM.view.HiddenField'],
-    alias: 'widget.orderform',
+    alias: 'widget.order_form',
     layout: 'border',
     collapsible: true,
     frame: true,
@@ -36,9 +36,8 @@ Ext.define('AM.view.order.Form', {
                 xtype: 'datefield'
             },
             {
-                xtype: this.orderStatus == 'add'? 'custom_field' : 'textfield',
-                name: this.orderStatus !== 'add' ? 'customId' : 'customName',
-
+                xtype: this.orderStatus === 'add'? 'custom_field' : 'textfield',
+                name: 'customCompany',
                 fieldLabel:'订货客户'
             },
             {
@@ -62,14 +61,17 @@ Ext.define('AM.view.order.Form', {
                 xtype: 'hidden_field'
             },
             {
+                name: 'customId',
+                xtype: 'hidden_field'
+            },
+            {
                 name: 'saleManContact',
                 xtype: 'hidden_field'
             }
         ];
 
-        this.orderStatus === 'view' && this.items.unshift({
+        this.orderStatus !== 'add' && this.items.unshift({
             fieldLabel: '订单编号',
-//            disabled: true,
             name: 'id'
         });
 

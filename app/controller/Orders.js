@@ -63,11 +63,11 @@ Ext.define('AM.controller.Orders', {
         panel.add(tab);
         panel.setActiveTab(tab);
 
-        tab.down('orderform').loadRecord(tab.order);
+        tab.down('order_form').loadRecord(tab.order);
     },
     saveOrder: function (btn) {
         btn.setDisabled(true);
-        var form = btn.up('orderdetail').down('orderform'),
+        var form = btn.up('orderdetail').down('order_form'),
             record = form.order,
             values = form.getValues();
         record.set(values);
@@ -100,7 +100,7 @@ Ext.define('AM.controller.Orders', {
             panel.add(tab);
             panel.setActiveTab(tab);
 
-            var form = tab.down('orderform'),
+            var form = tab.down('order_form'),
                 data = tab.order.getData();
             form.loadRecord(tab.order);
             form.down('datefield').setValue(new Date(data.date));

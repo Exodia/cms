@@ -7,7 +7,7 @@ Ext.define('AM.view.order.Detail', {
     layout: 'border',
     initComponent: function() {
         this.items = [{
-            xtype: 'orderform',
+            xtype: 'order_form',
             order: this.order,
             orderStatus: this.orderStatus,
             resizable: true,
