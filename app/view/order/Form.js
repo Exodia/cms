@@ -1,6 +1,6 @@
 Ext.define('AM.view.order.Form', {
     extend: 'Ext.form.Panel',
-    requires: ['AM.view.SaleGroup', 'AM.view.Custom', 'AM.view.SalesMan'],
+    requires: ['AM.view.SaleGroup', 'AM.view.Custom', 'AM.view.SalesMan', 'AM.view.HiddenField'],
     alias: 'widget.orderform',
     layout: 'border',
     collapsible: true,
@@ -17,7 +17,8 @@ Ext.define('AM.view.order.Form', {
             labelAlign: 'top',
             margin: '15 0',
             width: 150,
-            disabled: this.orderStatus !== 'add'
+            readOnly: this.orderStatus !== 'add',
+            disabled: this.orderStatus === 'edit'
         };
 
 
@@ -36,12 +37,12 @@ Ext.define('AM.view.order.Form', {
             },
             {
                 xtype: 'custom',
-                readOnly: this.orderStatus !== 'add'
+                name:'customName',
+                fieldLabel:'订货客户'
             },
             {
                 fieldLabel: '销售组',
-                readOnly: true,
-                disabled: true,
+                disabled:  this.orderStatus !== 'view',
                 width: 150,
                 padding: 0,
                 name: 'saleGroup',
@@ -49,26 +50,39 @@ Ext.define('AM.view.order.Form', {
             },
             {
                 fieldLabel: '销售员',
-                readOnly: true,
-                disabled: true,
+                disabled: this.orderStatus !== 'view',
                 name: 'salesManName',
                 xtype: 'textfield'
             },
             {
                 name: 'customId',
-                xtype: 'textfield',
-                inputType: 'hidden'
+                xtype: 'hidden_field'
+            },
+            {
+                name: 'customContact',
+                xtype: 'hidden_field'
+            },
+            {
+                name: 'customCompany',
+                xtype: 'hidden_field'
+            },
+            {
+                name: 'customAddress',
+                xtype: 'hidden_field'
             },
             {
                 name: 'salesManId',
-                xtype: 'textfield',
-                inputType: 'hidden'
+                xtype: 'hidden_field'
+            },
+            {
+                name: 'saleManContact',
+                xtype: 'hidden_field'
             }
         ];
 
         this.orderStatus === 'view' && this.items.unshift({
             fieldLabel: '订单编号',
-            disabled: true,
+//            disabled: true,
             name: 'id'
         });
 

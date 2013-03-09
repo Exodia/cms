@@ -10,13 +10,33 @@
  */
 Ext.define('AM.model.Order', {
     extend:'Ext.data.Model',
-    fields:['id', 'project',
+    fields:[
+        'id', 'project',
         {
             name:'date',
             type: 'date',
             dateFormat: 'Y-m-d'
         },
-        'customId', 'customName', 'saleGroup', 'salesManId', 'salesManName', 'total_price', 'status'],
+        'customId', 'customName', 'customContact', 'customCompany', 'customAddress',
+        'saleGroup', 'salesManId', 'salesManName', 'salesManContact',
+        'total_price', 'status'
+    ],
+
+    proxy: {
+        type: 'ajax',
+        api: AM.API['order'],
+        reader: {
+            type: 'json',
+            root: 'data',
+            successProperty: 'success'
+        },
+        writer: {
+            type: 'json',
+            root: 'data',
+            successProperty: 'success',
+            encode: true
+        }
+    },
 
     hasMany:{
         model: 'AM.model.OrderDetail',
