@@ -6,10 +6,6 @@ Ext.define('AM.store.Orders', {
     proxy: {
         type: 'ajax',
         api: AM.API['order'],
-        reader: {
-            type: 'json',
-            root: 'data',
-            successProperty: 'success'
-        }
+        reader: AM.Reader
     }
 });

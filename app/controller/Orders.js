@@ -12,6 +12,7 @@ Ext.define('AM.controller.Orders', {
         'Customs',
         'SalesMen',
         'OrderDetails',
+        'AuditOrders',
         'Orders'
     ],
     models: ['Custom', 'Order'],
@@ -19,15 +20,12 @@ Ext.define('AM.controller.Orders', {
     refs: [
         {
             ref: 'panel',
-            selector: 'orderpanel'
+            selector: 'order_panel'
         },
-        /* {
-         ref: 'orderGeneral',
-         selector: 'ordergeneral'
-         },*/
+
         {
             ref: 'list',
-            selector: 'orderlist'
+            selector: 'order_list'
         },
         {
             ref: 'editButton',
@@ -49,7 +47,7 @@ Ext.define('AM.controller.Orders', {
         this.getViewButton().setDisabled(len !== 1);
     },
     addOrder: function () {
-        var tab = Ext.widget('orderdetail', {
+        var tab = Ext.widget('order_detail', {
             title: '新增订单',
             order: this.getModel('Order').create({
                 salesManName: LoginUser.name,
@@ -67,7 +65,7 @@ Ext.define('AM.controller.Orders', {
     },
     saveOrder: function (btn) {
         btn.setDisabled(true);
-        var form = btn.up('orderdetail').down('order_form'),
+        var form = btn.up('order_detail').down('order_form'),
             record = form.order,
             values = form.getValues();
         record.set(values);
@@ -90,7 +88,7 @@ Ext.define('AM.controller.Orders', {
     actionOrder: function(cmd) {
        var title = cmd === 'edit'? '变更订单' : '查看订单';
         return function(btn) {
-            var tab = Ext.widget('orderdetail', {
+            var tab = Ext.widget('order_detail', {
                 title: title,
                 order: this.getList().getSelectionModel().getSelection()[0],
                 orderStatus: cmd
@@ -108,7 +106,7 @@ Ext.define('AM.controller.Orders', {
     },
 
     printOrder: function (btn) {
-        var order = btn.up('orderdetail').order,
+        var order = btn.up('order_detail').order,
             data = order.getData(),
             detail = order.detail(),
             tpl = document.getElementById('printTpl').innerHTML;
@@ -129,16 +127,16 @@ Ext.define('AM.controller.Orders', {
     },
     init: function () {
         this.control({
-            'orderlist': {
+            'order_list': {
                 'selectionchange': this.checkEnable
             },
             '#J_OrderAdd': {
                 'click': this.addOrder
             },
-            'orderdetail button[action=add_save]': {
+            'order_detail button[action=add_save]': {
                 'click': this.saveOrder
             },
-            'orderdetail button[action=print]': {
+            'order_detail button[action=print]': {
                 'click': this.printOrder
             },
             '#J_OrderView': {

@@ -11,6 +11,12 @@ AM.API = {
         update: 'data/fail.json',
         destroy: 'data/success.json'
     },
+    auditOrder: {
+        create: 'data/success.json',
+        read: 'data/order/read.json',
+        update: 'data/fail.json',
+        destroy: 'data/success.json'
+    },
     user: {
         create: 'data/user/create.php',
         read: 'data/user/read.json',
@@ -36,7 +42,8 @@ AM.Writer = {
 AM.Reader = {
     type: 'json',
     root: 'data',
-    successProperty: 'success'
+    successProperty: 'success',
+    totalProperty: 'total'
 };
 
 AM.UserType =  ['营销员', '合同管理员', '发票管理员', '发运员'];

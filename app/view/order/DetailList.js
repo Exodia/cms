@@ -20,7 +20,7 @@ Ext.define('AM.view.order.DetailList', {
         if(this.orderStatus === 'view' || this.orderStatus === 'edit') {
             this.store.load({
                 params: {
-                    'order_id': this.order.get('id')
+                    'orderId': this.order.get('id')
                 }
             });
         }

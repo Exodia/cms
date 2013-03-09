@@ -1,13 +1,14 @@
 Ext.define('AM.view.order.Panel', {
     extend:'Ext.tab.Panel',
     requires:['AM.view.order.General', 'AM.view.order.Audit'],
-    alias:'widget.orderpanel',
+    alias:'widget.order_panel',
     border:false,
     items:[
         {
-            xtype:'ordergeneral'
+            xtype:'order_general'
+//            xtype: 'order_list'
         },{
-            xtype:'orderaudit'
+            xtype:'order_audit'
         }
     ]
 });

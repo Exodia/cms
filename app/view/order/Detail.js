@@ -1,6 +1,6 @@
 Ext.define('AM.view.order.Detail', {
     extend:'Ext.panel.Panel',
-    alias: 'widget.orderdetail',
+    alias: 'widget.order_detail',
     requires:['AM.view.order.DetailList', 'AM.view.order.Form'],
     title:'订单详情',
     closable: true,

@@ -13,7 +13,7 @@ Ext.define('AM.controller.Users', {
     refs:[
         {
             ref:'list',
-            selector:'userlist'
+            selector:'user_list'
         },
         {
             ref:'editButton',
@@ -25,7 +25,7 @@ Ext.define('AM.controller.Users', {
         },
         {
             ref: 'searchCombo',
-            selector: 'userlist combo'
+            selector: 'user_list combo'
         },
         {
             ref: 'searchField',

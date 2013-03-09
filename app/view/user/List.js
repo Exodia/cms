@@ -1,6 +1,6 @@
 Ext.define('AM.view.user.List', {
     extend:'Ext.grid.Panel',
-    alias:'widget.userlist',
+    alias:'widget.user_list',
     store:'Users',
     dockedItems:[
         {

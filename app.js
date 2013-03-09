@@ -137,17 +137,16 @@ Ext.application({
                                     iconCls: 'x-icon-users',
                                     style: 'padding:5px;',
                                     leaf: true,
-                                    xtype: 'userpanel'
+                                    xtype: 'user_panel'
                                 }
                             ]},
                         {
                             items: [
                                 {
-                                    active: true,
                                     title: '订单管理',
                                     iconCls: 'x-icon-orders',
                                     style: 'padding:5px;',
-                                    xtype: 'orderpanel'
+                                    xtype: 'order_panel'
                                 }
                             ]
                         },
