@@ -17,7 +17,7 @@ Ext.define('AM.model.Order', {
             type: 'date',
             dateFormat: 'Y-m-d'
         },
-        'customId', 'customName', 'customContact', 'customCompany', 'customAddress',
+        'customId', 'customCompany',
         'saleGroup', 'salesManId', 'salesManName', 'salesManContact',
         'total_price', 'status'
     ],

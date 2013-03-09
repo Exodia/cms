@@ -7,21 +7,20 @@
  */
 Ext.define('AM.view.SaleGroup', {
     extend: 'Ext.form.field.ComboBox',
-    alias:'widget.salegroup',
-    name:'sale_group',
+    alias:'widget.sale_group',
     fieldLabel:'销售组',
     queryMode:'local',
     store: Ext.create('Ext.data.Store', {
-        fields:['sale_group', 'des'],
+        fields:['saleGroup', 'des'],
         data:[
-            {sale_group:0, des:'城轨'},
-            {sale_group:1, des:'机车'},
-            {sale_group:2, des:'动车'},
-            {sale_group:3, des:'新产业'},
-            {sale_group:4, des:'销售管理'}
+            {saleGroup:0, des:'城轨'},
+            {saleGroup:1, des:'机车'},
+            {saleGroup:2, des:'动车'},
+            {saleGroup:3, des:'新产业'},
+            {saleGroup:4, des:'销售管理'}
         ]
     }),
-    valueField:'sale_group',
+    valueField:'saleGroup',
     displayField:'des',
     editable:false,
     forceSelection:true,

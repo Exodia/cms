@@ -1,4 +1,10 @@
 Ext.define('AM.model.Custom', {
     extend:'Ext.data.Model',
-    fields:['id', 'name', 'company', 'contact', 'comment']
+    fields:['id', 'name', 'companyName', 'contact', 'comment'],
+    proxy: {
+        type: 'ajax',
+        api: AM.API['custom'],
+        reader: AM.Reader,
+        writer: AM.Writer
+    }
 });

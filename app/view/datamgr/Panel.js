@@ -16,7 +16,7 @@ Ext.define('AM.view.datamgr.Panel', {
             draggable: true,
             fileUpload: true,
 
-            margin: '200',
+            margin: '100',
             items: [
                 {
                     xtype: 'filefield',
@@ -40,7 +40,7 @@ Ext.define('AM.view.datamgr.Panel', {
                                 url: AM.API['dataImport'],
                                 waitMsg: '正在导入!',
                                 success: function (fp, o) {
-                                    Ext.Msg.alert('成功', '文件' + o.result.file + '已导入！ ');
+                                    Ext.Msg.alert('成功', '文件已导入！');
                                 }
                             });
                         }

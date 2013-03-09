@@ -51,11 +51,11 @@ Ext.define('AM.controller.Orders', {
     addOrder: function () {
         var tab = Ext.widget('orderdetail', {
             title: '新增订单',
-            order: this.getStore('Orders').add({
+            order: this.getModel('Order').create({
                 salesManName: LoginUser.name,
                 salesManId : LoginUser.id,
                 saleGroup: LoginUser.saleGroup
-            })[0],
+            }),
             orderStatus: 'add'
         });
 
@@ -66,12 +66,26 @@ Ext.define('AM.controller.Orders', {
         tab.down('orderform').loadRecord(tab.order);
     },
     saveOrder: function (btn) {
+        btn.setDisabled(true);
         var form = btn.up('orderdetail').down('orderform'),
             record = form.order,
             values = form.getValues();
         record.set(values);
         record.setDirty();
-        this.application.save(record, this);
+        this.application.save(record, this, {
+            error: function() {
+                record.reject();
+                btn.setDisabled(false);
+            },
+            success: function() {
+                if(form.orderStatus == 'add') {
+                    this.getStore('Orders').reload();
+                    btn.setText("已保存");
+                } else {
+                    btn.setDisabled(false);
+                }
+            }
+        });
     },
     actionOrder: function(cmd) {
        var title = cmd === 'edit'? '变更订单' : '查看订单';
@@ -93,23 +107,6 @@ Ext.define('AM.controller.Orders', {
         }
     },
 
-    viewOrder: function () {
-        var tab = Ext.widget('orderdetail', {
-            order: this.getList().getSelectionModel().getSelection()[0],
-            orderStatus: 'view'
-        });
-
-        var panel = this.getPanel();
-        panel.add(tab);
-        panel.setActiveTab(tab);
-
-        var form = tab.down('orderform'),
-            data = tab.order.getData();
-        form.loadRecord(tab.order);
-        form.down('datefield').setValue(new Date(data.date));
-        form.down('custom').setValue(data.custom.id);
-        form.down('salesman').setValue(data.salesman.id);
-    },
     printOrder: function (btn) {
         var order = btn.up('orderdetail').order,
             data = order.getData(),

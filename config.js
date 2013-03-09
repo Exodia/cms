@@ -16,6 +16,13 @@ AM.API = {
         read: 'data/user/read.json',
         update: 'data/user/updateUsers.json',
         destroy: 'data/user/destroyUsers.json'
+    },
+    custom: {
+        create: 'data/success.json',
+        read: 'data/custom/read.json',
+        update: 'data/success.json',
+        destroy: 'data/success.json'
+
     }
 };
 

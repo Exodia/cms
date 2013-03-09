@@ -1,6 +1,6 @@
 Ext.define('AM.view.order.Form', {
     extend: 'Ext.form.Panel',
-    requires: ['AM.view.SaleGroup', 'AM.view.Custom', 'AM.view.SalesMan', 'AM.view.HiddenField'],
+    requires: ['AM.view.SaleGroup', 'AM.view.CustomField', 'AM.view.SalesMan', 'AM.view.HiddenField'],
     alias: 'widget.orderform',
     layout: 'border',
     collapsible: true,
@@ -36,8 +36,9 @@ Ext.define('AM.view.order.Form', {
                 xtype: 'datefield'
             },
             {
-                xtype: 'custom',
-                name:'customName',
+                xtype: this.orderStatus == 'add'? 'custom_field' : 'textfield',
+                name: this.orderStatus !== 'add' ? 'customId' : 'customName',
+
                 fieldLabel:'订货客户'
             },
             {
@@ -45,8 +46,9 @@ Ext.define('AM.view.order.Form', {
                 disabled:  this.orderStatus !== 'view',
                 width: 150,
                 padding: 0,
+                readOnly: true,
                 name: 'saleGroup',
-                xtype: 'textfield'
+                xtype: 'sale_group'
             },
             {
                 fieldLabel: '销售员',
@@ -54,22 +56,7 @@ Ext.define('AM.view.order.Form', {
                 name: 'salesManName',
                 xtype: 'textfield'
             },
-            {
-                name: 'customId',
-                xtype: 'hidden_field'
-            },
-            {
-                name: 'customContact',
-                xtype: 'hidden_field'
-            },
-            {
-                name: 'customCompany',
-                xtype: 'hidden_field'
-            },
-            {
-                name: 'customAddress',
-                xtype: 'hidden_field'
-            },
+
             {
                 name: 'salesManId',
                 xtype: 'hidden_field'

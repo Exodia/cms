@@ -96,16 +96,18 @@ Ext.application({
             scope: controller
         });
     },
-    save: function (record, controller) {
+    save: function (record, controller, fn) {
         record.save({
             failure: function (record, operation) {
                 this.application.error('错误', '操作失败，请重试！');
+                fn.error && fn.error.apply(this, arguments);
             },
             success: function (record, operation) {
                 var ret = Ext.JSON.decode(operation.response.responseText);
                 ret.msg && Ext.Msg.alert('操作成功', ret.msg);
+                fn.success && fn.success.apply(this, arguments);
             },
-
+            callback: fn.callback,
             scope: controller
         });
     },
