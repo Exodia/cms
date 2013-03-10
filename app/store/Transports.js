@@ -11,6 +11,7 @@ Ext.define('AM.store.Transports', {
             update: 'data/transport/updateTransport.json',
             destroy: 'data/transport/destroyTransport.json'
         },
+        listeners: AM.ProxyListeners,
         reader: {
             type: 'json',
             root: 'data',

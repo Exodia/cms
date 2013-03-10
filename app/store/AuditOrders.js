@@ -5,6 +5,7 @@ Ext.define('AM.store.AuditOrders', {
     proxy: {
         type: 'ajax',
         api: AM.API['auditOrder'],
+        listeners: AM.ProxyListeners,
         extraParams: {
             status: 0
         },

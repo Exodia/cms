@@ -6,6 +6,7 @@ Ext.define('AM.store.Customs', {
     proxy: {
         type: 'ajax',
         api: AM.API['custom'],
+        listeners: AM.ProxyListeners,
         reader: AM.Reader,
         writer: AM.Writer
     }

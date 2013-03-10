@@ -26,6 +26,7 @@ Ext.define('AM.model.OrderDetail', {
     proxy: {
         type: 'ajax',
         api: AM.API['orderDetail'],
+        listeners: AM.ProxyListeners,
         filterParam: undefined,
         reader: {
             type: 'json',

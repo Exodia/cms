@@ -13,7 +13,7 @@ Ext.define('AM.controller.Users', {
     refs:[
         {
             ref:'list',
-            selector:'userlist'
+            selector:'user_list'
         },
         {
             ref:'editButton',
@@ -25,7 +25,7 @@ Ext.define('AM.controller.Users', {
         },
         {
             ref: 'searchCombo',
-            selector: 'userlist combo'
+            selector: 'user_list combo'
         },
         {
             ref: 'searchField',
@@ -98,8 +98,11 @@ Ext.define('AM.controller.Users', {
 
     editUser:function () {
         var view = Ext.widget('user_edit'),
+            form =  view.down('form');
             record = this.getList().getSelectionModel().getSelection()[0];
-        view.down('form').loadRecord(record);
+
+        form.loadRecord(record);
+        form.getForm().findField('workNum').setDisabled(true);
     },
 
     searchUser: function() {

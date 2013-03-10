@@ -53,19 +53,6 @@ Ext.application({
 //        'Transports'
     ],
 
-    error: function (title, msg, fn, scope) {
-        Ext.Msg.show({
-            title: title,
-            msg: msg,
-            fn: fn,
-            scope: scope,
-            buttons: Ext.MessageBox.OK,
-            buttonText: {
-                ok: '确定'
-            },
-            icon: Ext.MessageBox.ERROR
-        });
-    },
     confirm: function (title, msg, fn, scope) {
         Ext.Msg.show({
             title: title,
@@ -83,8 +70,6 @@ Ext.application({
     sync: function (store, controller) {
         store.sync({
             failure: function (batch) {
-                console.log(batch.operations[0])
-                this.application.error('错误', '操作失败，请重试！');
                 store.rejectChanges();
                 var sm = this.getList().getSelectionModel();
                 sm.select(sm.getSelection());
@@ -98,10 +83,9 @@ Ext.application({
         });
     },
     save: function (record, controller, fn) {
+        fn = fn || {};
         record.save({
             failure: function (record, operation) {
-                this.application.error('错误', '操作失败，请重试！');
-                fn.error && fn.error.apply(this, arguments);
                 record.reject();
             },
             success: function (record, operation) {

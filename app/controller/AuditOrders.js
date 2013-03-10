@@ -37,6 +37,22 @@ Ext.define('AM.controller.AuditOrders', {
         form.loadRecord(tab.order);
         form.down('datefield').setValue(new Date(data.date));
     },
+
+    actionOrder: function (status) {
+        var msg = status === 1 ?
+            '确定要执行<b style="color:green">审核通过</b>操作？' :
+            '确定要执行<b style="color:red">审核不通过</b>操作？';
+
+        return function (btn) {
+            var order = btn.up('order_audit_detail').order;
+            this.application.confirm('注意', msg, function (btnId) {
+                if (btnId == 'ok') {
+                    order.set('status', status);
+                    this.application.save(order, this);
+                }
+            }, this);
+        }
+    },
     init: function () {
         this.control({
             'order_audit > order_list': {
@@ -45,8 +61,11 @@ Ext.define('AM.controller.AuditOrders', {
             '#J_OrderAudit': {
                 click: this.auditOrder
             },
-            'order_audit_detail button[action]': {
-
+            'order_audit_detail button[action=pass_order]': {
+                click: this.actionOrder(1)
+            },
+            'order_audit_detail button[action=reject_order]': {
+                click: this.actionOrder(2)
             }
         });
     }

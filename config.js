@@ -29,6 +29,12 @@ AM.API = {
         update: 'data/success.json',
         destroy: 'data/success.json'
 
+    },
+    material:  {
+        create: 'data/material/create.json',
+        read: 'data/material/read.json',
+        update: 'data/material/update.json',
+        destroy: 'data/material/destroy.json'
     }
 };
 
@@ -42,10 +48,43 @@ AM.Writer = {
 AM.Reader = {
     type: 'json',
     root: 'data',
+
     successProperty: 'success',
     totalProperty: 'total'
 };
 
-AM.UserType =  ['营销员', '合同管理员', '发票管理员', '发运员'];
-AM.SaleGroup  =['城轨', '机车', '动车', '新产业', '销售管理'];
-AM.OrderStatus = ['<font color="#1e90ff">待审核</font>', '审核通过', '<font color="red">审核不通过</font>', '取消', '已绑定']
+AM.UserType = ['营销员', '合同管理员', '发票管理员', '发运员'];
+AM.SaleGroup = ['城轨', '机车', '动车', '新产业', '销售管理'];
+AM.OrderStatus = [
+    '<font color="#1e90ff">待审核</font>',
+    '<font color="green">审核通过</font>',
+    '<font color="red">审核不通过</font>',
+    '取消',
+    '已绑定'
+];
+
+
+AM.error = function (title, msg, fn, scope) {
+    Ext.Msg.show({
+        title: title,
+        msg: msg,
+        fn: fn,
+        scope: scope,
+        buttons: Ext.MessageBox.OK,
+        buttonText: {
+            ok: '确定'
+        },
+        icon: Ext.MessageBox.ERROR
+    });
+};
+
+
+AM.ProxyListeners = {
+   exception: function(proxy, res) {
+       var msg = '';
+       if(res.responseText) {
+           msg = Ext.JSON.decode(res.responseText).msg;
+       }
+       AM.error('操作失败', msg);
+   }
+}

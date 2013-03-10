@@ -11,10 +11,7 @@ Ext.define('AM.store.SalesMen', {
             update: 'data/salesman/update.json',
             destroy: 'data/salesman/destroy.json'
         },
-        reader: {
-            type: 'json',
-            root: 'data',
-            successProperty: 'success'
-        }
+        listeners: AM.ProxyListeners,
+        reader: AM.Reader
     }
 });

@@ -5,16 +5,8 @@ Ext.define('AM.store.Materials', {
 
     proxy: {
         type: 'ajax',
-        api: {
-            create: 'data/material/create.json',
-            read: 'data/material/read.json',
-            update: 'data/material/update.json',
-            destroy: 'data/material/destroy.json'
-        },
-        reader: {
-            type: 'json',
-            root: 'data',
-            successProperty: 'success'
-        }
+        api: AM.API['material'],
+        listeners: AM.ProxyListeners,
+        reader: AM.Reader
     }
 });

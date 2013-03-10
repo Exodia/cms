@@ -25,6 +25,7 @@ Ext.define('AM.model.Order', {
     proxy: {
         type: 'ajax',
         api: AM.API['order'],
+        listeners: AM.ProxyListeners,
         reader: AM.Reader,
         writer: AM.Writer
     },
