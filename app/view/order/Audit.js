@@ -6,9 +6,25 @@ Ext.define('AM.view.order.Audit', {
     title: '未审核订单',
     layout: 'fit',
     flex: 1,
-    items: [{
-        xtype: 'order_list',
-        store: 'AuditOrders'
-    }]
+    items: [
+        {
+            xtype: 'order_list',
+            store: 'AuditOrders'
+        }
+    ],
+    dockedItems: [
+        {
+            xtype: 'toolbar',
+            dock: 'top',
+            items: [
+                {
+                    text: '审核订单',
+                    disabled: true,
+                    iconCls: 'icon-edit',
+                    itemId: 'J_OrderAudit'
+                }
+            ]
+        }
+    ]
 
 });

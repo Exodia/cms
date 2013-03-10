@@ -25,7 +25,7 @@ Ext.define('AM.controller.Orders', {
 
         {
             ref: 'list',
-            selector: 'order_list'
+            selector: 'order_general > order_list'
         },
         {
             ref: 'editButton',
@@ -127,7 +127,7 @@ Ext.define('AM.controller.Orders', {
     },
     init: function () {
         this.control({
-            'order_list': {
+            'order_general > order_list': {
                 'selectionchange': this.checkEnable
             },
             '#J_OrderAdd': {

@@ -48,7 +48,8 @@ Ext.application({
     controllers: [
         'NavBar',
         'Users',
-        'Orders'
+        'Orders',
+        'AuditOrders'
 //        'Transports'
     ],
 
@@ -101,6 +102,7 @@ Ext.application({
             failure: function (record, operation) {
                 this.application.error('错误', '操作失败，请重试！');
                 fn.error && fn.error.apply(this, arguments);
+                record.reject();
             },
             success: function (record, operation) {
                 var ret = Ext.JSON.decode(operation.response.responseText);

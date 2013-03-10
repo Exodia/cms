@@ -15,7 +15,9 @@ Ext.define('AM.view.order.List', {
         {header: '销售客户', dataIndex: 'customCompany', flex: 1},
         {header: '销售员', dataIndex: 'salesManName', flex: 1},
         {header: '订单总额(不含税)', dataIndex: 'totalPrice', flex: 1},
-        {header: '订单状态', dataIndex: 'status', flex: 1}
+        {header: '订单状态', dataIndex: 'status', flex: 1, renderer: function(v){
+            return AM.OrderStatus[v];
+        }}
     ],
     initComponent: function () {
         this.dockedItems = [

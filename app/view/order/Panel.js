@@ -6,7 +6,6 @@ Ext.define('AM.view.order.Panel', {
     items:[
         {
             xtype:'order_general'
-//            xtype: 'order_list'
         },{
             xtype:'order_audit'
         }
