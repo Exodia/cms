@@ -1,64 +1,65 @@
 Ext.define('AM.view.custom.List', {
-    extend:'Ext.grid.Panel',
-    alias:'widget.custom_list',
-    store:'Customs',
-    dockedItems:[
+    extend: 'Ext.grid.Panel',
+    alias: 'widget.custom_list',
+    store: 'Customs',
+    flex: 1,
+    dockedItems: [
         {
-            xtype:'toolbar',
-            items:[
+            xtype: 'toolbar',
+            items: [
                 {
-                    iconCls:'icon-add',
-                    itemId:'J_CustomAdd',
-                    text:'新增客户',
-                    scope:this
+                    iconCls: 'icon-add',
+                    itemId: 'J_CustomAdd',
+                    text: '新增客户',
+                    scope: this
                 },
                 '-',
                 {
-                    iconCls:'icon-edit',
-                    itemId:'J_CustomEdit',
-                    text:'编辑',
-                    disabled:true,
-                    scope:this
+                    iconCls: 'icon-edit',
+                    itemId: 'J_CustomEdit',
+                    text: '编辑',
+                    disabled: true,
+                    scope: this
                 },
                 '-',
                 {
-                    iconCls:'icon-delete',
-                    itemId:'J_CustomDelete',
-                    text:'删除',
-                    scope:this,
-                    disabled:true
+                    iconCls: 'icon-delete',
+                    itemId: 'J_CustomDelete',
+                    text: '删除',
+                    scope: this,
+                    disabled: true
                 },
                 '->',
                 {
-                    xtype:'combo',
-                    queryMode:'local',
+                    xtype: 'combo',
+                    queryMode: 'local',
                     listeners: {
-                        afterRender: function() {
+                        afterRender: function () {
                             this.setValue('按工号');
                         }
                     },
 
-                    store:Ext.create('Ext.data.Store', {
-                        fields:['type'],
-                        data:[
+                    store: Ext.create('Ext.data.Store', {
+                        fields: ['type'],
+                        data: [
                             {
-                                type:'按工号'
+                                type: '按工号'
                             },
                             {
-                                type:'按姓名'
+                                type: '按姓名'
                             }
                         ]
                     }),
-                    displayField:'type',
-                    valueField:'type',
-                    editable:false,
-                    forceSelection:true,
-                    width:80
+                    displayField: 'type',
+                    valueField: 'type',
+                    editable: false,
+                    forceSelection: true,
+                    width: 80
                 },
                 {
-                    xtype:'textfield',
+                    xtype: 'textfield',
                     itemId: 'J_CustomSearchText',
-                    emptyText:'输入工号或者姓名查询'
+                    emptyText: '输入工号或者姓名查询'
                 },
                 Ext.create('Ext.Button', {
                     itemId: 'J_CustomSearch',
@@ -66,23 +67,23 @@ Ext.define('AM.view.custom.List', {
                     cls: 'x-btn-default-small'
                 })
             ]
+        },
+        {
+            xtype: 'pagingtoolbar',
+            store: 'Customs',
+            dock: 'bottom',
+            displayInfo: true
         }
     ],
-    initComponent:function () {
+    initComponent: function () {
         this.columns = [
-            {xtype: 'rownumberer', header: '序号'},
-            {header:'企业名称', dataIndex:'companyName', flex:1},
-            {header:'姓名', dataIndex:'name', flex:0.5},
-            {header:'职务', dataIndex:'userType', flex:0.5, renderer:function (v) {
-                return AM.UserType[v];
-            }},
-            {header:'住址', dataIndex:'address', flex:2},
-            {header:'联系方式', dataIndex:'contact', flex:1},
-            {header:'Email', dataIndex:'email', flex:1},
-            {header:'销售组', dataIndex:'saleGroup', flex:0.5, renderer:function (v) {
-                return AM.SaleGroup[v];
-            }}
-
+            {xtype: 'rownumberer', header: '序号', flex: 0.5, align: 'center'},
+            {header: '企业名称', dataIndex: 'companyName', flex: 1.5},
+            {header: '姓名', dataIndex: 'name', flex: 0.5},
+            {header: '职务', dataIndex: 'position', flex: 0.5},
+            {header: '办公电话', dataIndex: 'officeNumber', flex: 1},
+            {header: '手机号码', dataIndex: 'mobileNumber', flex: 1},
+            {header: '备注', dataIndex: 'comment', flex: 2}
         ];
         this.callParent(arguments);
     }
