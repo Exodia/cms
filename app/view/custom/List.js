@@ -71,9 +71,9 @@ Ext.define('AM.view.custom.List', {
     initComponent:function () {
         this.columns = [
             {xtype: 'rownumberer', header: '序号'},
-            {header:'工号', dataIndex:'workNum', flex:1},
+            {header:'企业名称', dataIndex:'companyName', flex:1},
             {header:'姓名', dataIndex:'name', flex:0.5},
-            {header:'职位', dataIndex:'userType', flex:0.5, renderer:function (v) {
+            {header:'职务', dataIndex:'userType', flex:0.5, renderer:function (v) {
                 return AM.UserType[v];
             }},
             {header:'住址', dataIndex:'address', flex:2},
