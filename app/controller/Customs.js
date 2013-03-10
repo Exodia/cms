@@ -1,6 +1,7 @@
 Ext.define('AM.controller.Customs', {
     extend:'Ext.app.Controller',
     views:[
+        'custom.Edit',
         'custom.List'
     ],
     stores:[
@@ -33,8 +34,8 @@ Ext.define('AM.controller.Customs', {
         this.control({
             '#J_CustomAdd':{
                 click:function () {
-                    Ext.widget('user_edit', {
-                        title: '新增用户'
+                    Ext.widget('custom_edit', {
+                        title: '新增客户'
                     });
                 }
             },
@@ -70,7 +71,7 @@ Ext.define('AM.controller.Customs', {
         this.application.confirm('注意', '确认要删除所选信息？', function (btnId) {
             if (btnId == 'ok') {
                 var sm = this.getList().getSelectionModel(),
-                    store = this.getUsersStore();
+                    store = this.getCustomsStore();
                 store.remove(sm.getSelection());
                 this.application.sync(store, this);
             }
@@ -82,7 +83,7 @@ Ext.define('AM.controller.Customs', {
             form = win.down('form'),
             values = form.getValues(),
             record = form.getRecord(),
-            store = this.getUsersStore();
+            store = this.getCustomsStore();
 
         if (!form.getForm().isValid()) {
             Ext.Msg.alert('错误', '数据非法，请重新填写！');
@@ -94,16 +95,15 @@ Ext.define('AM.controller.Customs', {
     },
 
     editCustom:function () {
-        var view = Ext.widget('user_edit'),
+        var view = Ext.widget('custom_edit'),
             form =  view.down('form');
         record = this.getList().getSelectionModel().getSelection()[0];
 
         form.loadRecord(record);
-        form.getForm().findField('workNum').setDisabled(true);
     },
 
     searchCustom: function() {
-        var store = this.getUsersStore(),
+        var store = this.getCustomsStore(),
             value = this.getSearchField().getValue();
         store.isFiltered() && store.clearFilter();
 
@@ -111,10 +111,10 @@ Ext.define('AM.controller.Customs', {
             return;
         }
 
-        if(this.getSearchCombo().getRawValue() == '按工号') {
-            store.filter('workNum', parseInt(value));
-        } else {
-            store.filter('name', value);
-        }
+        store.load({
+           params: {
+               companyName: value
+           }
+        });
     }
 });

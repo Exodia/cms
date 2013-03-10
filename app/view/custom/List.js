@@ -31,35 +31,10 @@ Ext.define('AM.view.custom.List', {
                 },
                 '->',
                 {
-                    xtype: 'combo',
-                    queryMode: 'local',
-                    listeners: {
-                        afterRender: function () {
-                            this.setValue('按工号');
-                        }
-                    },
-
-                    store: Ext.create('Ext.data.Store', {
-                        fields: ['type'],
-                        data: [
-                            {
-                                type: '按工号'
-                            },
-                            {
-                                type: '按姓名'
-                            }
-                        ]
-                    }),
-                    displayField: 'type',
-                    valueField: 'type',
-                    editable: false,
-                    forceSelection: true,
-                    width: 80
-                },
-                {
                     xtype: 'textfield',
                     itemId: 'J_CustomSearchText',
-                    emptyText: '输入工号或者姓名查询'
+                    width: 200,
+                    emptyText: '输入企业名称查询'
                 },
                 Ext.create('Ext.Button', {
                     itemId: 'J_CustomSearch',

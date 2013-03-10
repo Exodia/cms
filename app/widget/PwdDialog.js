@@ -2,6 +2,7 @@ Ext.define('AM.widget.PwdDialog', {
     extend: 'Ext.window.Window',
     alias: 'widget.pwddialog',
     layout: 'fit',
+    width: 265,
     autoShow: true,
     border: false,
     title: '修改密码',
