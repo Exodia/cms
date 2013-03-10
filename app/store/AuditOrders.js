@@ -4,7 +4,7 @@ Ext.define('AM.store.AuditOrders', {
     model: 'AM.model.Order',
     proxy: {
         type: 'ajax',
-        api: AM.API['auditOrder'],
+        api: AM.API['order'],
         listeners: AM.ProxyListeners,
         extraParams: {
             status: 0
