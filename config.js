@@ -78,13 +78,22 @@ AM.error = function (title, msg, fn, scope) {
     });
 };
 
+AM.createProxy = function(apiType) {
+    return {
+        type: 'ajax',
+        api: AM.API[apiType],
+        listeners: AM.ProxyListeners,
+        reader: AM.Reader,
+        writer: AM.Writer
+    }
+};
 
 AM.ProxyListeners = {
-   exception: function(proxy, res) {
-       var msg = '';
-       if(res.responseText) {
-           msg = Ext.JSON.decode(res.responseText).msg;
-       }
-       AM.error('操作失败', msg);
-   }
-}
+    exception: function(proxy, res) {
+        var msg = '';
+        if(res.responseText) {
+            msg = Ext.JSON.decode(res.responseText).msg;
+        }
+        AM.error('操作失败', msg);
+    }
+};

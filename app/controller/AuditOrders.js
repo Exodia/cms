@@ -47,11 +47,25 @@ Ext.define('AM.controller.AuditOrders', {
             var order = btn.up('order_audit_detail').order;
             this.application.confirm('注意', msg, function (btnId) {
                 if (btnId == 'ok') {
+                    order.beginEdit();
                     order.set('status', status);
-                    this.application.save(order, this);
+                    this.saveAudit(order);
                 }
             }, this);
         }
+    },
+    saveAudit: function(order) {
+      order.save({
+          params:{
+              audit: true
+          },
+          failure: function(record) {
+             record.cancelEdit();
+          },
+          success: function(record) {
+              record.endEdit();
+          }
+      })
     },
     init: function () {
         this.control({
