@@ -1,6 +1,9 @@
 Ext.define('AM.view.custom.Panel', {
-    extend:'Ext.panel.Panel',
-    alias:'widget.custompanel',
-    title:'用户管理',
-    items:[]
+    extend: 'Ext.panel.Panel',
+    alias: 'widget.custom_panel',
+    title: '客户信息管理',
+    style: 'padding:5px;',
+    items: [{
+        xtype: 'custom_list'
+    }]
 });

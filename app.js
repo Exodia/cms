@@ -37,10 +37,11 @@ Ext.require('Ext.data.writer.Json', function () {
 
 Ext.application({
     requires: ['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
-        'AM.view.NavBar', 'AM.view.user.Panel', 'AM.view.order.Panel', 'AM.view.datamgr.Panel'
+        'AM.view.NavBar', 'AM.view.user.Panel', 'AM.view.order.Panel', 'AM.view.custom.Panel',
+        'AM.view.datamgr.Panel'
         /*, 'AM.view.contract.Panel',*/
         /*   'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
-         'AM.view.composite.Panel', 'AM.view.custom.Panel', 'AM.view.datamgr.Panel'*/
+         'AM.view.composite.Panel', , 'AM.view.datamgr.Panel'*/
     ],
     name: 'AM',
 
@@ -49,7 +50,8 @@ Ext.application({
         'NavBar',
         'Users',
         'Orders',
-        'AuditOrders'
+        'AuditOrders',
+        'Customs'
 //        'Transports'
     ],
 
@@ -113,7 +115,6 @@ Ext.application({
                 {
                     xtype: 'grouptabpanel',
                     flex: 1,
-                    activeGroup: 0,
                     style: {
                         borderTop: 'none'
                     },
@@ -121,19 +122,17 @@ Ext.application({
                         {
                             items: [
                                 {
-                                    title: '用户管理',
                                     iconCls: 'x-icon-users',
-                                    style: 'padding:5px;',
                                     leaf: true,
                                     xtype: 'user_panel'
                                 }
-                            ]},
+                            ]
+                        },
                         {
                             items: [
                                 {
                                     title: '订单管理',
                                     iconCls: 'x-icon-orders',
-                                    style: 'padding:5px;',
                                     xtype: 'order_panel'
                                 }
                             ]
@@ -181,10 +180,8 @@ Ext.application({
                         {
                             items: [
                                 {
-                                    title: '客户管理',
                                     iconCls: 'x-icon-customs',
-                                    style: 'padding:5px;',
-                                    xtype: 'panel'
+                                    xtype: 'custom_panel'
                                 }
                             ]
                         },

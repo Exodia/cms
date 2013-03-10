@@ -170,7 +170,7 @@ Ext.define('AM.view.order.DetailList', {
                 case 'materialCode':
                     var rec = colEditor.findRecordByValue(colEditor.getValue());
                     record.set({
-                        'material_name':rec.get('name'),
+                        'materialName':rec.get('name'),
                         'type':rec.get('type'),
                         'unit':rec.get('unit')
                     });
