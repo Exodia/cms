@@ -6,7 +6,7 @@ Ext.define('AM.store.AuditOrders', {
         type: 'ajax',
         api: AM.API['auditOrder'],
         extraParams: {
-            status: 1
+            status: 0
         },
         reader: AM.Reader,
         writer: AM.Writer

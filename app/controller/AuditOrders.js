@@ -44,6 +44,9 @@ Ext.define('AM.controller.AuditOrders', {
             },
             '#J_OrderAudit': {
                 click: this.auditOrder
+            },
+            'order_audit_detail button[action]': {
+
             }
         });
     }
