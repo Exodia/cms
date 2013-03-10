@@ -86,9 +86,11 @@ Ext.application({
         fn = fn || {};
         record.save({
             failure: function (record, operation) {
-                record.reject();
+                record.cancelEdit();
+                fn.error && fn.error.apply(this, arguments);
             },
             success: function (record, operation) {
+                record.endEdit();
                 var ret = Ext.JSON.decode(operation.response.responseText);
                 ret.msg && Ext.Msg.alert('操作成功', ret.msg);
                 fn.success && fn.success.apply(this, arguments);

@@ -75,6 +75,7 @@ Ext.define('AM.view.order.DetailList', {
             {
                 header:'单价(元)',
                 dataIndex:'unitPrice',
+                renderer: this.self.floatRender,
                 editor:{
                     xtype:'numberfield',
                     minValue:0,
@@ -107,6 +108,7 @@ Ext.define('AM.view.order.DetailList', {
                 editor:{
                     xtype:'datefield',
                     format: 'Y月m年d日',
+                    editable: false,
                     allowBlank:false
                 },
                 renderer: function(v) {

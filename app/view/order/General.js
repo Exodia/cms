@@ -37,6 +37,11 @@ Ext.define('AM.view.order.General', {
                     text: '变更订单',
                     itemId: 'J_OrderEdit',
                     disabled: true
+                },
+                '-',
+                {
+                    text: '查询订单',
+                    itemId: 'J_OrderSearch'
                 }
             ]
         }

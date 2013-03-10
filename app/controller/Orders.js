@@ -28,6 +28,10 @@ Ext.define('AM.controller.Orders', {
             selector: 'order_general > order_list'
         },
         {
+            ref: 'searchPanel',
+            selector: 'search_panel'
+        },
+        {
             ref: 'editButton',
             selector: '#J_OrderEdit'
         },
@@ -68,11 +72,11 @@ Ext.define('AM.controller.Orders', {
         var form = btn.up('order_detail').down('order_form'),
             record = form.order,
             values = form.getValues();
+        record.beginEdit();
         record.set(values);
         record.setDirty();
         this.application.save(record, this, {
             error: function() {
-                record.reject();
                 btn.setDisabled(false);
             },
             success: function() {
@@ -123,7 +127,16 @@ Ext.define('AM.controller.Orders', {
         var t = new Ext.XTemplate(tpl);
         var w = window.open('');
         w.document.write(t.apply(data));
-//        w.print();
+        w.print();
+    },
+
+    searchOrder: function(btn) {
+        var values = this.getSearchPanel().getValues();
+        this.getStore('Orders').load({
+            params: values
+        })
+
+        console.log(values);
     },
     init: function () {
         this.control({
@@ -139,11 +152,19 @@ Ext.define('AM.controller.Orders', {
             'order_detail button[action=print]': {
                 'click': this.printOrder
             },
+            'search_panel button[action=search_order]': {
+                'click': this.searchOrder
+            },
             '#J_OrderView': {
                 'click': this.actionOrder('view')
             },
             '#J_OrderEdit': {
                 click: this.actionOrder('edit')
+            },
+            '#J_OrderSearch' : {
+                click: function() {
+                    this.getSearchPanel().toggleCollapse();
+                }
             }
         });
     }
