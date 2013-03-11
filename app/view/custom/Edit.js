@@ -1,5 +1,6 @@
 Ext.define('AM.view.custom.Edit', {
     extend:'Ext.window.Window',
+    requires: ['AM.view.CompanyField'],
     alias:'widget.custom_edit',
     modal:true,
     title:'编辑客户信息',
@@ -28,6 +29,8 @@ Ext.define('AM.view.custom.Edit', {
                 items:[
                     {
                         name:'companyName',
+                        xtype: 'company_field',
+                        forceSelection: false,
                         fieldLabel:'企业名称'
                     },
                     {

@@ -1,12 +1,15 @@
-Ext.define('AM.view.CustomField', {
+Ext.define('AM.view.CompanyField', {
     extend: 'AM.view.TplCombobox',
-    requires: ['AM.store.Customs'],
-    alias:'widget.custom_field',
-    displayField: 'companyName',
-    valueField: 'companyName',
+    alias:'widget.company_field',
+    valueField: 'id',
     emptyText: '输入企业名称查询',
     autoSelect: false,
-    store: Ext.create('AM.store.Customs'),
+    forceSelection: false,
+    store: Ext.create('Ext.data.Store', {
+        proxy: AM.createProxy('company'),
+        reader: AM.Reader,
+        writer: AM.Writer
+    }),
     listeners: {
         select: function(combo, records) {
             var id = records[0].get('id'),
