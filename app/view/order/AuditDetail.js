@@ -46,12 +46,14 @@ Ext.define('AM.view.order.AuditDetail', {
                         order: this.order,
                         params: {
                             'orderId': this.order.get('id')
-                        }
+                        },
+                        storeName: 'detail'
                     },
                     {
                         xtype: 'order_view_list',
                         title: '订单历史详情',
                         flex: 1,
+                        storeName: 'history',
                         collapsible: true,
                         order: this.order,
                         params: {

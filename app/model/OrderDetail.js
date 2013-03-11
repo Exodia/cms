@@ -28,12 +28,24 @@ Ext.define('AM.model.OrderDetail', {
         api: AM.API['orderDetail'],
         listeners: AM.ProxyListeners,
         filterParam: undefined,
-        reader: {
-            type: 'json',
-            root: 'data',
-            successProperty: 'success'
-        }
+        reader: AM.Reader
     },
 
     belongsTo: 'AM.model.Order'
+});
+
+Ext.define('AM.model.historyDetail', {
+    extend: 'AM.model.OrderDetail',
+
+    proxy: {
+        type: 'ajax',
+        api: AM.API['orderDetail'],
+        listeners: AM.ProxyListeners,
+        filterParam: undefined,
+        extraParams: {
+          history: true
+        },
+        reader: AM.Reader
+    }
+
 });
