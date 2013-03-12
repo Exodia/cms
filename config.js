@@ -38,7 +38,7 @@ AM.API = {
     },
     company: {
         create: 'data/material/create.json',
-        read: 'data/material/read.json',
+        read: 'data/order/read.json',
         update: 'data/material/update.json',
         destroy: 'data/material/destroy.json'
     }
