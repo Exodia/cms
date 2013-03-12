@@ -11,7 +11,7 @@
 Ext.define('AM.model.Order', {
     extend:'Ext.data.Model',
     fields:[
-        'id', 'project',
+        'id', 'project',  'orderCode',
         {
             name:'date',
             type: 'date',
