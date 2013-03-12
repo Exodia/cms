@@ -73,7 +73,7 @@ Ext.define('AM.view.order.Form', {
 
         this.orderStatus !== 'add' && this.items.unshift({
             fieldLabel: '订单编号',
-            name: 'id'
+            name: 'orderCode'
         });
 
         this.callParent(arguments);

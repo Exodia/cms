@@ -21,7 +21,7 @@ Ext.define('AM.view.order.SearchPanel', {
     },
     items: [{
         fieldLabel: '订单号',
-        name: 'orderId'
+        name: 'orderCode'
     }, {
         fieldLabel: '销售日期',
         name: 'date',
