@@ -5,6 +5,9 @@ AM.API = {
     orderDetail: {
         read: 'data/orderdetial/read.json'
     },
+    contractDetial: {
+        read: 'data/orderdetial/read.json'
+    },
     order: {
         create: 'data/success.json',
         read: 'data/order/read.json',
@@ -36,7 +39,7 @@ AM.API = {
         update: 'data/material/update.json',
         destroy: 'data/material/destroy.json'
     },
-    company: {
+    contract: {
         create: 'data/material/create.json',
         read: 'data/order/read.json',
         update: 'data/material/update.json',

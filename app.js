@@ -38,6 +38,7 @@ Ext.require('Ext.data.writer.Json', function () {
 Ext.application({
     requires: ['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
         'AM.view.NavBar', 'AM.view.user.Panel', 'AM.view.order.Panel', 'AM.view.custom.Panel',
+        'AM.view.contract.Panel',
         'AM.view.datamgr.Panel'
         /*, 'AM.view.contract.Panel',*/
         /*   'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
@@ -51,6 +52,7 @@ Ext.application({
         'Users',
         'Orders',
         'AuditOrders',
+        'Contracts',
         'Customs'
 //        'Transports'
     ],
@@ -143,7 +145,7 @@ Ext.application({
                                     title: '合同管理',
                                     iconCls: 'x-icon-contracts',
                                     style: 'padding:5px;',
-                                    xtype: 'panel'
+                                    xtype: 'contract_panel'
                                 }
                             ]
                         },

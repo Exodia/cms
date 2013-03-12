@@ -134,9 +134,8 @@ Ext.define('AM.controller.Orders', {
         var values = this.getSearchPanel().getValues();
         this.getStore('Orders').load({
             params: values
-        })
+        });
 
-        console.log(values);
     },
     init: function () {
         this.control({
