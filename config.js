@@ -40,10 +40,10 @@ AM.API = {
         destroy: 'data/material/destroy.json'
     },
     contract: {
-        create: 'data/material/create.json',
-        read: 'data/order/read.json',
-        update: 'data/material/update.json',
-        destroy: 'data/material/destroy.json'
+        create: 'data/contract/create.json',
+        read: 'data/contract/read.json',
+        update: 'data/contract/update.json',
+        destroy: 'data/contract/destroy.json'
     }
 };
 

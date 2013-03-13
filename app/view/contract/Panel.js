@@ -1,9 +1,9 @@
 Ext.define('AM.view.contract.Panel', {
     extend:'Ext.tab.Panel',
-    requires: ['AM.view.contract.List'],
+    requires: ['AM.view.contract.General'],
     alias:'widget.contract_panel',
+    style: 'padding:5px;',
     items:[{
-        xtype: 'contract_list',
-        title: '合同总览'
+        xtype: 'contract_general'
     }]
 });
