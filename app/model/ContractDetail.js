@@ -9,19 +9,12 @@
  amount:  数量
  unit_price: 单价
  unit_tax_price: 含税单价
- deadline: 客户要求交货日期
  * */
 Ext.define('AM.model.ContractDetail', {
     extend: 'Ext.data.Model',
     fields: [
         'id', 'orderId', 'contractId', 'materialCode', 'materialName', 'type', 'unit',
-        'amount', 'unitPrice', 'unitTaxPrice', 'price', 'taxPrice',
-        {
-            name: 'deadline',
-            type: 'date',
-            dateFormat: 'Y-m-d'
-        }
-    ],
+        'amount', 'unitPrice', 'unitTaxPrice'],
 
     proxy: AM.createProxy('contractDetial'),
 

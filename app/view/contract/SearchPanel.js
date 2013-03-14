@@ -1,6 +1,6 @@
 Ext.define('AM.view.contract.SearchPanel', {
     extend:'Ext.form.Panel',
-    alias:'widget.search_panel',
+    alias:'widget.contract_search_panel',
     border:false,
     style: {
       borderRadius: 'none'
@@ -9,7 +9,7 @@ Ext.define('AM.view.contract.SearchPanel', {
     collapsible: true,
     collapsed: true,
     collapseDirection: 'right',
-    title: '查询订单',
+    title: '查询合同',
     frame: true,
     width: 200,
     dock: 'left',
@@ -20,23 +20,13 @@ Ext.define('AM.view.contract.SearchPanel', {
        width:170
     },
     items: [{
-        fieldLabel: '订单号',
-        name: 'orderCode'
-    }, {
-        fieldLabel: '销售日期',
-        name: 'date',
-        xtype: 'datefield',
-        editable: false,
-        format: 'Y年m月d日',
-        submitFormat: 'Y-m-d'
-    }, {
-        fieldLabel: '销售员',
-        name: 'salesManName'
-    }, {
         fieldLabel: '合同号',
-        name: 'contractId'
+        name: 'contractCode'
+    },{
+        fieldLabel: '流水号',
+        name: 'serialNumber'
     }, {
-        fieldLabel: '订单状态',
+        fieldLabel: '合同状态',
         name: 'status',
         xtype: 'combo',
         queryMode: 'local',
@@ -48,17 +38,21 @@ Ext.define('AM.view.contract.SearchPanel', {
             data:[
                 {id:0, text:'待审核'},
                 {id:1, text:'审核通过'},
-                {id:2, text:'审核未通过'},
-                {id:3, text:'取消'},
-                {id:4, text:'已绑定'}
+                {id:2, text:'审核不通过'},
+                {id:3, text:'已归档'}
             ]
         })
     },{
+        fieldLabel: '经办日期',
+        xtype: 'datefield',
+        editable: false,
+        name: 'dealTime'
+    }, {
         text: '查询',
         xtype: 'button',
         margin: 40,
         width: 100,
         height: 35,
-        action: 'search_order'
+        action: 'search_contract'
     }]
 });

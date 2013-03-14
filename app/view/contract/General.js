@@ -34,12 +34,6 @@ Ext.define('AM.view.contract.General', {
                 },
                 '-',
                 {
-                    text: '变更合同',
-                    itemId: 'J_ContractEdit',
-                    disabled: true
-                },
-                '-',
-                {
                     text: '查询合同',
                     itemId: 'J_ContractSearch'
                 }

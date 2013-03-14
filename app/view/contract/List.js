@@ -8,11 +8,17 @@ Ext.define('AM.view.contract.List', {
         {header: '合同对方', dataIndex: 'company', flex: 1},
         {header: '合同流水号', dataIndex: 'serialNumber', flex: 1},
         {header: '合同总价', dataIndex: 'totalPrice', flex: 1},
-        {header: '合同总价(含税)', dataIndex: 'taxTotalPrcie', flex: 1},
-        {header: '是否归档', dataIndex: 'fileStatus', width:60, renderer: function(v) {
-            return ['否', '是'][v];
+        {header: '合同总价(含税)', dataIndex: 'taxTotalPrice', flex: 1},
+        {header: '合同状态', dataIndex: 'status', width: 60, renderer: function (v) {
+            return ['待审核', '审核通过', '审核不通过', '已归档'][v];
         }},
-        {header: '已开票金额', dataIndex: 'computedPrice', flex: 1}
+        {header: '已开票金额', dataIndex: 'computedPrice', flex: 1},
+        {header: '经办日期', dataIndex: 'dealTime', flex: 1, renderer: function (v) {
+            if (!v) {
+                return '';
+            }
+            return Ext.Date.format(new Date(v), 'Y年m月d日');
+        }}
     ],
     initComponent: function () {
         this.dockedItems = [

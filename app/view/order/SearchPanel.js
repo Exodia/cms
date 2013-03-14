@@ -34,7 +34,7 @@ Ext.define('AM.view.order.SearchPanel', {
         name: 'salesManName'
     }, {
         fieldLabel: '合同号',
-        name: 'contractId'
+        name: 'contractOrder'
     }, {
         fieldLabel: '订单状态',
         name: 'status',

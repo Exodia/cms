@@ -1,12 +1,14 @@
 Ext.define('AM.controller.Contracts', {
     extend: 'Ext.app.Controller',
     views: [
+        'MaterialCode',
+        'contract.Detail',
         'contract.List'
     ],
     stores: [
         'Contracts'
     ],
-    models: ['Contract'],
+    models: ['Contract', 'ContractDetail'],
 
     refs: [
         {
@@ -20,7 +22,7 @@ Ext.define('AM.controller.Contracts', {
         },
         {
             ref: 'searchPanel',
-            selector: 'search_panel'
+            selector: 'contract_search_panel'
         },
         {
             ref: 'editButton',
@@ -38,7 +40,6 @@ Ext.define('AM.controller.Contracts', {
 
     checkEnable: function (sm) {
         var len = sm.getSelection().length;
-        this.getEditButton().setDisabled(len !== 1);
         this.getViewButton().setDisabled(len !== 1);
     },
 
@@ -49,31 +50,31 @@ Ext.define('AM.controller.Contracts', {
         });
 
     },
-    saveContract: function() {
+    saveContract: function () {
 
     },
-    addContract: function() {
+    addContract: function () {
 
     },
-    actionContract: function(cmd) {
-        var title = cmd === 'edit'? '变更订单' : '查看订单';
-        return function(btn) {
-            var tab = Ext.widget('order_detail', {
-                title: title,
-                order: this.getList().getSelectionModel().getSelection()[0],
-                orderStatus: cmd
-            });
 
-            var panel = this.getPanel();
-            panel.add(tab);
-            panel.setActiveTab(tab);
+    viewContract: function () {
+        var tab = Ext.widget('contract_detail', {
+            title: '合同详情',
+            contractStatus: 'view',
+            contract: this.getList().getSelectionModel().getSelection()[0]
+        });
 
-            var form = tab.down('order_form'),
-                data = tab.order.getData();
-            form.loadRecord(tab.order);
-            form.down('datefield').setValue(new Date(data.date));
-        }
+        var panel = this.getPanel();
+        panel.add(tab);
+        panel.setActiveTab(tab);
+
+        var form = tab.down('contract_form'),
+            data = tab.contract.getData();
+
+        console.log(data)
+        form.loadRecord(tab.contract);
     },
+
     init: function () {
         this.control({
             'contract_general > contract_list': {
@@ -86,15 +87,13 @@ Ext.define('AM.controller.Contracts', {
                 'click': this.saveContract
             },
 
-            'contract_detail button[action=search_order]': {
+            'contract_search_panel button[action=search_contract]': {
                 'click': this.searchContract
             },
             '#J_ContractView': {
-                'click': this.actionContract('view')
+                'click': this.viewContract
             },
-            '#J_ContractEdit': {
-                click: this.actionContract('edit')
-            },
+
             '#J_ContractSearch': {
                 click: function () {
                     this.getSearchPanel().toggleCollapse();

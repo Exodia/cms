@@ -4,7 +4,7 @@ Ext.define('AM.view.contract.SearchList', {
     alias: 'widget.contract_search_list',
     onRender: function() {
         this.addDocked({
-            xtype: 'search_panel'
+            xtype: 'contract_search_panel'
         })
         this.callParent(arguments);
     }
