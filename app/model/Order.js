@@ -36,7 +36,7 @@ Ext.define('AM.model.Order', {
         associationKey: 'orderId',
         name: 'detail'
     }, {
-        model: 'AM.model.OrderDetail',
+        model: 'AM.model.HistoryDetail',
         foreignKey: 'orderId',
         associationKey: 'orderId',
         name: 'history'

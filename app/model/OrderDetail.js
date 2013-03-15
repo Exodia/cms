@@ -34,12 +34,12 @@ Ext.define('AM.model.OrderDetail', {
     belongsTo: 'AM.model.Order'
 });
 
-Ext.define('AM.model.historyDetail', {
+Ext.define('AM.model.HistoryDetail', {
     extend: 'AM.model.OrderDetail',
 
     proxy: {
         type: 'ajax',
-        api: AM.API['orderDetail'],
+        api: AM.API['historyDetail'],
         listeners: AM.ProxyListeners,
         filterParam: undefined,
         extraParams: {

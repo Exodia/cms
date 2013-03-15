@@ -3,10 +3,14 @@ AM.API = {
     changePwd: './data/fail.json',
     dataImport: './data/file.php',
     orderDetail: {
-        read: 'data/orderdetial/read.json'
+        read: 'data/orderdetail/read.php'
     },
+    historyDetail: {
+        read: 'data/orderdetail/read.php'
+    },
+
     contractDetial: {
-        read: 'data/orderdetial/read.json'
+        read: 'data/orderdetail/read.json'
     },
     order: {
         create: 'data/success.json',

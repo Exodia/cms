@@ -57,8 +57,7 @@ Ext.define('AM.view.order.AuditDetail', {
                         collapsible: true,
                         order: this.order,
                         params: {
-                            'orderId': this.order.get('id'),
-                            'history': true
+                            'orderId': this.order.get('id')
                         },
                         margin: '50 0 0'
                     }

@@ -12,11 +12,14 @@ Ext.define('AM.view.order.DetailList', {
 
         }
     },
+    initStore: function() {
+        this.store = this.order.detail();
+    },
 
     selType: 'cellmodel',
 
     initComponent: function () {
-        this.store = this.order.detail();
+        this.initStore();
 
         if (this.orderStatus === 'view' || this.orderStatus === 'edit') {
             this.store.load({
