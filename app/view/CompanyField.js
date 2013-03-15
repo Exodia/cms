@@ -7,7 +7,7 @@ Ext.define('AM.view.CompanyField', {
     displayField: 'companyName',
     store: Ext.create('Ext.data.Store', {
         fields:['companyName'],
-        proxy: AM.createProxy('custom'),
+        proxy: AM.createProxy('company'),
         reader: AM.Reader,
         writer: AM.Writer
     })

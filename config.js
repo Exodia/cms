@@ -37,6 +37,12 @@ AM.API = {
         destroy: 'data/success.json'
 
     },
+    company: {
+        create: 'data/success.json',
+        read: 'data/custom/read.json',
+        update: 'data/success.json',
+        destroy: 'data/success.json'
+    },
     material:  {
         create: 'data/material/create.json',
         read: 'data/material/read.json',
