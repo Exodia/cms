@@ -12,7 +12,7 @@ Ext.define('AM.view.order.DetailList', {
 
         }
     },
-    initStore: function() {
+    initStore: function () {
         this.store = this.order.detail();
     },
 
@@ -75,7 +75,19 @@ Ext.define('AM.view.order.DetailList', {
                     name: 'amount'
                 },
                 flex: 0.5
-            },
+            }
+
+        ];
+
+        if (this.orderStatus === 'view') {
+            this.columns.push({
+                header: '剩余数量',
+                dataIndex: 'remainAmount',
+                width: 60
+            });
+        }
+
+        this.columns.push(
             {
                 header: '单价(元)',
                 dataIndex: 'unitPrice',
@@ -86,7 +98,7 @@ Ext.define('AM.view.order.DetailList', {
                     allowBlank: false,
                     name: 'unitPrice'
                 },
-                flex: 0.5
+                width: 60
             },
             {
                 header: '含税单价(元)',
@@ -122,10 +134,10 @@ Ext.define('AM.view.order.DetailList', {
 
                     return Ext.Date.format(new Date(v), 'Y年m月d日');
                 },
-                width: 140
+                width: 110
 
-            }
-        ];
+            });
+
         this.callParent(arguments);
     },
 

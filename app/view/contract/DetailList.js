@@ -81,7 +81,23 @@ Ext.define('AM.view.contract.DetailList', {
                     name: 'amount'
                 },
                 flex: 0.5
+            }
+        ];
+
+        this.contractStatus === 'add' && this.columns.push({
+            header: '剩余数量',
+            dataIndex: 'remianAmount',
+            editor: {
+                xtype: 'numberfield',
+                minValue: 1,
+                allowDecimals: false,
+                allowBlank: false,
+                name: 'remainAmount'
             },
+            width: 60
+        });
+
+        this.columns.push(
             {
                 header: '单价(元)',
                 dataIndex: 'unitPrice',
@@ -99,24 +115,25 @@ Ext.define('AM.view.contract.DetailList', {
                 dataIndex: 'unitTaxPrice',
                 renderer: this.self.floatRender,
                 width: 100
-            }
-        ];
+            })
         this.callParent(arguments);
     },
 
     onRender: function () {
         if (this.contractStatus === 'add') {
+
             this.addOrderBtn = new Ext.Button({
-                iconCls: 'icon-add',
+                scale: 'small',
                 handler: this.addContractItem,
-                text: '新增',
+                text: '添加订单',
+                cls: 'x-btn-default-small',
                 scope: this
             });
 
             this.delOrderBtn = new Ext.Button({
                 iconCls: 'icon-delete',
                 itemId: '',
-                handler: this.addContractItem,
+                handler: this.delContractItem,
                 text: '删除',
                 disabled: true,
                 scope: this
@@ -124,8 +141,20 @@ Ext.define('AM.view.contract.DetailList', {
 
             this.addDocked({
                 xtype: 'toolbar',
-                items: [this.addOrderBtn, this.delOrderBtn]
+                items: [
+                    {
+                        emptyText: '输入订单编号',
+                        padding: '0 5 0 15',
+                        itemId: 'J_OrderInput',
+                        xtype: 'textfield'
+                    },
+                    this.addOrderBtn,
+                    '-',
+                    this.delOrderBtn
+                ]
             });
+
+            this.orderInput = this.queryById('J_OrderInput');
 
             this.on('selectionchange', function (sm) {
                 var len = sm.getSelection().length;
@@ -175,9 +204,37 @@ Ext.define('AM.view.contract.DetailList', {
 
     addContractItem: function () {
         var store = this.getStore(),
-            record = store.add({})[0],
-            editor = this.editorPlugin;
-        editor.startEdit(record, this.columns[0]);
+            orderCode = this.orderInput.getValue();
+//            editor = this.editorPlugin;
+
+        if(store.findExact('orderCode', orderCode) !== -1) {
+            return;
+        }
+
+        Ext.Ajax.request({
+            url: AM.API['orderDetail'].read,
+            method: 'GET',
+            params: {
+                orderCode: orderCode
+            },
+            success: function (res) {
+                var obj = Ext.decode(res.responseText),
+                    success = obj.success;
+
+                if (!success) {
+                    AM.error('错误', obj.msg);
+                } else {
+                    this.store.add(obj.data);
+                }
+
+            },
+            failure: function () {
+                AM.error('错误');
+            },
+
+            scope: this
+        });
+
 
     },
     delContractItem: function () {

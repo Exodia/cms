@@ -35,27 +35,19 @@ Ext.define('AM.view.contract.Form', {
             {
                 name: 'type',
                 fieldLabel: '合同类别'
-            },
-            {
-                name: 'totalPrice',
-                fieldLabel: '合同总价',
-                disabled: this.contractStatus !== 'view'
-            },
-            {
-                name: 'taxTotalPrice',
-                fieldLabel: '合同总价(含税)',
-                disabled: this.contractStatus !== 'view'
             }
+
 
         ];
 
-        if(this.contractStatus !== 'add') {
-            this.items.unshift( {
+
+        if (this.contractStatus !== 'add') {
+            this.items.unshift({
                 fieldLabel: '合同流水号',
                 name: 'serialNumber',
                 allowBlank: false
             });
-            this.items.push( {
+            this.items.push({
                 fieldLabel: '经办日期',
                 name: 'dealTime',
                 editable: false,
@@ -66,6 +58,15 @@ Ext.define('AM.view.contract.Form', {
         }
 
         this.items.push({
+                name: 'totalPrice',
+                fieldLabel: '合同总价',
+                disabled: this.contractStatus !== 'view'
+            },
+            {
+                name: 'taxTotalPrice',
+                fieldLabel: '合同总价(含税)',
+                disabled: this.contractStatus !== 'view'
+            }, {
                 fieldLabel: '经办人',
                 disabled: this.contractStatus !== 'view',
                 name: 'salesManName'

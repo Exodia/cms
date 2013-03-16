@@ -14,7 +14,7 @@ Ext.define('AM.model.ContractDetail', {
     extend: 'Ext.data.Model',
     fields: [
         'id', 'orderCode', 'contractId', 'materialCode', 'materialName', 'type', 'unit',
-        'amount', 'unitPrice', 'unitTaxPrice'],
+        'amount', 'remainAmount', 'unitPrice', 'unitTaxPrice'],
 
     proxy: AM.createProxy('contractDetial'),
 

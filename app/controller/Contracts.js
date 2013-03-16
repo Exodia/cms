@@ -51,15 +51,31 @@ Ext.define('AM.controller.Contracts', {
         });
 
     },
-    saveContract: function () {
-
+    saveContract: function (btn) {
+        btn.setDisabled(true);
+        var form = btn.up('contract_detail').down('contract_form'),
+            record = form.contract,
+            values = form.getValues();
+        record.beginEdit();
+        record.set(values);
+        record.setDirty();
+        this.application.save(record, this, {
+            error: function () {
+                btn.setDisabled(false);
+            },
+            success: function () {
+                this.getStore('Contracts').reload();
+                btn.setText("已保存");
+                Ext.Msg.alert('注意', '合同保存成功！');
+            }
+        });
     },
     addContract: function () {
         var tab = Ext.widget('contract_detail', {
             title: '新增合同',
             contract: this.getModel('Contract').create({
                 salesManName: LoginUser.name,
-                salesManId : LoginUser.id
+                salesManId: LoginUser.id
             }),
             contractStatus: 'add'
         });
@@ -82,10 +98,7 @@ Ext.define('AM.controller.Contracts', {
         panel.add(tab);
         panel.setActiveTab(tab);
 
-        var form = tab.down('contract_form'),
-            data = tab.contract.getData();
-
-        form.loadRecord(tab.contract);
+        tab.down('contract_form').loadRecord(tab.contract);
     },
 
     init: function () {

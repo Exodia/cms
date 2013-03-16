@@ -19,6 +19,16 @@ Ext.define('AM.view.contract.Detail', {
             region: 'center'
         }];
 
+        if(this.contractStatus == 'add') {
+            this.items.push({
+                region: 'south',
+                buttons:[{
+                    text: '保存',
+                    action: 'add_save'
+                }]
+            });
+        }
+
         this.callParent(arguments);
     }
 });

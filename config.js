@@ -91,7 +91,7 @@ AM.ContractStatus = [
 AM.error = function (title, msg, fn, scope) {
     Ext.Msg.show({
         title: title,
-        msg: msg,
+        msg: msg || '操作失败，请重试！',
         fn: fn,
         scope: scope,
         buttons: Ext.MessageBox.OK,

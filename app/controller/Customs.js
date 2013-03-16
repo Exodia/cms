@@ -95,7 +95,9 @@ Ext.define('AM.controller.Customs', {
     },
 
     editCustom:function () {
-        var view = Ext.widget('custom_edit'),
+        var view = Ext.widget('custom_edit', {
+                status: 'edit'
+            }),
             form =  view.down('form');
         record = this.getList().getSelectionModel().getSelection()[0];
 
