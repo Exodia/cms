@@ -55,7 +55,20 @@ Ext.define('AM.controller.Contracts', {
 
     },
     addContract: function () {
+        var tab = Ext.widget('contract_detail', {
+            title: '新增合同',
+            contract: this.getModel('Contract').create({
+                salesManName: LoginUser.name,
+                salesManId : LoginUser.id
+            }),
+            contractStatus: 'add'
+        });
 
+        var panel = this.getPanel();
+        panel.add(tab);
+        panel.setActiveTab(tab);
+
+        tab.down('contract_form').loadRecord(tab.contract);
     },
 
     viewContract: function () {

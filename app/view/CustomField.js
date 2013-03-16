@@ -10,7 +10,7 @@ Ext.define('AM.view.CustomField', {
     listeners: {
         select: function(combo, records) {
             var id = records[0].get('id'),
-                form = combo.up('order_form'),
+                form = combo.up('form'),
                 idField = form.getForm().findField('customId');
             idField.setValue(id);
         }

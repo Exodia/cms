@@ -23,18 +23,14 @@ Ext.define('AM.view.contract.Form', {
 
         this.items = [
             {
-                fieldLabel: '合同流水号',
-                name: 'serialNumber',
-                allowBlank: false
-            },
-            {
                 fieldLabel: '合同号',
                 name: 'codeNumber'
             },
             {
                 name: 'company',
                 xtype: this.contractStatus === 'add' ? 'custom_field' : 'textfield',
-                fieldLabel: '合同对方'
+                fieldLabel: '合同对方',
+                allowBlank: false
             },
             {
                 name: 'type',
@@ -42,21 +38,34 @@ Ext.define('AM.view.contract.Form', {
             },
             {
                 name: 'totalPrice',
-                fieldLabel: '合同总价'
+                fieldLabel: '合同总价',
+                disabled: this.contractStatus !== 'view'
             },
             {
                 name: 'taxTotalPrice',
-                fieldLabel: '合同总价(含税)'
-            },
-            {
+                fieldLabel: '合同总价(含税)',
+                disabled: this.contractStatus !== 'view'
+            }
+
+        ];
+
+        if(this.contractStatus !== 'add') {
+            this.items.unshift( {
+                fieldLabel: '合同流水号',
+                name: 'serialNumber',
+                allowBlank: false
+            });
+            this.items.push( {
                 fieldLabel: '经办日期',
                 name: 'dealTime',
                 editable: false,
                 format: 'Y年m月d日',
                 submitFormat: 'Y-m-d',
                 xtype: 'datefield'
-            },
-            {
+            });
+        }
+
+        this.items.push({
                 fieldLabel: '经办人',
                 disabled: this.contractStatus !== 'view',
                 name: 'salesManName'
@@ -68,9 +77,7 @@ Ext.define('AM.view.contract.Form', {
             {
                 name: 'customId',
                 xtype: 'hidden_field'
-            }
-
-        ];
+            });
 
         this.callParent(arguments);
     }
