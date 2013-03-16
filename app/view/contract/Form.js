@@ -27,7 +27,7 @@ Ext.define('AM.view.contract.Form', {
                 name: 'codeNumber'
             },
             {
-                name: 'company',
+                name: 'companyName',
                 xtype: this.contractStatus === 'add' ? 'custom_field' : 'textfield',
                 fieldLabel: '合同对方',
                 allowBlank: false

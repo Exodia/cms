@@ -1,7 +1,7 @@
 //编号、客户、流水号、合同总价、合同总价（含税）、是否归档、已开票金额
 Ext.define('AM.model.Contract', {
     extend: 'Ext.data.Model',
-    fields: ['id', 'codeNumber',  'customId', 'company', 'serialNumber', 'type', 'salesManId',
+    fields: ['id', 'codeNumber',  'customId', 'companyName', 'serialNumber', 'type', 'salesManId',
         'salesManName', 'totalPrice', 'taxTotalPrice', 'status', 'computedPrice',
         {
             name: 'dealTime',
