@@ -27,7 +27,8 @@ Ext.define('AM.controller.AuditContracts', {
     auditContract: function (btn) {
 
         var tab = Ext.widget('contract_audit_detail', {
-            contract: this.getList().getSelectionModel().getSelection()[0]
+            contract: this.getList().getSelectionModel().getSelection()[0],
+            contractStatus: 'view'
         });
         var panel = this.getPanel();
         panel.add(tab);
@@ -42,17 +43,18 @@ Ext.define('AM.controller.AuditContracts', {
             '确定要执行<b style="color:red">审核不通过</b>操作？';
 
         return function (btn) {
-            var contract = btn.up('contract_audit_detail').contract;
+            var tab =  btn.up('contract_audit_detail'),
+                contract = tab.contract;
             this.application.confirm('注意', msg, function (btnId) {
                 if (btnId === 'ok') {
                     contract.beginEdit();
                     contract.set('status', status);
-                    this.saveAudit(contract);
+                    this.saveAudit(contract, tab);
                 }
             }, this);
         };
     },
-    saveAudit: function(contract) {
+    saveAudit: function(contract, tab) {
         contract.save({
             params:{
                 audit: true
@@ -62,6 +64,8 @@ Ext.define('AM.controller.AuditContracts', {
             },
             success: function(record) {
                 record.endEdit();
+                Ext.Msg.alert('注意！', '操作成功！');
+                tab.close();
             }
         });
     },

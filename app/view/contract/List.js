@@ -10,7 +10,7 @@ Ext.define('AM.view.contract.List', {
         {header: '合同总价', dataIndex: 'totalPrice', flex: 1},
         {header: '合同总价(含税)', dataIndex: 'taxTotalPrice', flex: 1},
         {header: '合同状态', dataIndex: 'status', width: 60, renderer: function (v) {
-            return ['待审核', '审核通过', '审核不通过', '已归档'][v];
+            return AM.ContractStatus[v];
         }},
         {header: '已开票金额', dataIndex: 'computedPrice', flex: 1},
         {header: '经办日期', dataIndex: 'dealTime', flex: 1, renderer: function (v) {

@@ -19,7 +19,6 @@ Ext.define('AM.view.contract.DetailList', {
 
     initComponent: function () {
         this.store = this.contract.detail();
-        this.store.group('orderCode');
         if (this.contractStatus === 'view') {
             this.store.load({
                 params: {
@@ -35,7 +34,7 @@ Ext.define('AM.view.contract.DetailList', {
             this.plugins = [this.editorPlugin];
         }
 
-
+        this.store.group('orderCode');
         this.columns = [
             {
                 header: "订单编号",
@@ -162,7 +161,7 @@ Ext.define('AM.view.contract.DetailList', {
                     var amount = record.get('amount'),
                         unit_price = record.get('unitPrice');
 
-                    if (typeof unit_price == 'number') {
+                    if (typeof unit_price === 'number') {
                         record.set('unitTaxPrice', unit_price * (this.self.TAX + 1));
                         amount && amount > 0 && this.setPrice(record);
                     }

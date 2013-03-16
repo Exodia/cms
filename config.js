@@ -81,7 +81,12 @@ AM.OrderStatus = [
     '取消',
     '已绑定'
 ];
-
+AM.ContractStatus = [
+    '<font color="#1e90ff">待审核</font>',
+    '<font color="green">审核通过</font>',
+    '<font color="red">审核未通过</font>',
+    '<font color="#9acd32">已归档</font>'
+];
 
 AM.error = function (title, msg, fn, scope) {
     Ext.Msg.show({
@@ -100,11 +105,12 @@ AM.error = function (title, msg, fn, scope) {
 AM.createProxy = function(apiType) {
     return {
         type: 'ajax',
+        filterParam: undefined,
         api: AM.API[apiType],
         listeners: AM.ProxyListeners,
         reader: AM.Reader,
         writer: AM.Writer
-    }
+    };
 };
 
 AM.ProxyListeners = {

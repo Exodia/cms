@@ -44,17 +44,19 @@ Ext.define('AM.controller.AuditOrders', {
             '确定要执行<b style="color:red">审核不通过</b>操作？';
 
         return function (btn) {
-            var order = btn.up('order_audit_detail').order;
+            var tab =  btn.up('order_audit_detail'),
+                order = tab.order;
+
             this.application.confirm('注意', msg, function (btnId) {
                 if (btnId === 'ok') {
                     order.beginEdit();
                     order.set('status', status);
-                    this.saveAudit(order);
+                    this.saveAudit(order, tab);
                 }
             }, this);
         };
     },
-    saveAudit: function(order) {
+    saveAudit: function(order, tab) {
       order.save({
           params:{
               audit: true
@@ -64,7 +66,9 @@ Ext.define('AM.controller.AuditOrders', {
           },
           success: function(record) {
               record.endEdit();
-          }
+              tab.close();
+          },
+          scope: this
       });
     },
     init: function () {

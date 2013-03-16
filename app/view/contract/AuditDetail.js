@@ -39,11 +39,12 @@ Ext.define('AM.view.contract.AuditDetail', {
                 ],
                 items: [
                     {
-                        xtype: 'contract_list',
+                        xtype: 'contract_detail_list',
                         flex: 1,
                         collapsible: true,
                         title: '合同当前详情',
                         contract: this.contract,
+                        contractStatus: this.contractStatus,
                         params: {
                             'contractId': this.contract.get('id')
                         },
