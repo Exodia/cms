@@ -46,13 +46,13 @@ Ext.define('AM.controller.AuditOrders', {
         return function (btn) {
             var order = btn.up('order_audit_detail').order;
             this.application.confirm('注意', msg, function (btnId) {
-                if (btnId == 'ok') {
+                if (btnId === 'ok') {
                     order.beginEdit();
                     order.set('status', status);
                     this.saveAudit(order);
                 }
             }, this);
-        }
+        };
     },
     saveAudit: function(order) {
       order.save({
@@ -65,7 +65,7 @@ Ext.define('AM.controller.AuditOrders', {
           success: function(record) {
               record.endEdit();
           }
-      })
+      });
     },
     init: function () {
         this.control({

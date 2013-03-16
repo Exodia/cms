@@ -45,6 +45,8 @@ Ext.define('AM.view.contract.SearchPanel', {
     },{
         fieldLabel: '经办日期',
         xtype: 'datefield',
+        format: 'Y年m月d日',
+        submitFormat: 'Y-m-d',
         editable: false,
         name: 'dealTime'
     }, {

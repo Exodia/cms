@@ -13,7 +13,7 @@ Ext.define('AM.view.contract.AuditDetail', {
             {
                 xtype: 'contract_form',
                 contract: this.contract,
-                orderStatus: 'view',
+                contractStatus: 'view',
                 resizable: true,
                 region: 'west'
             },

@@ -53,6 +53,7 @@ Ext.application({
         'Orders',
         'AuditOrders',
         'Contracts',
+        'AuditContracts',
         'Customs'
 //        'Transports'
     ],
