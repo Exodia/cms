@@ -10,7 +10,7 @@ AM.API = {
     },
 
     contractDetial: {
-        read: 'data/orderdetail/read.json'
+        read: 'data/contractdetail/read.json'
     },
     order: {
         create: 'data/success.json',
@@ -31,7 +31,7 @@ AM.API = {
         destroy: 'data/user/destroyUsers.json'
     },
     custom: {
-        create: 'data/success.json',
+        create: 'data/fail.json',
         read: 'data/custom/read.json',
         update: 'data/success.json',
         destroy: 'data/success.json'

@@ -6,7 +6,8 @@ Ext.define('AM.controller.Contracts', {
         'contract.List'
     ],
     stores: [
-        'Contracts'
+        'Contracts',
+        'AuditContracts'
     ],
     models: ['Contract', 'ContractDetail'],
 
@@ -71,7 +72,6 @@ Ext.define('AM.controller.Contracts', {
         var form = tab.down('contract_form'),
             data = tab.contract.getData();
 
-        console.log(data)
         form.loadRecord(tab.contract);
     },
 

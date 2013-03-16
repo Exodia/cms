@@ -11,12 +11,15 @@ Ext.define('AM.view.contract.DetailList', {
 
         }
     },
+    features: [
+        {ftype: 'grouping'}
+    ],
 
     selType: 'cellmodel',
 
     initComponent: function () {
         this.store = this.contract.detail();
-
+        this.store.group('orderCode');
         if (this.contractStatus === 'view') {
             this.store.load({
                 params: {
@@ -34,6 +37,15 @@ Ext.define('AM.view.contract.DetailList', {
 
 
         this.columns = [
+            {
+                header: "订单编号",
+                dataIndex: 'orderCode',
+                editor: {
+                    allowBlank: false,
+                    xtype: 'textfield',
+                    name: 'orderCode'
+                }
+            },
             {
                 header: '物质编码',
                 dataIndex: 'materialCode',
