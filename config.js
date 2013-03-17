@@ -59,10 +59,10 @@ AM.API = {
         destroy: 'data/contract/destroy.json'
     },
     invoice: {
-        create: 'data/contract/create.json',
-        read: 'data/contract/read.json',
-        update: 'data/contract/update.json',
-        destroy: 'data/contract/destroy.json'
+        create: 'data/invoice/create.json',
+        read: 'data/invoice/read.json',
+        update: 'data/invoice/update.json',
+        destroy: 'data/invoice/destroy.json'
     }
 };
 
@@ -103,6 +103,9 @@ AM.floatRender = function (v) {
     }
     return '';
 
+};
+AM.dateRender = function(v) {
+    return Ext.Date.format(v, 'Y年m月d日');
 };
 
 

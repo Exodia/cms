@@ -1,7 +1,7 @@
 Ext.define('AM.controller.Invoices', {
     extend: 'Ext.app.Controller',
     views: [
-
+       'invoice.Detail'
     ],
     stores: [
         'Invoices',
@@ -23,10 +23,7 @@ Ext.define('AM.controller.Invoices', {
             ref: 'searchPanel',
             selector: 'invoice_search_panel'
         },
-        {
-            ref: 'fileButton',
-            selector: '#J_InvoiceFile'
-        },
+
         {
             ref: 'addButton',
             selector: '#J_InvoiceAdd'
@@ -40,7 +37,6 @@ Ext.define('AM.controller.Invoices', {
     checkEnable: function (sm, rec) {
         var len = rec.length;
         this.getViewButton().setDisabled(len !== 1);
-        this.getFileButton().setDisabled(len !== 1 || rec[0].get('status') !== 1);
     },
 
     searchInvoice: function (btn) {
@@ -77,7 +73,7 @@ Ext.define('AM.controller.Invoices', {
     },
     addInvoice: function () {
         var tab = Ext.widget('invoice_detail', {
-            title: '新增合同',
+            title: '新增发票',
             invoice: this.getModel('Invoice').create({
                 salesManName: LoginUser.name,
                 salesManId: LoginUser.id

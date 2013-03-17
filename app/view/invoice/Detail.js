@@ -1,25 +1,25 @@
-Ext.define('AM.view.contract.Detail', {
+Ext.define('AM.view.invoice.Detail', {
     extend:'Ext.panel.Panel',
-    alias: 'widget.contract_detail',
-    requires:['AM.view.contract.DetailList', 'AM.view.contract.Form'],
+    alias: 'widget.invoice_detail',
+    requires:['AM.view.invoice.DetailList', 'AM.view.invoice.Form'],
     title:'合同详情',
     closable: true,
     layout: 'border',
     initComponent: function() {
         this.items = [{
-            xtype: 'contract_form',
-            contract: this.contract,
-            contractStatus: this.contractStatus,
+            xtype: 'invoice_form',
+            invoice: this.invoice,
+            invoiceStatus: this.invoiceStatus,
             resizable: true,
             region: 'west'
         },{
-            xtype:'contract_detail_list',
-            contractStatus: this.contractStatus,
-            contract: this.contract,
+            xtype:'invoice_detail_list',
+            invoiceStatus: this.invoiceStatus,
+            invoice: this.invoice,
             region: 'center'
         }];
 
-        if(this.contractStatus == 'add') {
+        if(this.invoiceStatus == 'add') {
             this.items.push({
                 region: 'south',
                 buttons:[{

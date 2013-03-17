@@ -1,6 +1,6 @@
-Ext.define('AM.view.contract.DetailList', {
+Ext.define('AM.view.invoice.DetailList', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.contract_detail_list',
+    alias: 'widget.invoice_detail_list',
 
     features: [
         {ftype: 'grouping'}
@@ -9,11 +9,11 @@ Ext.define('AM.view.contract.DetailList', {
     selType: 'cellmodel',
 
     initComponent: function () {
-        this.store = this.contract.detail();
-        if (this.contractStatus === 'view') {
+        this.store = this.invoice.detail();
+        if (this.invoiceStatus === 'view') {
             this.store.load({
                 params: {
-                    'contractId': this.contract.get('id')
+                    'invoiceId': this.invoice.get('id')
                 }
             });
         } else {
@@ -77,7 +77,7 @@ Ext.define('AM.view.contract.DetailList', {
 
         ];
 
-        if (this.contractStatus === 'add') {
+        if (this.invoiceStatus === 'add') {
             this.columns.push({
                 header: '剩余数量',
                 dataIndex: 'remainAmount',
@@ -88,7 +88,7 @@ Ext.define('AM.view.contract.DetailList', {
 
         this.columns.push({
             header: '合同已选数量',
-            dataIndex: 'contractAmount',
+            dataIndex: 'invoiceAmount',
 
             flex: 0.5,
             editor: {
@@ -96,7 +96,7 @@ Ext.define('AM.view.contract.DetailList', {
                 minValue: 1,
                 allowDecimals: false,
                 allowBlank: false,
-                name: 'contractAmount'
+                name: 'invoiceAmount'
             }
         });
 
@@ -104,57 +104,7 @@ Ext.define('AM.view.contract.DetailList', {
         this.callParent(arguments);
     },
 
-    onRender: function () {
-        if (this.contractStatus === 'add') {
-
-            this.addOrderBtn = new Ext.Button({
-                scale: 'small',
-                handler: this.addContractItem,
-                text: '添加订单',
-                cls: 'x-btn-default-small',
-                scope: this
-            });
-
-            this.delOrderBtn = new Ext.Button({
-                iconCls: 'icon-delete',
-                itemId: '',
-                handler: this.delContractItem,
-                text: '删除',
-                disabled: true,
-                scope: this
-            });
-
-            this.addDocked({
-                xtype: 'toolbar',
-                items: [
-                    {
-                        emptyText: '输入订单编号',
-                        padding: '0 5 0 15',
-                        itemId: 'J_OrderInput',
-                        xtype: 'textfield'
-                    },
-                    this.addOrderBtn,
-                    '-',
-                    this.delOrderBtn
-                ]
-            });
-
-            this.orderInput = this.queryById('J_OrderInput');
-
-            this.on('selectionchange', function (sm) {
-                var len = sm.getSelection().length;
-                this.delOrderBtn.setDisabled(len == 0);
-
-            });
-
-        }
-
-
-        this.callParent(arguments);
-    },
-
-
-    addContractItem: function () {
+    addInvoiceItem: function () {
         var store = this.getStore(),
             orderCode = this.orderInput.getValue();
 
@@ -187,7 +137,7 @@ Ext.define('AM.view.contract.DetailList', {
 
 
     },
-    delContractItem: function () {
+    delInvoiceItem: function () {
         var store = this.getStore(),
             record = this.getSelectionModel().getSelection()[0];
 

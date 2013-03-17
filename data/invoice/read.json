@@ -1,0 +1,56 @@
+{
+    "success": true,
+    "total": 100,
+    "data": [
+        {
+            "id": 1,
+            "invoiceCode": "121212",
+            "contractCode": "12121212",
+            "salesManId": 1,
+            "salesManName": "xxxx",
+            "companyName": "南车洛阳机车有限公司",
+            "invoiceDate": "2013-10-10",
+            "invoiceMoney": 1212.00
+        },
+        {
+            "id": 2,
+            "invoiceCode": "121212",
+            "contractCode": "12121212",
+            "salesManId": 1,
+            "salesManName": "xxxx",
+            "companyName": "南车洛阳机车有限公司",
+            "invoiceDate": "2013-10-10",
+            "invoiceMoney": 1212.00
+        },
+        {
+            "id": 3,
+            "invoiceCode": "121212",
+            "contractCode": "12121212",
+            "salesManId": 1,
+            "salesManName": "xxxx",
+            "companyName": "南车洛阳机车有限公司",
+            "invoiceDate": "2013-10-10",
+            "invoiceMoney": 1212.00
+        },
+        {
+            "id": 4,
+            "invoiceCode": "121212",
+            "contractCode": "12121212",
+            "salesManId": 1,
+            "salesManName": "xxxx",
+            "companyName": "南车洛阳机车有限公司",
+            "invoiceDate": "2013-10-10",
+            "invoiceMoney": 1212.00
+        },
+        {
+            "id": 5,
+            "invoiceCode": "121212",
+            "contractCode": "12121212",
+            "salesManId": 1,
+            "salesManName": "xxxx",
+            "companyName": "南车洛阳机车有限公司",
+            "invoiceDate": "2013-10-10",
+            "invoiceMoney": 1212.00
+        }
+    ]
+}

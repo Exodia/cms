@@ -38,7 +38,7 @@ Ext.define('AM.view.invoice.SearchPanel', {
             name: 'endDate'
         },
         {
-            name: 'salesMan',
+            name: 'salesManName',
             fieldLabel: '开票人'
         },
         {
@@ -48,7 +48,7 @@ Ext.define('AM.view.invoice.SearchPanel', {
         },
         {
             name: 'contractCode',
-            fieldLabel: '合同号'
+            fieldLabel: '对应合同号'
         },
         {
             name: 'customId',

@@ -1,24 +1,15 @@
 Ext.define('AM.view.invoice.List', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.invoice_list',
-    store: 'Contracts',
+    store: 'Invoices',
     flex: 1,
     columns: [
-        {header: '合同编号', dataIndex: 'codeNumber', flex: 1},
-        {header: '合同对方', dataIndex: 'company', flex: 1},
-        {header: '合同流水号', dataIndex: 'serialNumber', flex: 1},
-        {header: '合同总价', dataIndex: 'totalPrice', flex: 1},
-        {header: '合同总价(含税)', dataIndex: 'taxTotalPrice', flex: 1},
-        {header: '合同状态', dataIndex: 'status', width: 60, renderer: function (v) {
-            return AM.ContractStatus[v];
-        }},
-        {header: '已开票金额', dataIndex: 'computedPrice', flex: 1},
-        {header: '经办日期', dataIndex: 'dealTime', flex: 1, renderer: function (v) {
-            if (!v) {
-                return '';
-            }
-            return Ext.Date.format(new Date(v), 'Y年m月d日');
-        }}
+        {header: '发票编号', dataIndex: 'invoiceCode', flex: 1},
+        {header: '开票日期', dataIndex: 'invoiceDate', width: 100, renderer: AM.dateRender},
+        {header: '开票人', dataIndex: 'salesManName', width:50},
+        {header: '购货单位', dataIndex: 'companyName', flex: 1},
+        {header: '对应合同号', dataIndex: 'contractCode', flex: 1},
+        {header: '发票金额', dataIndex: 'invoiceMoney', flex: 1}
     ],
     initComponent: function () {
         this.dockedItems = [
