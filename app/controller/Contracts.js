@@ -117,15 +117,27 @@ Ext.define('AM.controller.Contracts', {
             if (btnId === 'ok') {
                 rec.beginEdit();
                 rec.set('status', 3);
-                this.application.save(rec, this, {
-                    success: function() {
-                        this.getFileButton().setDisabled(true);
-                    }
-                });
+                this.saveFile(rec);
             }
         }, this);
 
     },
+
+    saveFile: function (contract) {
+        contract.save({
+            params:{
+                store: true
+            },
+            failure: function(record) {
+                record.cancelEdit();
+            },
+            success: function(record) {
+                record.endEdit();
+                Ext.Msg.alert('注意！', '操作成功！');
+            }
+        });
+    },
+
 
     setFormPrice: function(grid) {
         var totalPrice = 0;

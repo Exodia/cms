@@ -32,6 +32,7 @@ Ext.define('AM.view.custom.Edit', {
                         xtype: 'company_field',
                         forceSelection: false,
                         disabled: this.status === 'edit',
+                        listeners: null,
                         fieldLabel:'企业名称'
                     },
                     {
