@@ -1,9 +1,9 @@
 Ext.define('AM.view.contract.SearchPanel', {
-    extend:'Ext.form.Panel',
-    alias:'widget.contract_search_panel',
-    border:false,
+    extend: 'Ext.form.Panel',
+    alias: 'widget.contract_search_panel',
+    border: false,
     style: {
-      borderRadius: 'none'
+        borderRadius: 'none'
     },
     autoScroll: true,
     collapsible: true,
@@ -14,47 +14,59 @@ Ext.define('AM.view.contract.SearchPanel', {
     width: 200,
     dock: 'left',
     defaults: {
-       labelAlign: 'top',
-       xtype: 'textfield',
-       padding: 10,
-       width:170
+        labelAlign: 'top',
+        xtype: 'textfield',
+        padding: 10,
+        width: 170
     },
-    items: [{
-        fieldLabel: '合同号',
-        name: 'contractCode'
-    },{
-        fieldLabel: '流水号',
-        name: 'serialNumber'
-    }, {
-        fieldLabel: '合同状态',
-        name: 'status',
-        xtype: 'combo',
-        queryMode: 'local',
-        editable: false,
-        forceSelection: true,
-        valueField: 'id',
-        store:Ext.create('Ext.data.Store', {
-            fields:['id', 'text'],
-            data:[
-                {id:0, text:'待审核'},
-                {id:1, text:'审核通过'},
-                {id:2, text:'审核不通过'},
-                {id:3, text:'已归档'}
-            ]
-        })
-    },{
-        fieldLabel: '经办日期',
-        xtype: 'datefield',
-        format: 'Y年m月d日',
-        submitFormat: 'Y-m-d',
-        editable: false,
-        name: 'dealTime'
-    }, {
-        text: '查询',
-        xtype: 'button',
-        margin: 40,
-        width: 100,
-        height: 35,
-        action: 'search_contract'
-    }]
+    items: [
+        {
+            fieldLabel: '合同号',
+            name: 'contractCode'
+        },
+        {
+            fieldLabel: '流水号',
+            name: 'serialNumber'
+        },
+        {
+            name: 'companyName',
+            xtype: 'company_field',
+            fieldLabel: '合同对方'
+        },
+
+        {
+            fieldLabel: '合同状态',
+            name: 'status',
+            xtype: 'combo',
+            queryMode: 'local',
+            editable: false,
+            forceSelection: true,
+            valueField: 'id',
+            store: Ext.create('Ext.data.Store', {
+                fields: ['id', 'text'],
+                data: [
+                    {id: 0, text: '待审核'},
+                    {id: 1, text: '审核通过'},
+                    {id: 2, text: '审核不通过'},
+                    {id: 3, text: '已归档'}
+                ]
+            })
+        },
+        {
+            fieldLabel: '经办日期',
+            xtype: 'datefield',
+            format: 'Y年m月d日',
+            submitFormat: 'Y-m-d',
+            editable: false,
+            name: 'dealTime'
+        },
+        {
+            text: '查询',
+            xtype: 'button',
+            margin: 40,
+            width: 100,
+            height: 35,
+            action: 'search_contract'
+        }
+    ]
 });

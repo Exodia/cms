@@ -62,7 +62,7 @@ Ext.define('AM.view.contract.DetailList', {
                 renderer: AM.floatRender,
                 editor: {
                     xtype: 'numberfield',
-                    minValue: 1,
+                    minValue: 0,
                     allowBlank: false,
                     name: 'unitPrice'
                 },
@@ -93,7 +93,7 @@ Ext.define('AM.view.contract.DetailList', {
             flex: 0.5,
             editor: {
                 xtype: 'numberfield',
-                minValue: 0,
+                minValue: 1,
                 allowDecimals: false,
                 allowBlank: false,
                 name: 'contractAmount'

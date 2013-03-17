@@ -1,6 +1,6 @@
 Ext.define('AM.view.contract.Form', {
     extend: 'Ext.form.Panel',
-    requires: ['AM.view.CustomField', 'AM.view.HiddenField'],
+    requires: ['AM.view.CompanyField', 'AM.view.HiddenField'],
     alias: 'widget.contract_form',
     layout: 'border',
     collapsible: true,
@@ -28,7 +28,7 @@ Ext.define('AM.view.contract.Form', {
             },
             {
                 name: 'companyName',
-                xtype: this.contractStatus === 'add' ? 'custom_field' : 'textfield',
+                xtype: this.contractStatus === 'add' ? 'company_field' : 'textfield',
                 fieldLabel: '合同对方',
                 allowBlank: false
             },

@@ -59,6 +59,7 @@ Ext.define('AM.controller.Contracts', {
             values = form.getValues();
         if(!form.getForm().isValid()) {
             AM.error('错误', '数据有误,请检查!');
+            btn.setDisabled(false);
             return;
         }
 
