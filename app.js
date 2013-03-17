@@ -38,10 +38,9 @@ Ext.require('Ext.data.writer.Json', function () {
 Ext.application({
     requires: ['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
         'AM.view.NavBar', 'AM.view.user.Panel', 'AM.view.order.Panel', 'AM.view.custom.Panel',
-        'AM.view.contract.Panel',
+        'AM.view.contract.Panel',  'AM.view.invoice.Panel',
         'AM.view.datamgr.Panel'
-        /*, 'AM.view.contract.Panel',*/
-        /*   'AM.view.transport.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
+        /*   'AM.view.transport.Panel',  'AM.view.composite.Panel',
          'AM.view.composite.Panel', , 'AM.view.datamgr.Panel'*/
     ],
     name: 'AM',
@@ -54,6 +53,7 @@ Ext.application({
         'AuditOrders',
         'Contracts',
         'AuditContracts',
+        'Invoices',
         'Customs'
 //        'Transports'
     ],
@@ -166,7 +166,7 @@ Ext.application({
                                     title: '发票管理',
                                     iconCls: 'x-icon-invoices',
                                     style: 'padding:5px;',
-                                    xtype: 'panel'
+                                    xtype: 'invoice_panel'
                                 }
                             ]
                         },

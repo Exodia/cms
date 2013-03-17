@@ -12,6 +12,9 @@ AM.API = {
     contractDetial: {
         read: 'data/contractdetail/read.json'
     },
+    invoiceDetial: {
+        read: 'data/contractdetail/read.json'
+    },
     order: {
         create: 'data/success.json',
         read: 'data/order/read.json',
@@ -50,6 +53,12 @@ AM.API = {
         destroy: 'data/material/destroy.json'
     },
     contract: {
+        create: 'data/contract/create.json',
+        read: 'data/contract/read.json',
+        update: 'data/contract/update.json',
+        destroy: 'data/contract/destroy.json'
+    },
+    invoice: {
         create: 'data/contract/create.json',
         read: 'data/contract/read.json',
         update: 'data/contract/update.json',
