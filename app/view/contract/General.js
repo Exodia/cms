@@ -32,7 +32,16 @@ Ext.define('AM.view.contract.General', {
                     iconCls: 'icon-edit',
                     disabled: true
                 },
+
                 '-',
+                {
+                    text: '归档',
+                    itemId: 'J_ContractFile',
+                    disabled: true
+                },
+
+                '-',
+
                 {
                     text: '查询合同',
                     itemId: 'J_ContractSearch'

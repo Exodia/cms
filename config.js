@@ -43,7 +43,7 @@ AM.API = {
         update: 'data/success.json',
         destroy: 'data/success.json'
     },
-    material:  {
+    material: {
         create: 'data/material/create.json',
         read: 'data/material/read.json',
         update: 'data/material/update.json',
@@ -87,6 +87,15 @@ AM.ContractStatus = [
     '<font color="red">审核未通过</font>',
     '<font color="#9acd32">已归档</font>'
 ];
+AM.TAX = 0.17;
+AM.floatRender = function (v) {
+    if (typeof v == 'number') {
+        return v.toFixed(2);
+    }
+    return '';
+
+};
+
 
 AM.error = function (title, msg, fn, scope) {
     Ext.Msg.show({
@@ -102,7 +111,7 @@ AM.error = function (title, msg, fn, scope) {
     });
 };
 
-AM.createProxy = function(apiType) {
+AM.createProxy = function (apiType) {
     return {
         type: 'ajax',
         filterParam: undefined,
@@ -114,9 +123,9 @@ AM.createProxy = function(apiType) {
 };
 
 AM.ProxyListeners = {
-    exception: function(proxy, res) {
+    exception: function (proxy, res) {
         var msg = '';
-        if(res.responseText) {
+        if (res.responseText) {
             msg = Ext.JSON.decode(res.responseText).msg;
         }
         AM.error('操作失败', msg);

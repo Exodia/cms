@@ -10,7 +10,7 @@
             "materialName": "物料名称222",
             "type": "啊啊是",
             "unit": "单位",
-            "amount": 300,
+            "contractAmount": 300,
             "unitPrice": 12.11,
             "unitTaxPrice": 1212
         },
@@ -22,7 +22,7 @@
             "materialName": "物料名称222",
             "type": "啊啊是",
             "unit": "单位",
-            "amount": 300,
+            "contractAmount": 300,
             "unitPrice": 12.11,
             "unitTaxPrice": 1212
         },
@@ -34,7 +34,7 @@
             "materialName": "物料名称222",
             "type": "啊啊是",
             "unit": "单位",
-            "amount": 300,
+            "contractAmount": 300,
             "unitPrice": 12.11,
             "unitTaxPrice": 1212
         },
@@ -46,7 +46,7 @@
             "materialName": "物料名称222",
             "type": "啊啊是",
             "unit": "单位",
-            "amount": 300,
+            "contractAmount": 300,
             "unitPrice": 12.11,
             "unitTaxPrice": 1212
         },
@@ -58,7 +58,7 @@
             "materialName": "物料名称222",
             "type": "啊啊是",
             "unit": "单位",
-            "amount": 300,
+            "contractAmount": 300,
             "unitPrice": 12.11,
             "unitTaxPrice": 1212
         }

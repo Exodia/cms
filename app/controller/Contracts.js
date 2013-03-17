@@ -26,8 +26,8 @@ Ext.define('AM.controller.Contracts', {
             selector: 'contract_search_panel'
         },
         {
-            ref: 'editButton',
-            selector: '#J_ContractEdit'
+            ref: 'fileButton',
+            selector: '#J_ContractFile'
         },
         {
             ref: 'addButton',
@@ -39,9 +39,10 @@ Ext.define('AM.controller.Contracts', {
         }
     ],
 
-    checkEnable: function (sm) {
-        var len = sm.getSelection().length;
+    checkEnable: function (sm, rec) {
+        var len = rec.length;
         this.getViewButton().setDisabled(len !== 1);
+        this.getFileButton().setDisabled(len !== 1 || rec[0].get('status') !== 1);
     },
 
     searchContract: function (btn) {
@@ -56,6 +57,11 @@ Ext.define('AM.controller.Contracts', {
         var form = btn.up('contract_detail').down('contract_form'),
             record = form.contract,
             values = form.getValues();
+        if(!form.getForm().isValid()) {
+            AM.error('错误', '数据有误,请检查!');
+            return;
+        }
+
         record.beginEdit();
         record.set(values);
         record.setDirty();
@@ -101,6 +107,44 @@ Ext.define('AM.controller.Contracts', {
         tab.down('contract_form').loadRecord(tab.contract);
     },
 
+    fileContract: function () {
+        var rec = this.getList().getSelectionModel().getSelection()[0],
+            msg = '确定要<b style="color:green">归档</b>？';
+
+
+        this.application.confirm('注意', msg, function (btnId) {
+            if (btnId === 'ok') {
+                rec.beginEdit();
+                rec.set('status', 3);
+                this.application.save(rec, this, {
+                    success: function() {
+                        this.getFileButton().setDisabled(true);
+                    }
+                });
+            }
+        }, this);
+
+    },
+
+    setFormPrice: function(grid) {
+        var totalPrice = 0;
+
+        grid.getStore().each(function (rec) {
+            var amount = rec.get('contractAmount') || 0,
+                unit_price = rec.get('unitPrice');
+
+            totalPrice += amount * unit_price;
+        }, grid);
+
+        grid.contract.set({
+            totalPrice: totalPrice.toFixed(2),
+            taxTotalPrice: (totalPrice * (1 + AM.TAX)).toFixed(2)
+        });
+
+        grid.prev().loadRecord(grid.contract);
+    },
+
+
     init: function () {
         this.control({
             'contract_general > contract_list': {
@@ -120,9 +164,48 @@ Ext.define('AM.controller.Contracts', {
                 'click': this.viewContract
             },
 
+            '#J_ContractFile': {
+                'click': this.fileContract
+            },
+
             '#J_ContractSearch': {
                 click: function () {
                     this.getSearchPanel().toggleCollapse();
+                }
+            },
+
+            'contract_detail_list': {
+                beforeedit: function (editor, e) {
+                    var record = e.record,
+                        field = e.field,
+                        column = e.column;
+
+                    if (field !== 'contractAmount') {
+                        return;
+                    }
+
+                    column.getEditor(record).setMaxValue(record.get('remainAmount'));
+
+                },
+
+                edit: function (editor, e) {
+                    var record = e.record,
+                        field = e.field;
+
+                    switch (field) {
+                        case 'contractAmount':
+                        case 'unitPrice':
+                            var amount = record.get('contractAmount'),
+                                unit_price = record.get('unitPrice');
+
+                            if (typeof unit_price === 'number') {
+                                record.set('unitTaxPrice', unit_price * (AM.TAX + 1));
+                                amount && amount > 0 && this.setFormPrice(e.grid);
+                            }
+
+
+                            break;
+                    }
                 }
             }
         });

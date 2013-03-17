@@ -13,7 +13,7 @@
             "companyName": "南车洛阳机车有限公司",
             "totalPrice": 1000.00,
             "taxTotalPrice":  1170.00,
-            "status": 0,
+            "status": 3,
             "computedPrice": 1222.00,
             "dealTime": "2013-10-10"
         },
@@ -29,7 +29,7 @@
             "totalPrice": 1000.00,
             "taxTotalPrice":  1170.00,
             "computedPrice": 1222.00,
-            "status": 0,
+            "status": 1,
             "dealTime": "2013-10-10"
         },
         {
