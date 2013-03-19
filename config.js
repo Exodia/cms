@@ -13,7 +13,7 @@ AM.API = {
         read: 'data/contractdetail/read.json'
     },
     invoiceDetial: {
-        read: 'data/contractdetail/read.json'
+        read: 'data/invoicedetail/read.json'
     },
     order: {
         create: 'data/success.json',
@@ -96,6 +96,11 @@ AM.ContractStatus = [
     '<font color="red">审核未通过</font>',
     '<font color="#9acd32">已归档</font>'
 ];
+AM.InvoiceStatus = [
+    '<font color="#1e90ff">待确认</font>',
+    '<font color="green">确认</font>'
+];
+
 AM.TAX = 0.17;
 AM.floatRender = function (v) {
     if (typeof v == 'number') {

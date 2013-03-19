@@ -10,6 +10,8 @@
             "salesManName": "xxxx",
             "companyName": "南车洛阳机车有限公司",
             "invoiceDate": "2013-10-10",
+            "info": "备注XXXX",
+            "status": 0,
             "invoiceMoney": 1212.00
         },
         {
@@ -20,6 +22,8 @@
             "salesManName": "xxxx",
             "companyName": "南车洛阳机车有限公司",
             "invoiceDate": "2013-10-10",
+            "info": "备注XXXX",
+            "status": 0,
             "invoiceMoney": 1212.00
         },
         {
@@ -30,6 +34,8 @@
             "salesManName": "xxxx",
             "companyName": "南车洛阳机车有限公司",
             "invoiceDate": "2013-10-10",
+            "info": "备注XXXX",
+            "status": 0,
             "invoiceMoney": 1212.00
         },
         {
@@ -40,6 +46,8 @@
             "salesManName": "xxxx",
             "companyName": "南车洛阳机车有限公司",
             "invoiceDate": "2013-10-10",
+            "info": "备注XXXX",
+            "status": 1,
             "invoiceMoney": 1212.00
         },
         {
@@ -50,6 +58,8 @@
             "salesManName": "xxxx",
             "companyName": "南车洛阳机车有限公司",
             "invoiceDate": "2013-10-10",
+            "info": "备注XXXX",
+            "status": 1,
             "invoiceMoney": 1212.00
         }
     ]

@@ -9,7 +9,10 @@ Ext.define('AM.view.invoice.List', {
         {header: '开票人', dataIndex: 'salesManName', width:50},
         {header: '购货单位', dataIndex: 'companyName', flex: 1},
         {header: '对应合同号', dataIndex: 'contractCode', flex: 1},
-        {header: '发票金额', dataIndex: 'invoiceMoney', flex: 1}
+        {header: '发票金额', dataIndex: 'invoiceMoney', flex: 1},
+        {header: '状态', dataIndex: 'status', flex: 0.3, renderer: function(v) {
+            return AM.InvoiceStatus[v];
+        }}
     ],
     initComponent: function () {
         this.dockedItems = [

@@ -2,10 +2,6 @@ Ext.define('AM.view.invoice.DetailList', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.invoice_detail_list',
 
-    features: [
-        {ftype: 'grouping'}
-    ],
-
     selType: 'cellmodel',
 
     initComponent: function () {
@@ -25,17 +21,7 @@ Ext.define('AM.view.invoice.DetailList', {
             this.plugins = [this.editorPlugin];
         }
 
-        this.store.group('orderCode');
         this.columns = [
-            {
-                header: "订单编号",
-                dataIndex: 'orderCode',
-                editor: {
-                    allowBlank: false,
-                    xtype: 'textfield',
-                    name: 'orderCode'
-                }
-            },
             {
                 header: '物质编码',
                 dataIndex: 'materialCode',
@@ -52,9 +38,9 @@ Ext.define('AM.view.invoice.DetailList', {
                 width: 60
             },
             {
-                header: '计量单位',
+                header: '单位',
                 dataIndex: 'unit',
-                width: 60
+                width: 40
             },
             {
                 header: '单价(元)',
@@ -69,37 +55,23 @@ Ext.define('AM.view.invoice.DetailList', {
                 flex: 0.5
             },
             {
-                header: '含税单价(元)',
-                dataIndex: 'unitTaxPrice',
-                renderer: AM.floatRender,
-                width: 100
+                header: '剩余数量',
+                dataIndex: 'remainAmount',
+                flex: 0.5
+            },
+            {
+                header: '发票数量',
+                dataIndex: 'invoiceAmount',
+                editor: {
+                    xtype: 'numberfield',
+                    minValue: 1,
+                    allowBlank: false,
+                    name: 'invoiceAmount'
+                },
+                flex: 0.5
             }
 
         ];
-
-        if (this.invoiceStatus === 'add') {
-            this.columns.push({
-                header: '剩余数量',
-                dataIndex: 'remainAmount',
-                width: 60
-            });
-
-        }
-
-        this.columns.push({
-            header: '合同已选数量',
-            dataIndex: 'invoiceAmount',
-
-            flex: 0.5,
-            editor: {
-                xtype: 'numberfield',
-                minValue: 1,
-                allowDecimals: false,
-                allowBlank: false,
-                name: 'invoiceAmount'
-            }
-        });
-
 
         this.callParent(arguments);
     },
@@ -113,7 +85,7 @@ Ext.define('AM.view.invoice.DetailList', {
         }
 
         Ext.Ajax.request({
-            url: AM.API['orderDetail'].read,
+            url: AM.API['inoviceDetail'].read,
             method: 'GET',
             params: {
                 orderCode: orderCode
@@ -145,8 +117,6 @@ Ext.define('AM.view.invoice.DetailList', {
     },
 
     setPrice: function () {
-
-
 
 
     }

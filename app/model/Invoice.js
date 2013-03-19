@@ -1,12 +1,13 @@
 Ext.define('AM.model.Invoice', {
     extend: 'Ext.data.Model',
     fields: ['id', 'invoiceCode', 'companyName', 'salesManId',
-        'salesManName', 'contractCode', 'invoiceMoney',
+        'salesManName', 'contractCode', 'invoiceMoney', 'status',
         {
             name: 'invoiceDate',
             type: 'date',
             dateFormat: 'Y-m-d'
-        }
+        },
+        'info'
     ],
     hasMany: {
         model: 'AM.model.InvoiceDetail',

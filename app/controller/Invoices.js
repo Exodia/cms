@@ -31,12 +31,17 @@ Ext.define('AM.controller.Invoices', {
         {
             ref: 'viewButton',
             selector: '#J_InvoiceView'
+        },
+        {
+            ref: 'editButton',
+            selector: '#J_InvoiceEdit'
         }
     ],
 
     checkEnable: function (sm, rec) {
         var len = rec.length;
         this.getViewButton().setDisabled(len !== 1);
+        this.getEditButton().setDisabled(len !== 1 || rec[0].get('status') == 1);
     },
 
     searchInvoice: function (btn) {
@@ -90,7 +95,7 @@ Ext.define('AM.controller.Invoices', {
 
     viewInvoice: function () {
         var tab = Ext.widget('invoice_detail', {
-            title: '合同详情',
+            title: '发票详情',
             invoiceStatus: 'view',
             invoice: this.getList().getSelectionModel().getSelection()[0]
         });
@@ -102,26 +107,26 @@ Ext.define('AM.controller.Invoices', {
         tab.down('invoice_form').loadRecord(tab.invoice);
     },
 
-    fileInvoice: function () {
+    confirmInvoice: function () {
         var rec = this.getList().getSelectionModel().getSelection()[0],
-            msg = '确定要<b style="color:green">归档</b>？';
+            msg = '确定要<b style="color:green">确认</b>该发票？';
 
 
         this.application.confirm('注意', msg, function (btnId) {
             if (btnId === 'ok') {
                 rec.beginEdit();
-                rec.set('status', 3);
-                this.saveFile(rec);
+                rec.set('status', 1);
+                this.saveConfirm(rec);
             }
         }, this);
 
     },
 
 
-    saveFile: function (invoice) {
+    saveConfirm: function (invoice) {
         invoice.save({
             params:{
-                store: true
+                confirm: true
             },
             failure: function(record) {
                 record.cancelEdit();
@@ -180,6 +185,10 @@ Ext.define('AM.controller.Invoices', {
                 click: function () {
                     this.getSearchPanel().toggleCollapse();
                 }
+            },
+
+            'invoice_detail button[action=invoice_confirm]': {
+                click: this.confirmInvoice
             },
 
             'invoice_detail_list': {

@@ -1,0 +1,58 @@
+{
+    "success": true,
+    "total": 100,
+    "data": [
+        {
+            "id": 1,
+            "invoiceId": 1,
+            "materialCode": 1,
+            "materialName": "xxxx",
+            "type": "类型111",
+            "unit": "件",
+            "remainAmount": 1212,
+            "invoiceAmount": 222,
+            "unitPrice": 222.00
+        },
+        {
+            "id": 2,
+            "invoiceId": 1,
+            "materialCode": 1,
+            "materialName": "xxxx",
+            "type": "类型111",
+            "unit": "件",
+            "remainAmount": 1212,
+            "invoiceAmount": 222,
+            "unitPrice": 222.00
+        },
+        {
+            "id": 3,
+            "materialCode": 1,
+            "materialName": "xxxx",
+            "type": "类型111",
+            "unit": "件",
+            "remainAmount": 1212,
+            "invoiceAmount": 222,
+            "unitPrice": 222.00
+        },
+        {
+            "id": 4,
+            "materialCode": 1,
+            "materialName": "xxxx",
+            "type": "类型111",
+            "unit": "件",
+            "remainAmount": 1212,
+            "invoiceAmount": 222,
+            "unitPrice": 222.00
+        },
+        {
+            "id": 5,
+            "materialCode": 1,
+            "materialName": "xxxx",
+            "type": "类型111",
+            "unit": "件",
+            "remainAmount": 1212,
+            "invoiceAmount": 222,
+            "unitPrice": 222.00
+        }
+    ]
+}

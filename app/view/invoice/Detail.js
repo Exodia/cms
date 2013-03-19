@@ -2,7 +2,6 @@ Ext.define('AM.view.invoice.Detail', {
     extend:'Ext.panel.Panel',
     alias: 'widget.invoice_detail',
     requires:['AM.view.invoice.DetailList', 'AM.view.invoice.Form'],
-    title:'合同详情',
     closable: true,
     layout: 'border',
     initComponent: function() {
@@ -19,12 +18,20 @@ Ext.define('AM.view.invoice.Detail', {
             region: 'center'
         }];
 
-        if(this.invoiceStatus == 'add') {
+        if(this.invoiceStatus !== 'view') {
             this.items.push({
                 region: 'south',
                 buttons:[{
                     text: '保存',
                     action: 'add_save'
+                }]
+            });
+        } else {
+            this.items.push({
+                region: 'south',
+                buttons:[{
+                    text: '发票确认',
+                    action: 'invoice_confirm'
                 }]
             });
         }

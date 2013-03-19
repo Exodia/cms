@@ -56,6 +56,11 @@ Ext.define('AM.view.invoice.Form', {
                 name: 'salesManName'
             },
             {
+                fieldLabel: '备注',
+                xtype: 'textareafield',
+                name: 'info'
+            },
+            {
                 name: 'salesManId',
                 xtype: 'hidden_field'
             },
