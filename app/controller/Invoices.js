@@ -173,7 +173,9 @@ Ext.define('AM.controller.Invoices', {
                         var data = obj.data,
                             store = list.getStore();
 
-                        data.remainAmount = data.contractAmount;
+                        for(var i = data.length - 1; i > -1; --i) {
+                            data[i].remainAmount = data[i].contractAmount;
+                        }
                         store.removeAll();
                         store.add(data);
 
