@@ -57,7 +57,7 @@ Ext.define('AM.controller.Invoices', {
             title: '注意',
             msg: '发票金额与货物明细金额不符, <font red>强制通过</font>必须填写备注!',
             fn: function () {
-                if(!Ext.String.trim(form.getForm().findField('info').getValue())) {
+                if (!Ext.String.trim(form.getForm().findField('info').getValue())) {
                     AM.error('错误', '请填写备注!!');
                 } else {
                     this.saveInvoice(btn, form);
@@ -154,26 +154,49 @@ Ext.define('AM.controller.Invoices', {
     },
 
     addContract: function (btn) {
-        var id = btn.prev().getValue(),
+        var contractCode = btn.prev().getValue(),
             detail = btn.up('invoice_detail'),
             list = detail.down('invoice_detail_list'),
             ContractDetail = this.getContractDetailModel();
 
-        ContractDetail.load(id, {
-            failure: function () {
+        Ext.Ajax.request({
+            method: 'GET',
+            params: {
+                contractCode: contractCode
+            },
+            url: AM['API'].contractDetial.read,
+            callback: function (op, success, res) {
+                if (success) {
+                    var obj = Ext.decode(res.responseText);
+
+                    if (obj.success) {
+                        var data = obj.data,
+                            store = list.getStore();
+
+                        data.remainAmount = data.contractAmount;
+                        store.removeAll();
+                        store.add(data);
+
+                        return;
+                    }
+
+                }
                 AM.error('错误', '获取合同失败,请重试!');
             },
-            success: function (record) {
-                var data = record.getData(),
-                    store = list.getStore();
-
-                data.remainAmount = data.contractAmount;
-                store.removeAll();
-                store.add(data);
-            },
             scope: this
+        }/*, {
 
-        });
+         success: function (record) {
+         var data = record.getData(),
+         store = list.getStore();
+
+         data.remainAmount = data.contractAmount;
+         store.removeAll();
+         store.add(data);
+         },
+         scope: this
+
+         }*/);
 
     },
 

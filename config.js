@@ -11,6 +11,7 @@ AM.API = {
 
     contractDetial: {
         read: 'data/contractdetail/read.json'
+//        read: 'data/fail.json'
     },
     invoiceDetial: {
         read: 'data/invoicedetail/read.json'
