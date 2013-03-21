@@ -63,7 +63,8 @@ AM.API = {
         read: 'data/invoice/read.json',
         update: 'data/invoice/update.json',
         destroy: 'data/invoice/destroy.json'
-    }
+    },
+    composite: 'data/success.json'
 };
 
 AM.Writer = {
@@ -127,6 +128,11 @@ AM.error = function (title, msg, fn, scope) {
         icon: Ext.MessageBox.ERROR
     });
 };
+
+AM.success = function () {
+   Ext.Msg.alert('成功', '操作成功!');
+};
+
 
 AM.createProxy = function (apiType) {
     return {

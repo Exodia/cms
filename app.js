@@ -38,10 +38,9 @@ Ext.require('Ext.data.writer.Json', function () {
 Ext.application({
     requires: ['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
         'AM.view.NavBar', 'AM.view.user.Panel', 'AM.view.order.Panel', 'AM.view.custom.Panel',
-        'AM.view.contract.Panel',  'AM.view.invoice.Panel',
+        'AM.view.contract.Panel',  'AM.view.invoice.Panel', 'AM.view.composite.Panel',
         'AM.view.datamgr.Panel'
-        /*   'AM.view.transport.Panel',  'AM.view.composite.Panel',
-         'AM.view.composite.Panel', , 'AM.view.datamgr.Panel'*/
+        /*   'AM.view.transport.Panel' , 'AM.view.datamgr.Panel'*/
     ],
     name: 'AM',
 
@@ -110,6 +109,7 @@ Ext.application({
                 type: 'vbox',
                 align: 'stretch'
             },
+
             items: [
                 {
                     xtype: 'navbar',
@@ -117,6 +117,7 @@ Ext.application({
                 },
                 {
                     xtype: 'grouptabpanel',
+
                     flex: 1,
                     style: {
                         borderTop: 'none'
@@ -176,7 +177,7 @@ Ext.application({
                                     title: '综合管理',
                                     iconCls: 'x-icon-composite',
                                     style: 'padding:5px;',
-                                    xtype: 'panel'
+                                    xtype: 'composite_panel'
                                 }
                             ]
                         },
