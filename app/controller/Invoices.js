@@ -217,8 +217,10 @@ Ext.define('AM.controller.Invoices', {
             },
             success: function (record) {
                 record.endEdit();
+                this.getList().getSelectionModel().deselectAll();
                 Ext.Msg.alert('注意！', '操作成功！');
-            }
+            },
+            scope: this
         });
     },
 
