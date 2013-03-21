@@ -38,8 +38,13 @@ Ext.define('AM.controller.Invoices', {
         }
     ],
 
-    forcePass: function() {
+    validTotal: function (form, total) {
+        var price = parseFloat(form.getForm().findField('invoiceMoney').getValue());
+        if (Math.abs(total - price) < 1) {
+            return true;
+        }
 
+        return false;
     },
     checkEnable: function (sm, rec) {
         var len = rec.length;
@@ -47,22 +52,29 @@ Ext.define('AM.controller.Invoices', {
         this.getEditButton().setDisabled(len !== 1 || rec[0].get('status') == 1);
     },
 
-    searchInvoice: function (btn) {
-        var values = this.getSearchPanel().getValues();
-        this.getStore('Invoices').load({
-            params: values
+    forcePass: function (btn, form) {
+        Ext.Msg.show({
+            title: '注意',
+            msg: '发票金额与货物明细金额不符, <font red>强制通过</font>必须填写备注!',
+            fn: function () {
+                if(!Ext.String.trim(form.getForm().findField('info').getValue())) {
+                    AM.error('错误', '请填写备注!!');
+                } else {
+                    this.saveInvoice(btn, form);
+                }
+            },
+            scope: this,
+            buttons: Ext.MessageBox.OKCANCEL,
+            buttonText: {
+                ok: '强制通过'
+            },
+            icon: Ext.MessageBox.WARNING
         });
-
     },
-    saveInvoice: function (btn) {
-        var grid = btn.up('invoice_detail').down('invoice_detail_list'),
-            total = this.getTotalPrice(grid);
 
-
-
+    saveInvoice: function (btn, form) {
         btn.setDisabled(true);
-        var form = btn.up('invoice_detail').down('invoice_form'),
-            record = form.invoice,
+        var record = form.invoice,
             values = form.getValues();
         if (!form.getForm().isValid()) {
             AM.error('错误', '数据有误,请检查!');
@@ -83,6 +95,30 @@ Ext.define('AM.controller.Invoices', {
                 Ext.Msg.alert('注意', '合同保存成功！');
             }
         });
+    },
+
+
+    searchInvoice: function (btn) {
+        var values = this.getSearchPanel().getValues();
+        this.getStore('Invoices').load({
+            params: values
+        });
+
+    },
+    onSave: function (btn) {
+        var detailPanel = btn.up('invoice_detail'),
+            grid = detailPanel.down('invoice_detail_list'),
+            form = detailPanel.down('invoice_form'),
+            total = this.getTotalPrice(grid);
+
+        if (!this.validTotal(form, total)) {
+            this.forcePass(btn, form);
+
+        } else {
+            this.saveInvoice(btn, form);
+        }
+
+
     },
     addInvoice: function () {
         var tab = Ext.widget('invoice_detail', {
@@ -210,7 +246,7 @@ Ext.define('AM.controller.Invoices', {
                 'click': this.addInvoice
             },
             'invoice_detail button[action=add_save]': {
-                'click': this.saveInvoice
+                'click': this.onSave
             },
 
             'invoice_search_panel button[action=search_invoice]': {
