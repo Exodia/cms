@@ -1,24 +1,31 @@
 Ext.define('AM.view.invoice.DetailList', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.invoice_detail_list',
+    features: [{
+        ftype: 'summary',
+        id: 'summary'
+    }],
 
     selType: 'cellmodel',
 
     initComponent: function () {
         this.store = this.invoice.detail();
-        if (this.invoiceStatus === 'view') {
+        if (this.invoiceStatus !== 'add') {
             this.store.load({
                 params: {
                     'invoiceId': this.invoice.get('id')
                 }
             });
-        } else {
+        }
 
+        if (this.invoiceStatus !== 'view'){
             this.editorPlugin = Ext.create('Ext.grid.plugin.CellEditing', {
                 clicksToEdit: 1
             });
 
             this.plugins = [this.editorPlugin];
+
+
         }
 
         this.columns = [
@@ -46,12 +53,6 @@ Ext.define('AM.view.invoice.DetailList', {
                 header: '单价(元)',
                 dataIndex: 'unitPrice',
                 renderer: AM.floatRender,
-                editor: {
-                    xtype: 'numberfield',
-                    minValue: 0,
-                    allowBlank: false,
-                    name: 'unitPrice'
-                },
                 flex: 0.5
             },
             {
@@ -60,7 +61,7 @@ Ext.define('AM.view.invoice.DetailList', {
                 flex: 0.5
             },
             {
-                header: '发票数量',
+                header: '已选数量',
                 dataIndex: 'invoiceAmount',
                 editor: {
                     xtype: 'numberfield',
@@ -68,7 +69,22 @@ Ext.define('AM.view.invoice.DetailList', {
                     allowBlank: false,
                     name: 'invoiceAmount'
                 },
-                flex: 0.5
+                flex: 0.6,
+                summaryType: function (records) {
+                    var i = 0,
+                        length = records.length,
+                        total = 0,
+                        record;
+
+                    for (; i < length; ++i) {
+                        record = records[i];
+                        total += (record.get('invoiceAmount') || 0) * record.get('unitPrice');
+                    }
+                    return total;
+                } ,
+                summaryRenderer: function(value) {
+                    return "总价: " + value.toFixed(2) + "元";
+                }
             }
 
         ];
@@ -76,45 +92,7 @@ Ext.define('AM.view.invoice.DetailList', {
         this.callParent(arguments);
     },
 
-    addInvoiceItem: function () {
-        var store = this.getStore(),
-            orderCode = this.orderInput.getValue();
 
-        if (store.findExact('orderCode', orderCode) !== -1) {
-            return;
-        }
-
-        Ext.Ajax.request({
-            url: AM.API['inoviceDetail'].read,
-            method: 'GET',
-            params: {
-                orderCode: orderCode
-            },
-            success: function (res) {
-                var obj = Ext.decode(res.responseText),
-                    success = obj.success;
-
-                if (!success) {
-                    AM.error('错误', obj.msg);
-                } else {
-                    this.store.add(obj.data);
-                }
-            },
-            failure: function () {
-                AM.error('错误');
-            },
-
-            scope: this
-        });
-
-
-    },
-    delInvoiceItem: function () {
-        var store = this.getStore(),
-            record = this.getSelectionModel().getSelection()[0];
-
-        store.remove(record);
-    },
 
     setPrice: function () {
 

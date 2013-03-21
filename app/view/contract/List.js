@@ -5,7 +5,7 @@ Ext.define('AM.view.contract.List', {
     flex: 1,
     columns: [
         {header: '合同编号', dataIndex: 'codeNumber', flex: 1},
-        {header: '合同对方', dataIndex: 'company', flex: 1},
+        {header: '合同对方', dataIndex: 'companyName', flex: 1},
         {header: '合同流水号', dataIndex: 'serialNumber', flex: 1},
         {header: '合同总价', dataIndex: 'totalPrice', flex: 1},
         {header: '合同总价(含税)', dataIndex: 'taxTotalPrice', flex: 1},

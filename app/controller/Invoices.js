@@ -1,13 +1,13 @@
 Ext.define('AM.controller.Invoices', {
     extend: 'Ext.app.Controller',
     views: [
-       'invoice.Detail'
+        'invoice.Detail'
     ],
     stores: [
         'Invoices',
         'AuditInvoices'
     ],
-    models: ['Invoice', 'InvoiceDetail'],
+    models: ['Invoice', 'InvoiceDetail', 'ContractDetail'],
 
     refs: [
         {
@@ -38,6 +38,9 @@ Ext.define('AM.controller.Invoices', {
         }
     ],
 
+    forcePass: function() {
+
+    },
     checkEnable: function (sm, rec) {
         var len = rec.length;
         this.getViewButton().setDisabled(len !== 1);
@@ -52,11 +55,16 @@ Ext.define('AM.controller.Invoices', {
 
     },
     saveInvoice: function (btn) {
+        var grid = btn.up('invoice_detail').down('invoice_detail_list'),
+            total = this.getTotalPrice(grid);
+
+
+
         btn.setDisabled(true);
         var form = btn.up('invoice_detail').down('invoice_form'),
             record = form.invoice,
             values = form.getValues();
-        if(!form.getForm().isValid()) {
+        if (!form.getForm().isValid()) {
             AM.error('错误', '数据有误,请检查!');
             btn.setDisabled(false);
             return;
@@ -93,6 +101,46 @@ Ext.define('AM.controller.Invoices', {
         tab.down('invoice_form').loadRecord(tab.invoice);
     },
 
+    editInvoice: function () {
+        var tab = Ext.widget('invoice_detail', {
+            title: '变更发票',
+            invoice: this.getList().getSelectionModel().getSelection()[0],
+            invoiceStatus: 'edit'
+        });
+
+        var panel = this.getPanel();
+        panel.add(tab);
+        panel.setActiveTab(tab);
+
+        var form = tab.down('invoice_form');
+        form.loadRecord(tab.invoice);
+        form.down('company_field').setRawValue(tab.invoice.get('companyName'));
+    },
+
+    addContract: function (btn) {
+        var id = btn.prev().getValue(),
+            detail = btn.up('invoice_detail'),
+            list = detail.down('invoice_detail_list'),
+            ContractDetail = this.getContractDetailModel();
+
+        ContractDetail.load(id, {
+            failure: function () {
+                AM.error('错误', '获取合同失败,请重试!');
+            },
+            success: function (record) {
+                var data = record.getData(),
+                    store = list.getStore();
+
+                data.remainAmount = data.contractAmount;
+                store.removeAll();
+                store.add(data);
+            },
+            scope: this
+
+        });
+
+    },
+
     viewInvoice: function () {
         var tab = Ext.widget('invoice_detail', {
             title: '发票详情',
@@ -125,13 +173,13 @@ Ext.define('AM.controller.Invoices', {
 
     saveConfirm: function (invoice) {
         invoice.save({
-            params:{
+            params: {
                 confirm: true
             },
-            failure: function(record) {
+            failure: function (record) {
                 record.cancelEdit();
             },
-            success: function(record) {
+            success: function (record) {
                 record.endEdit();
                 Ext.Msg.alert('注意！', '操作成功！');
             }
@@ -139,7 +187,7 @@ Ext.define('AM.controller.Invoices', {
     },
 
 
-    setFormPrice: function(grid) {
+    getTotalPrice: function (grid) {
         var totalPrice = 0;
 
         grid.getStore().each(function (rec) {
@@ -149,12 +197,7 @@ Ext.define('AM.controller.Invoices', {
             totalPrice += amount * unit_price;
         }, grid);
 
-        grid.invoice.set({
-            totalPrice: totalPrice.toFixed(2),
-            taxTotalPrice: (totalPrice * (1 + AM.TAX)).toFixed(2)
-        });
-
-        grid.prev().loadRecord(grid.invoice);
+        return totalPrice;
     },
 
 
@@ -177,14 +220,18 @@ Ext.define('AM.controller.Invoices', {
                 'click': this.viewInvoice
             },
 
-            '#J_InvoiceFile': {
-                'click': this.fileInvoice
+            '#J_InvoiceEdit': {
+                'click': this.editInvoice
             },
 
             '#J_InvoiceSearch': {
                 click: function () {
                     this.getSearchPanel().toggleCollapse();
                 }
+            },
+
+            'invoice_detail button[action=add_contract]': {
+                click: this.addContract
             },
 
             'invoice_detail button[action=invoice_confirm]': {
@@ -203,26 +250,6 @@ Ext.define('AM.controller.Invoices', {
 
                     column.getEditor(record).setMaxValue(record.get('remainAmount'));
 
-                },
-
-                edit: function (editor, e) {
-                    var record = e.record,
-                        field = e.field;
-
-                    switch (field) {
-                        case 'invoiceAmount':
-                        case 'unitPrice':
-                            var amount = record.get('invoiceAmount'),
-                                unit_price = record.get('unitPrice');
-
-                            if (typeof unit_price === 'number') {
-                                record.set('unitTaxPrice', unit_price * (AM.TAX + 1));
-                                amount && amount > 0 && this.setFormPrice(e.grid);
-                            }
-
-
-                            break;
-                    }
                 }
             }
         });

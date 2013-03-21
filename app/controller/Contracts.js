@@ -155,7 +155,9 @@ Ext.define('AM.controller.Contracts', {
             taxTotalPrice: (totalPrice * (1 + AM.TAX)).toFixed(2)
         });
 
-        grid.prev().loadRecord(grid.contract);
+        var form = grid.prev().getForm();
+        form.findField('totalPrice').setValue(totalPrice.toFixed(2));
+        form.findField('taxTotalPrice').setValue((totalPrice * (1 + AM.TAX)).toFixed(2));
     },
 
 
