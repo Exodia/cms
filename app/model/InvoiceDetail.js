@@ -13,7 +13,7 @@
 Ext.define('AM.model.InvoiceDetail', {
     extend: 'Ext.data.Model',
     fields: [
-        'id', 'invoiceId', 'materialCode', 'materialName', 'type', 'unit',
+        'id', 'invoiceId', 'contractDetailId', 'materialCode', 'materialName', 'type', 'unit',
         'remainAmount', 'invoiceAmount', 'unitPrice'],
 
     proxy: AM.createProxy('invoiceDetial'),
