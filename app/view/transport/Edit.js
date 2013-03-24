@@ -108,32 +108,70 @@ Ext.define('AM.view.transport.Edit', {
             dataIndex: 'boxAmount'
         }
     ],
-    dockedItems: [
-        {
-            xtype: 'toolbar',
-            items: [
-                '->',
-                {
-                    xtype: 'textfield',
-                    itemId: 'J_OrderText',
-                    emptyText: '请输入订单号'
-                },
-                Ext.create('Ext.Button', {
-                    itemId: 'J_OrderSearch',
-                    text: '添加',
-                    cls: 'x-btn-default-small'
-                })
-            ]
-        }
-
-    ],
     buttons: [
         {
             text: '保存',
             action: 'save_transport'
         }
     ],
+    searchOrder: function (btn) {
+        var text = Ext.String.trim(btn.prev().getValue());
+        if (text) {
+            Ext.Ajax.request({
+                method: 'GET',
+                url: AM.API['orderDetail'].read,
+                params: {
+                    orderCode: text
+                },
+                success: function (res) {
+                    try {
+                        var obj = Ext.decode(res.responseText),
+                            success = obj.success;
+                        if (!success) {
+                            AM.error('错误', obj.msg);
+                        } else {
+                            var data = obj.data;
+                            for (var i = data.length - 1; i > -1; --i) {
+                               data[i].orderAmount = data[i].amount;
+                            }
+                            this.transport.set('orderCode', text);
+                            this.store.removeAll();
+                            this.store.add(data);
+                        }
+                    } catch (e) {
+                        AM.error('错误');
+                    }
+
+                },
+                failure: function () {
+                    AM.error('错误');
+                },
+                scope: this
+
+            });
+        }
+    },
+
     initComponent: function () {
+        this.dockedItems = [
+            {
+                xtype: 'toolbar',
+                items: [
+                    '->',
+                    {
+                        xtype: 'textfield',
+                        emptyText: '请输入订单号'
+                    },
+                    Ext.create('Ext.Button', {
+                        text: '添加',
+                        handler: this.searchOrder,
+                        scope: this,
+                        cls: 'x-btn-default-small'
+                    })
+                ]
+            }
+
+        ];
         this.store = this.transport.detail();
         this.callParent(arguments);
     }

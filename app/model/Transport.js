@@ -13,7 +13,7 @@ Ext.define('AM.model.Transport', {
         associationKey: 'transportId',
         name: 'detail'
     },
-    proxy: AM.createProxy['transport'],
+    proxy: AM.createProxy('transport'),
     reader: AM.Reader,
     writer: AM.Writer
 });

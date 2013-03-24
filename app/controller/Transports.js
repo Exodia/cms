@@ -40,14 +40,10 @@ Ext.define('AM.controller.Transports', {
                     this.getPanel().setActiveTab(tab);
                 }
             },
-
             '#J_TransportConfirm': {
                 click: this.confirmTransport
             },
 
-            '#J_OrderSearch': {
-                click: this.searchOrder
-            },
 
             'transport_general transport_list': {
                 selectionchange: this.checkEnable
@@ -69,40 +65,27 @@ Ext.define('AM.controller.Transports', {
             this.application.sync(this.getList().getStore(), this);
         }, this);
     },
-    searchOrder: function (btn) {
-        var text = Ext.String.trim(this.getOrderInput().getValue());
-        if (text) {
-            Ext.Ajax.request({
-                method: 'GET',
-                url: AM.API['orderDetial'].read,
-                params: {
-                    orderCode: text
-                },
-                success: function (res) {
-                    try {
-                        var obj = Ext.decode(res.responseText),
-                            success = obj.success;
-
-                        if (!success) {
-                            AM.error('错误', obj.msg);
-                        } else {
-                            this.store.add(obj.data);
-                        }
-                    } catch (e) {
-                        AM.error('错误');
-                    }
-
-                },
-                failure: function () {
-                    AM.error('错误');
-                }
-
-            });
-        }
-    },
 
 
     saveTransport: function (btn) {
+
+        this.application.confirm('注意', '确定要保存?', function () {
+            var list = btn.up('transport_edit'),
+                rec = list.transport;
+
+            btn.setDisabled(true);
+            this.application.save(rec, this, {
+                success: function () {
+                    btn.setText('已保存');
+
+                    this.getStore('Transports').reload();
+                },
+                fail: function () {
+                    btn.setDisabled(false);
+                }
+
+            });
+        }, this);
 
     }
 
