@@ -1,8 +1,7 @@
 Ext.define('AM.controller.Transports', {
     extend:'Ext.app.Controller',
     views:[
-        'transport.List',
-        'transport.Edit'
+        'transport.List'
     ],
     stores:[
         'Transports'
@@ -11,15 +10,15 @@ Ext.define('AM.controller.Transports', {
     refs:[
         {
             ref:'list',
-            selector:'transportlist'
+            selector:'transport_list'
         },
         {
-            ref:'editButton',
-            selector:'#J_TransportEdit'
+            ref:'confirmButton',
+            selector:'#J_TransportConfirm'
         },
         {
-            ref:'delButton',
-            selector:'#J_TransportDelete'
+            ref:'addButton',
+            selector:'#J_TransportAdd'
         }
     ],
     init:function () {

@@ -1,8 +1,8 @@
 Ext.define('AM.view.transport.Panel', {
-    extend:'Ext.panel.Panel',
+    extend:'Ext.tab.Panel',
+    requires: ['AM.view.transport.General'],
     alias:'widget.transport_panel',
-    title:'发运管理',
     items:[{
-        xtype:'transport_list'
+        xtype:'transport_general'
     }]
 });

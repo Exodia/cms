@@ -65,6 +65,12 @@ AM.API = {
         update: 'data/invoice/update.json',
         destroy: 'data/invoice/destroy.json'
     },
+    transport: {
+        create: 'data/transport/create.json',
+        read: 'data/transport/read.json',
+        update: 'data/transport/update.json',
+        destroy: 'data/transport/destroy.json'
+    },
     composite: 'data/success.json'
 };
 
@@ -100,8 +106,13 @@ AM.ContractStatus = [
 ];
 AM.InvoiceStatus = [
     '<font color="#1e90ff">待确认</font>',
-    '<font color="green">确认</font>'
+    '<font color="green">已确认</font>'
 ];
+AM.TransportStatus  = [
+    '<font color="red">未确认</font>',
+    '<font color="green">已确认</font>'
+];
+
 
 AM.TAX = 0.17;
 AM.floatRender = function (v) {

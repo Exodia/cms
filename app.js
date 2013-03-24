@@ -38,9 +38,8 @@ Ext.require('Ext.data.writer.Json', function () {
 Ext.application({
     requires: ['Ext.container.Viewport', 'Ext.ux.GroupTabPanel', 'Ext.window.MessageBox',
         'AM.view.NavBar', 'AM.view.user.Panel', 'AM.view.order.Panel', 'AM.view.custom.Panel',
-        'AM.view.contract.Panel',  'AM.view.invoice.Panel', 'AM.view.composite.Panel',
-        'AM.view.datamgr.Panel'
-        /*   'AM.view.transport.Panel' , 'AM.view.datamgr.Panel'*/
+        'AM.view.contract.Panel', 'AM.view.invoice.Panel', 'AM.view.composite.Panel',
+        'AM.view.datamgr.Panel', 'AM.view.transport.Panel'
     ],
     name: 'AM',
 
@@ -53,8 +52,8 @@ Ext.application({
         'Contracts',
         'AuditContracts',
         'Invoices',
-        'Customs'
-//        'Transports'
+        'Customs',
+        'Transports'
     ],
 
     confirm: function (title, msg, fn, scope) {
@@ -157,7 +156,7 @@ Ext.application({
                                     title: '发运管理',
                                     iconCls: 'x-icon-trans',
                                     style: 'padding:5px;',
-                                    xtype: 'panel'
+                                    xtype: 'transport_panel'
                                 }
                             ]
                         },
