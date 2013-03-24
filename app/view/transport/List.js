@@ -19,15 +19,22 @@ Ext.define('AM.view.transport.List', {
             dataIndex: 'info'
         },
         {
+            header: '发货数量',
+            width: 70,
+            dataIndex: 'transportAmount'
+        },
+        {
             header: '包装箱种类',
             width: 80,
+
             dataIndex: 'boxType'
         },
         {
-            header: '发货数量',
+            header: '包装箱数量',
             width: 70,
-            dataIndex: 'amount'
+            dataIndex: 'boxAmount'
         },
+
         {
             header: '时间',
             width: 110,

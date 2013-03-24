@@ -169,13 +169,17 @@ Ext.define('AM.view.contract.DetailList', {
                 orderCode: orderCode
             },
             success: function (res) {
-                var obj = Ext.decode(res.responseText),
-                    success = obj.success;
+                try {
+                    var obj = Ext.decode(res.responseText),
+                        success = obj.success;
 
-                if (!success) {
-                    AM.error('错误', obj.msg);
-                } else {
-                    this.store.add(obj.data);
+                    if (!success) {
+                        AM.error('错误', obj.msg);
+                    } else {
+                        this.store.add(obj.data);
+                    }
+                } catch (e) {
+                    AM.error('错误');
                 }
             },
             failure: function () {
@@ -195,8 +199,6 @@ Ext.define('AM.view.contract.DetailList', {
     },
 
     setPrice: function () {
-
-
 
 
     }

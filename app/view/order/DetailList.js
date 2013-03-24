@@ -2,16 +2,6 @@ Ext.define('AM.view.order.DetailList', {
     extend: 'Ext.grid.Panel',
     requires: ['AM.view.MaterialCode'],
     alias: 'widget.order_detail_list',
-    statics: {
-        TAX: 0.17,
-        floatRender: function (v) {
-            if (typeof v == 'number') {
-                return v.toFixed(2);
-            }
-            return '';
-
-        }
-    },
     initStore: function () {
         this.store = this.order.detail();
     },
@@ -91,7 +81,7 @@ Ext.define('AM.view.order.DetailList', {
             {
                 header: '单价(元)',
                 dataIndex: 'unitPrice',
-                renderer: this.self.floatRender,
+                renderer: AM.floatRender,
                 editor: {
                     xtype: 'numberfield',
                     minValue: 0,
@@ -103,19 +93,19 @@ Ext.define('AM.view.order.DetailList', {
             {
                 header: '含税单价(元)',
                 dataIndex: 'unitTaxPrice',
-                renderer: this.self.floatRender,
+                renderer: AM.floatRender,
                 width: 100
             },
             {
                 header: '金额(元)',
                 dataIndex: 'price',
-                renderer: this.self.floatRender,
+                renderer: AM.floatRender,
                 width: 110
             },
             {
                 header: '含税金额(元)',
                 dataIndex: 'taxPrice',
-                renderer: this.self.floatRender,
+                renderer: AM.floatRender,
                 width: 120
             },
             {
@@ -199,7 +189,7 @@ Ext.define('AM.view.order.DetailList', {
                         unit_price = record.get('unitPrice');
 
                     if (typeof unit_price == 'number') {
-                        record.set('unitTaxPrice', unit_price * (this.self.TAX + 1));
+                        record.set('unitTaxPrice', unit_price * (AM.TAX + 1));
                         amount && amount > 0 && this.setPrice(record);
                     }
 

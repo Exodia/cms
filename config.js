@@ -16,6 +16,9 @@ AM.API = {
     invoiceDetial: {
         read: 'data/invoicedetail/read.json'
     },
+    transportDetail: {
+
+    },
     order: {
         create: 'data/success.json',
         read: 'data/order/read.json',
