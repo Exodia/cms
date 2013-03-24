@@ -10,7 +10,7 @@ Ext.define('AM.controller.Transports', {
     refs:[
         {
             ref:'list',
-            selector:'transport_list'
+            selector:'transport_general transport_list'
         },
         {
             ref:'confirmButton',
@@ -48,6 +48,16 @@ Ext.define('AM.controller.Transports', {
     checkEnable:function (sm, rec) {
         var len = rec.length;
         this.getConfirmButton().setDisabled(len !== 1 || rec[0].get('status') === 1);
+    },
+    confirmTransport: function () {
+        this.application.confirm('注意', '确定要执行<font color="red">发运确认</font>操作?', function(){
+            var rec = this.getList().getSelectionModel().getSelection()[0];
+            rec.set('status', 1);
+            this.application.sync(this.getList().getStore(), this);
+        }, this);
+
+
     }
+
 
 });

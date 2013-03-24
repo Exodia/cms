@@ -66,10 +66,10 @@ AM.API = {
         destroy: 'data/invoice/destroy.json'
     },
     transport: {
-        create: 'data/transport/create.json',
+        create: 'data/success.json',
         read: 'data/transport/read.json',
-        update: 'data/transport/update.json',
-        destroy: 'data/transport/destroy.json'
+        update: 'data/success.json',
+        destroy: 'data/success.json'
     },
     composite: {
         order: 'data/success.json',

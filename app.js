@@ -74,12 +74,16 @@ Ext.application({
         store.sync({
             failure: function (batch) {
                 store.rejectChanges();
-                var sm = this.getList().getSelectionModel();
-                sm.select(sm.getSelection());
             },
             success: function (batch) {
                 var ret = Ext.JSON.decode(batch.operations[0].response.responseText);
                 ret.msg && Ext.Msg.alert('操作成功', ret.msg);
+            },
+            callback: function () {
+                if(typeof this.getList == 'function') {
+                    var sm = this.getList().getSelectionModel();
+                    sm.deselect(sm.getSelection());
+                }
             },
 
             scope: controller

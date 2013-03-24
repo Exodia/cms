@@ -5,5 +5,9 @@ Ext.define('AM.model.Transport', {
         name:'date',
         type: 'date',
         dateFormat: 'Y-m-d'
-    }, 'status']
+    }, 'status'],
+
+    proxy: AM.createProxy['transport'],
+    reader: AM.Reader,
+    writer: AM.Writer
 });
