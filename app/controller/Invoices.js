@@ -92,7 +92,7 @@ Ext.define('AM.controller.Invoices', {
             success: function () {
                 this.getStore('Invoices').reload();
                 btn.setText("已保存");
-                Ext.Msg.alert('注意', '合同保存成功！');
+                Ext.Msg.alert('注意', '发票保存成功！');
             }
         });
     },
