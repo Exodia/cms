@@ -2,11 +2,12 @@ Ext.define('AM.view.composite.Panel', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.composite_panel',
     title: '综合管理',
-    layout: 'fit',
+    layout: 'vbox',
+    fram: 'true',
     items: [
         {
             xtype: 'form',
-            url: AM.API['composite'],
+            url: AM.API['composite'].order,
             layout: {
                 type: 'vbox',
                 align: 'left'
@@ -41,6 +42,52 @@ Ext.define('AM.view.composite.Panel', {
                         }
                     ]
                 },
+                {
+                    xtype: 'button',
+                    handler: function () {
+                        var form = this.up('form');
+                        if (!form.getForm().isValid()) {
+                            AM.error('错误', '数据格式不正确,请检查!');
+                        } else {
+                            form.submit({
+                                success: AM.success,
+                                failure: function (form, action) {
+                                    try {
+                                        var res = Ext.decode(action.response.responseText);
+                                        AM.error('操作失败', res && res.msg);
+
+                                    } catch(e) {
+                                        AM.error('操作失败');
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    width: 50,
+                    text: '设置'
+                }
+            ]
+        },
+        {
+            xtype: 'form',
+            url: AM.API['composite'].contract,
+            layout: {
+                type: 'vbox',
+                align: 'left'
+            },
+            frame: true,
+            defaults: {
+                bodyPadding: 4,
+                defaultType: 'textfield',
+                width: 300,
+                defaults: {
+                    anchor: '100%',
+                    allowBlank: false
+                }
+            },
+            padding: '5',
+            margin: '20 0',
+            items: [
                 {
                     xtype: 'fieldset',
                     title: '合同流水号管理',

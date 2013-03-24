@@ -71,7 +71,10 @@ AM.API = {
         update: 'data/transport/update.json',
         destroy: 'data/transport/destroy.json'
     },
-    composite: 'data/success.json'
+    composite: {
+        order: 'data/success.json',
+        contract: 'data/success.json'
+    }
 };
 
 AM.Writer = {
