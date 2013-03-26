@@ -8,7 +8,6 @@ Ext.define('AM.controller.Orders', {
     stores: [
         'Materials',
         'Customs',
-        'SalesMen',
         'OrderDetails',
         'AuditOrders',
         'Orders'

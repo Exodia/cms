@@ -21,7 +21,7 @@ Ext.define('AM.model.TransportDetail', {
             type: 'date',
             dateFormat: 'Y-m-d'
         },
-        'transportAmount', 'boxType', 'boxAmount'
+        'transportAmount'
     ],
 
     reader: AM.Reader,

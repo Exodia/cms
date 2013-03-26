@@ -45,7 +45,7 @@ Ext.define('AM.view.order.AuditDetail', {
                         title: '订单当前详情',
                         order: this.order,
                         params: {
-                            'orderId': this.order.get('id')
+                            'orderCode': this.order.get('orderCode')
                         },
                         storeName: 'detail'
                     },
@@ -57,7 +57,7 @@ Ext.define('AM.view.order.AuditDetail', {
                         collapsible: true,
                         order: this.order,
                         params: {
-                            'orderId': this.order.get('id')
+                            'orderCode': this.order.get('orderCode')
                         },
                         margin: '50 0 0'
                     }
