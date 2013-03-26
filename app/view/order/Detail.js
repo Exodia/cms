@@ -34,7 +34,7 @@ Ext.define('AM.view.order.Detail', {
                     text: '打印',
                     action: 'print'
                 }]
-            })
+            });
         }
 
         this.callParent(arguments);

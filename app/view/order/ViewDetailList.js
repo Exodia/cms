@@ -8,7 +8,7 @@ Ext.define('AM.view.order.ViewDetailList', {
     },
     initComponent: function () {
         this.callParent(arguments);
-        tt = this.store;
+
         this.store.load({
             params: this.params
         });

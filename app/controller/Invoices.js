@@ -4,8 +4,7 @@ Ext.define('AM.controller.Invoices', {
         'invoice.Detail'
     ],
     stores: [
-        'Invoices',
-        'AuditInvoices'
+        'Invoices'
     ],
     models: ['Invoice', 'InvoiceDetail', 'ContractDetail'],
 
