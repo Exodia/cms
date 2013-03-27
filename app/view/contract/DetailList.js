@@ -166,7 +166,8 @@ Ext.define('AM.view.contract.DetailList', {
             url: AM.API['orderDetail'].read,
             method: 'GET',
             params: {
-                orderCode: orderCode
+                orderCode: orderCode,
+                audit: true
             },
             success: function (res) {
                 try {

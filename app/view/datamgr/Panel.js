@@ -15,7 +15,6 @@ Ext.define('AM.view.datamgr.Panel', {
             frame: true,
             draggable: true,
             fileUpload: true,
-
             margin: '100',
             items: [
                 {
