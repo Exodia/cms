@@ -104,7 +104,7 @@ Ext.define('AM.controller.Orders', {
                 data = tab.order.getData();
             form.loadRecord(tab.order);
             form.down('datefield').setValue(new Date(data.date));
-        }
+        };
     },
 
     printOrder: function (btn) {
