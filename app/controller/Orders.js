@@ -83,6 +83,7 @@ Ext.define('AM.controller.Orders', {
                 } else {
                     btn.setDisabled(false);
                 }
+                Ext.Msg.alert('', '订单操作成功!');
             }
         });
     },

@@ -1,7 +1,7 @@
 Ext.define('AM.view.transport.List', {
-    extend:'Ext.grid.Panel',
-    alias:'widget.transport_list',
-    store:'Transports',
+    extend: 'Ext.grid.Panel',
+    alias: 'widget.transport_list',
+    store: 'Transports',
     columns: [
         {
             header: '订单号',
@@ -39,7 +39,7 @@ Ext.define('AM.view.transport.List', {
             header: '时间',
             width: 110,
             dataIndex: 'date',
-            renderer: function(v) {
+            renderer: function (v) {
                 if (!v) {
                     return '';
                 }
@@ -50,9 +50,21 @@ Ext.define('AM.view.transport.List', {
             header: '状态',
             width: 50,
             dataIndex: 'status',
-            renderer: function(v) {
-               return AM.TransportStatus[v];
+            renderer: function (v) {
+                return AM.TransportStatus[v];
             }
         }
-    ]
+
+    ],
+    initComponent: function () {
+        this.dockedItems = [
+            {
+                xtype: 'pagingtoolbar',
+                store: this.store,
+                dock: 'bottom',
+                displayInfo: true
+            }
+        ];
+        this.callParent(arguments);
+    }
 });

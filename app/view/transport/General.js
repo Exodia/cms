@@ -5,9 +5,14 @@ Ext.define('AM.view.transport.General', {
     title: '发运总览',
     border: false,
     frame: true,
+    layout: {
+        type: 'vbox',
+        align: 'stretch'
+    },
     items: [
         {
-            xtype: 'transport_list'
+            xtype: 'transport_list',
+            flex: 1
         }
     ],
     dockedItems: [
