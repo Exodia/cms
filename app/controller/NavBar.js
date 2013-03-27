@@ -17,7 +17,7 @@ Ext.define('AM.controller.NavBar', {
                 failure: function (form, action) {
                     switch (action.failureType) {
                         case Ext.form.action.Action.CONNECT_FAILURE:
-                            this.application.error('错误', '网络连接失败，请重试！');
+                            AM.error('错误', '网络连接失败，请重试！');
                             break;
                         case Ext.form.action.Action.SERVER_INVALID:
                             Ext.Msg.alert('错误', action.result.msg);
@@ -31,7 +31,7 @@ Ext.define('AM.controller.NavBar', {
     validate: function (form) {
         var values = form.getValues();
         if(!values.password) {
-            this.application.error('错误', '原密码不得为空！');
+            AM.error('错误', '原密码不得为空！');
             return false;
         }
         if (values.confirm_password.length < 4 || values.new_password < 4) {
