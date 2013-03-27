@@ -6,7 +6,12 @@ Ext.define('AM.view.CustomField', {
     valueField: 'companyName',
     emptyText: '输入企业名称查询',
     autoSelect: false,
-    store: Ext.create('AM.store.Customs'),
+    store: Ext.create('Ext.data.Store', {
+        fields:['companyName'],
+        proxy: AM.createProxy('company'),
+        reader: AM.Reader,
+        writer: AM.Writer
+    }),
     listeners: {
         select: function(combo, records) {
             var id = records[0].get('id'),

@@ -70,8 +70,18 @@ Ext.define('AM.controller.Transports', {
     saveTransport: function (btn) {
 
         this.application.confirm('注意', '确定要保存?', function () {
-            var list = btn.up('transport_edit'),
-                rec = list.transport;
+            var editPanel = btn.up('transport_edit'),
+                form = editPanel.down('form'),
+                rec = editPanel.transport;
+
+            if(!form.getForm().isValid()) {
+                AM.error('错误', '数据格式错误! 请检查!');
+                return;
+            }
+
+            var values = form.getValues();
+            values.boxAmount = Number(values.boxAmount);
+            rec.set(values);
 
             btn.setDisabled(true);
             this.application.save(rec, this, {
