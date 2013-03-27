@@ -20,7 +20,7 @@ Ext.define('AM.controller.NavBar', {
                             AM.error('错误', '网络连接失败，请重试！');
                             break;
                         case Ext.form.action.Action.SERVER_INVALID:
-                            Ext.Msg.alert('错误', action.result.msg);
+                            AM.error('错误', action.result.msg);
                     }
                 },
                 scope: this
