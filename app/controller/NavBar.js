@@ -3,10 +3,7 @@ Ext.define('AM.controller.NavBar', {
     views: [
         'NavBar'
     ],
-    validate: function (form) {
-        var values = form.getValues();
-        return values.confirm_password === values.new_password;
-    },
+
     savePwd: function (btn) {
         var url = AM.API['changePwd'],
             form = btn.up('form');
@@ -27,7 +24,7 @@ Ext.define('AM.controller.NavBar', {
                     }
                 },
                 scope: this
-            })
+            });
         }
 
     },
@@ -38,11 +35,11 @@ Ext.define('AM.controller.NavBar', {
             return false;
         }
         if (values.confirm_password.length < 4 || values.new_password < 4) {
-            this.application.error('错误', '密码长度不得小于4个字符！');
+            AM.error('错误', '密码长度不得小于4个字符！');
             return false;
         }
         if (values.confirm_password !== values.new_password) {
-            this.application.error('错误', '两次密码输入不一致！');
+            AM.error('错误', '两次密码输入不一致！');
             return false;
         }
 
