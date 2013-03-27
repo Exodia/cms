@@ -4,6 +4,8 @@ Ext.Loader.setPath({
     'App.widget': './app/widget'
 });
 
+Ext.SSL_SECURE_URL = './img/blank.gif';
+
 Ext.require('Ext.data.writer.Json', function () {
     Ext.data.writer.Json.override({
         getRecordData: function (record) {
