@@ -28,7 +28,8 @@ Ext.define('AM.model.OrderDetail', {
         api: AM.API['orderDetail'],
         listeners: AM.ProxyListeners,
         filterParam: undefined,
-        reader: AM.Reader
+        reader: AM.Reader,
+        writer: AM.Writer
     },
 
     belongsTo: 'AM.model.Order'
@@ -45,7 +46,8 @@ Ext.define('AM.model.HistoryDetail', {
         extraParams: {
           history: true
         },
-        reader: AM.Reader
+        reader: AM.Reader,
+        writer: AM.Writer
     }
 
 });

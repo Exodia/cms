@@ -9,8 +9,18 @@ Ext.define('AM.view.order.ViewDetailList', {
     initComponent: function () {
         this.callParent(arguments);
 
+        
         this.store.load({
-            params: this.params
+            scope: this,
+            params: this.params,
+            callback: function (records, op, success) {
+                if(success) {
+                    this.store.add(records);
+                } else {
+                    AM.error();
+                }
+            }
+            
         });
 
     }

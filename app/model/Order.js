@@ -9,11 +9,11 @@
  detail: 订单详情
  */
 Ext.define('AM.model.Order', {
-    extend:'Ext.data.Model',
-    fields:[
-        'id', 'project',  'orderCode',
+    extend: 'Ext.data.Model',
+    fields: [
+        'id', 'project', 'orderCode',
         {
-            name:'date',
+            name: 'date',
             type: 'date',
             dateFormat: 'Y-m-d'
         },
@@ -25,22 +25,26 @@ Ext.define('AM.model.Order', {
     proxy: {
         type: 'ajax',
         api: AM.API['order'],
-        listeners: AM.ProxyListeners,
-        reader: AM.Reader,
-        writer: AM.Writer
+        listeners: AM.ProxyListeners
     },
 
-    hasMany:[{
-        model: 'AM.model.OrderDetail',
-        foreignKey: 'orderCode',
-        associationKey: 'orderCode',
-        name: 'detail'
-    }, {
-        model: 'AM.model.HistoryDetail',
-        foreignKey: 'orderCode',
-        associationKey: 'orderCode',
-        name: 'history'
-    }],
+    reader: AM.Reader,
+    writer: AM.Writer,
+
+    hasMany: [
+        {
+            model: 'AM.model.OrderDetail',
+            foreignKey: 'orderCode',
+            associationKey: 'detail',
+            name: 'detail'
+        },
+        {
+            model: 'AM.model.HistoryDetail',
+            foreignKey: 'orderCode',
+            associationKey: 'history',
+            name: 'history'
+        }
+    ],
     hasOne: {
         model: 'AM.model.Custom',
         foreignKey: 'customId',
