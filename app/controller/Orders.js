@@ -44,7 +44,7 @@ Ext.define('AM.controller.Orders', {
 
     checkEnable: function (sm) {
         var len = sm.getSelection().length;
-        this.getEditButton().setDisabled(len !== 1);
+        this.getEditButton() && this.getEditButton().setDisabled(len !== 1);
         this.getViewButton().setDisabled(len !== 1);
     },
     addOrder: function () {

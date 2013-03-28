@@ -108,7 +108,126 @@ Ext.application({
             scope: controller
         });
     },
+    getTabs: function() {
+        var tabs = [
+            {
+                items: [
+                    {
+                        iconCls: 'x-icon-users',
+                        leaf: true,
+                        xtype: 'user_panel'
+                    }
+                ]
+            },
+            {
+                items: [
+                    {
+                        title: '订单管理',
+                        iconCls: 'x-icon-orders',
+                        xtype: 'order_panel'
+                    }
+                ]
+            },
+            {
+                items: [
+                    {
+                        title: '合同管理',
+                        iconCls: 'x-icon-contracts',
+                        style: 'padding:5px;',
+                        xtype: 'contract_panel'
+                    }
+                ]
+            },
+            {
+                items: [
+                    {
+                        title: '发运管理',
+                        iconCls: 'x-icon-trans',
+                        style: 'padding:5px;',
+                        xtype: 'transport_panel'
+                    }
+                ]
+            },
+            {
+                items: [
+                    {
+                        title: '发票管理',
+                        iconCls: 'x-icon-invoices',
+                        style: 'padding:5px;',
+                        xtype: 'invoice_panel'
+                    }
+                ]
+            },
+            {
+                items: [
+                    {
+                        title: '综合管理',
+                        iconCls: 'x-icon-composite',
+                        style: 'padding:5px;',
+                        xtype: 'composite_panel'
+                    }
+                ]
+            },
+            {
+                items: [
+                    {
+                        iconCls: 'x-icon-customs',
+                        xtype: 'custom_panel'
+                    }
+                ]
+            },
+            {
+                items: [
+                    {
+                        title: '数据管理',
+                        iconCls: 'x-icon-data',
+                        style: 'padding:5px;',
+                        xtype: 'datamgrpanel'
+                    }
+                ]
+            }
+        ];
+
+        switch(window.LoginUser.userType) {
+            case 0:
+                return tabs;
+            /*
+            * 营销员
+            * 1)订单管理；
+            * 2)合同管理；
+            * 3)发运管理；
+            * 4)发票管理
+            * 6)客户管理
+            * 7)数据导入
+             * */
+            case 1:
+                return [tabs[1], tabs[2], tabs[3], tabs[4], tabs[6], tabs[7]];
+            /*
+            * 发运管理员
+            * 3)发运
+            * 1)订单
+            * 2)合同
+            * */
+            case 2:
+                return [tabs[1], tabs[2], tabs[3]];
+
+            /*
+            * 发票管理
+            * 4)发票
+            * 2)合同
+            * 1)订单
+            * */
+            case 3:
+               return [tabs[1], tabs[2], tabs[4]];
+
+        }
+
+
+        return tabs;
+    },
     launch: function () {
+
+
         Ext.create('Ext.container.Viewport', {
             layout: {
                 type: 'vbox',
@@ -127,84 +246,9 @@ Ext.application({
                     style: {
                         borderTop: 'none'
                     },
-                    items: [
-                        {
-                            items: [
-                                {
-                                    iconCls: 'x-icon-users',
-                                    leaf: true,
-                                    xtype: 'user_panel'
-                                }
-                            ]
-                        },
-                        {
-                            items: [
-                                {
-                                    title: '订单管理',
-                                    iconCls: 'x-icon-orders',
-                                    xtype: 'order_panel'
-                                }
-                            ]
-                        },
-                        {
-                            items: [
-                                {
-                                    title: '合同管理',
-                                    iconCls: 'x-icon-contracts',
-                                    style: 'padding:5px;',
-                                    xtype: 'contract_panel'
-                                }
-                            ]
-                        },
-                        {
-                            items: [
-                                {
-                                    title: '发运管理',
-                                    iconCls: 'x-icon-trans',
-                                    style: 'padding:5px;',
-                                    xtype: 'transport_panel'
-                                }
-                            ]
-                        },
-                        {
-                            items: [
-                                {
-                                    title: '发票管理',
-                                    iconCls: 'x-icon-invoices',
-                                    style: 'padding:5px;',
-                                    xtype: 'invoice_panel'
-                                }
-                            ]
-                        },
-                        {
-                            items: [
-                                {
-                                    title: '综合管理',
-                                    iconCls: 'x-icon-composite',
-                                    style: 'padding:5px;',
-                                    xtype: 'composite_panel'
-                                }
-                            ]
-                        },
-                        {
-                            items: [
-                                {
-                                    iconCls: 'x-icon-customs',
-                                    xtype: 'custom_panel'
-                                }
-                            ]
-                        },
-                        {
-                            items: [
-                                {
-                                    title: '数据管理',
-                                    iconCls: 'x-icon-data',
-                                    style: 'padding:5px;',
-                                    xtype: 'datamgrpanel'
-                                }
-                            ]
-                        }
-                    ]
+
+
+                    items: this.getTabs()
                 }
             ]
 
