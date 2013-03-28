@@ -15,7 +15,7 @@ Ext.define('AM.view.order.ViewDetailList', {
             params: this.params,
             callback: function (records, op, success) {
                 if(success) {
-                    this.store.getTotalCount() == 0 && this.store.add(records);
+                    this.store.getCount() == 0 && this.store.add(records);
                 } else {
                     AM.error();
                 }
