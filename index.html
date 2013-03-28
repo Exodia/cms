@@ -81,7 +81,6 @@
             <th>客户意向交货期</th>
             <th>生产计划交库期</th>
             <th>生产实际交库期</th>
-            <th>备注</th>
         </tr>
         </thead>
         <tbody>
@@ -91,13 +90,15 @@
                 <td>{materialName}</td>
                 <td>{type}</td>
                 <td>{unit}</td>
-                <td>{amount}</td>
                 <td>{unitTaxPrice}</td>
                 <td>{taxPrice}</td>
                 <td>{parent.project}</td>
                 <td>{deadline}</td>
                 <td></td>
                 <td></td>
+            </tr>
+            <tr>
+                <td colspan="10" style="text-align:left">备注:</td>
             </tr>
         </tpl>
         </tbody>
@@ -107,7 +108,7 @@
             <td><strong>办 单 评 审 记 录</strong></td>
         </tr>
         <tr>
-            <td><p>市场营销部办单人员：<span class="name">{salesManName}</span>{salesManContact}
+            <td><p>市场营销部办单人员：<span class="name">{salesManName}</span>
                 <span class="date">办单日期：{date}</span></p></td>
         </tr>
         <tr>
