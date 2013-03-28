@@ -95,7 +95,7 @@ AM.Reader = {
     totalProperty: 'total'
 };
 
-AM.UserType = ['营销员', '合同管理员', '发票管理员', '发运员'];
+AM.UserType = ['管理员', '营销员', '发运管理员', '合同发票管理员'];
 AM.SaleGroup = ['城轨', '机车', '动车', '新产业', '销售管理'];
 AM.OrderStatus = [
     '<font color="#1e90ff">待审核</font>',

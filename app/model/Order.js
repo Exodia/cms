@@ -22,14 +22,7 @@ Ext.define('AM.model.Order', {
         'totalPrice', 'status'
     ],
 
-    proxy: {
-        type: 'ajax',
-        api: AM.API['order'],
-        listeners: AM.ProxyListeners
-    },
-
-    reader: AM.Reader,
-    writer: AM.Writer,
+    proxy: AM.createProxy('order'),
 
     hasMany: [
         {

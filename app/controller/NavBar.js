@@ -1,7 +1,8 @@
 Ext.define('AM.controller.NavBar', {
     extend: 'Ext.app.Controller',
     views: [
-        'NavBar'
+        'NavBar',
+        'user.Edit'
     ],
 
     savePwd: function (btn) {
@@ -51,6 +52,15 @@ Ext.define('AM.controller.NavBar', {
                 'render': function () {
                     Ext.get('changePwd').on('click', function () {
                         Ext.widget('pwddialog');
+                    });
+
+                    Ext.get('viewInfo').on('click', function () {
+                        var view = Ext.widget('user_edit', {
+                                status: 'view'
+                            }),
+                            form =  view.down('form');
+
+                        form.getForm().setValues(window.LoginUser);
                     });
                 }
             },
