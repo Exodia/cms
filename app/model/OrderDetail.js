@@ -14,7 +14,7 @@
 Ext.define('AM.model.OrderDetail', {
     extend: 'Ext.data.Model',
     fields: [
-        'id', 'orderId', 'orderCode', 'materialCode', 'materialName', 'type', 'unit',
+        'id', 'orderId', 'orderCode', 'materialCode', 'materialName', 'type', 'unit', 'remainAmount',
         'amount', 'unitPrice', 'unitTaxPrice', 'price', 'taxPrice',
         {
             name: 'deadline',

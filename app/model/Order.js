@@ -27,13 +27,13 @@ Ext.define('AM.model.Order', {
     hasMany: [
         {
             model: 'AM.model.OrderDetail',
-            foreignKey: 'orderCode',
+            foreignKey: 'orderId',
             associationKey: 'detail',
             name: 'detail'
         },
         {
             model: 'AM.model.HistoryDetail',
-            foreignKey: 'orderCode',
+            foreignKey: 'orderId',
             associationKey: 'history',
             name: 'history'
         }
