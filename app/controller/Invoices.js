@@ -161,7 +161,8 @@ Ext.define('AM.controller.Invoices', {
         Ext.Ajax.request({
             method: 'GET',
             params: {
-                contractCode: contractCode
+                contractCode: contractCode,
+                audit: true
             },
             url: AM['API'].contractDetial.read,
             callback: function (op, success, res) {

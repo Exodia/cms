@@ -95,7 +95,8 @@ Ext.define('AM.view.transport.EditList', {
                 method: 'GET',
                 url: AM.API['orderDetail'].read,
                 params: {
-                    orderCode: text
+                    orderCode: text,
+                    audit: true
                 },
                 success: function (res) {
                     try {
