@@ -4,6 +4,7 @@ Ext.define('AM.view.transport.Edit', {
     alias: 'widget.transport_edit',
     layout: 'border',
     frame: true,
+    closable: true,
     buttons: [
         {
             text: '保存',
