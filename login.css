@@ -26,11 +26,10 @@ input:focus {
 }
 
 .copy-right {
-    background: url(img/copy.png) #fff 98% 50% no-repeat;
+    /*background: url(img/copy.png) #fff 98% 50% no-repeat;*/
     height: 48px;
     position: absolute;
     top: 103px;
-    width: 100%;
 }
 
 .b1 {
