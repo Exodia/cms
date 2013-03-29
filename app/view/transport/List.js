@@ -36,7 +36,7 @@ Ext.define('AM.view.transport.List', {
         },
 
         {
-            header: '时间',
+            header: '创建时间',
             width: 110,
             dataIndex: 'date',
             renderer: function (v) {
