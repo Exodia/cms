@@ -9,6 +9,7 @@ Ext.define('AM.view.UserType', {
     store:Ext.create('Ext.data.Store', {
         fields:['userType', 'des'],
         data:[
+            {userType:0, des:'管理员'},
             {userType:1, des:'营销员'},
             {userType:2, des:'合同发票管理员'},
             {userType:3, des:'发运员'}
