@@ -1,5 +1,6 @@
 Ext.define('AM.view.order.SearchPanel', {
     extend: 'Ext.form.Panel',
+    requires:['AM.view.SaleGroup'],
     alias: 'widget.search_panel',
     border: false,
     style: {
@@ -33,8 +34,8 @@ Ext.define('AM.view.order.SearchPanel', {
             submitFormat: 'Y-m-d'
         },
         {
-            fieldLabel: '销售员',
-            name: 'salesManName'
+            xtype: 'sale_group',
+            name: 'saleGroup'
         },
         {
             fieldLabel: '合同号',

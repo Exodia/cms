@@ -31,6 +31,9 @@ Ext.define('AM.view.order.Detail', {
             this.items.push({
                 region: 'south',
                 buttons:[{
+                    text:'取消订单',
+                    action: 'cancel'
+                },{
                     text: '打印',
                     action: 'print'
                 }]
