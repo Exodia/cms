@@ -3,10 +3,5 @@ Ext.define('AM.store.Materials', {
     model: 'AM.model.Material',
     autoLoad: true,
 
-    proxy: {
-        type: 'ajax',
-        api: AM.API['material'],
-        listeners: AM.ProxyListeners,
-        reader: AM.Reader
-    }
+    proxy: AM.createProxy('material')
 });
