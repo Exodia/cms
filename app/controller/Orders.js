@@ -122,12 +122,7 @@ Ext.define('AM.controller.Orders', {
                     btn.setDisabled(false);
                 },
                 success: function () {
-                    if (form.orderStatus == 'add') {
-                        this.getStore('Orders').reload();
-                        btn.setText("已取消");
-                    } else {
-                        btn.setDisabled(false);
-                    }
+                    btn.setText("已取消");
                     Ext.Msg.alert('', '订单操作成功!');
                 }
             });
