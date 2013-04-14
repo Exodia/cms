@@ -55,7 +55,7 @@ Ext.define('AM.view.datamgr.Edit', {
                         fieldLabel: '计量单位',
                         labelWidth: 60,
                         allowBlank: true,
-                        width: 260,
+                        width: 120,
                         padding: 5
                     },
                     {
@@ -63,8 +63,8 @@ Ext.define('AM.view.datamgr.Edit', {
                         fieldLabel: '成本价格',
                         labelWidth: 60,
                         allowBlank: true,
-                        xtype: 'number',
-                        width: 120,
+                        xtype: 'numberfield',
+                        width: 140,
                         padding: 5
                     },
                     {
@@ -72,7 +72,8 @@ Ext.define('AM.view.datamgr.Edit', {
                         fieldLabel: '销售价格',
                         labelWidth: 60,
                         allowBlank: true,
-                        width: 120,
+                        xtype: 'numberfield',
+                        width: 140,
                         padding: 5
                     }
                 ]

@@ -55,7 +55,8 @@ Ext.application({
         'AuditContracts',
         'Invoices',
         'Customs',
-        'Transports'
+        'Transports',
+        'DataMgr'
     ],
 
     confirm: function (title, msg, fn, scope) {

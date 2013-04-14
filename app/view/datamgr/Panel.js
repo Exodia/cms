@@ -15,7 +15,7 @@ Ext.define('AM.view.datamgr.Panel', {
             },
             xtype: 'form',
             title: '导入数据',
-            width: 400,
+            width: 300,
             height: 200,
             bodyPadding: 10,
             frame: true,

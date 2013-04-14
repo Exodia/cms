@@ -1,9 +1,13 @@
-Ext.define('AM.controller.Users', {
+Ext.define('AM.controller.DataMgr', {
     extend:'Ext.app.Controller',
     stores:[
         'Materials'
     ],
-    models:['Materials'],
+    views: [
+        'datamgr.List',
+        'datamgr.Edit'
+    ],
+    models:['Material'],
     refs:[
         {
             ref:'list',
@@ -42,7 +46,7 @@ Ext.define('AM.controller.Users', {
         this.getEditButton().setDisabled(len !== 1);
     },
 
-    updateUser:function (button) {
+    updateData:function (button) {
         var win = button.up('window'),
             form = win.down('form'),
             values = form.getValues(),
@@ -58,7 +62,7 @@ Ext.define('AM.controller.Users', {
         this.application.sync(store, this);
     },
 
-    editUser:function () {
+    editData:function () {
         var view = Ext.widget('data_edit'),
             form =  view.down('form');
         record = this.getList().getSelectionModel().getSelection()[0];
