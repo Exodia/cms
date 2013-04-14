@@ -1,9 +1,9 @@
 Ext.define('AM.controller.Users', {
     extend:'Ext.app.Controller',
     stores:[
-        'Users'
+        'Materials'
     ],
-    models:['User'],
+    models:['Materials'],
     refs:[
         {
             ref:'list',
@@ -40,7 +40,6 @@ Ext.define('AM.controller.Users', {
     checkEnable:function (sm) {
         var len = sm.getSelection().length;
         this.getEditButton().setDisabled(len !== 1);
-        this.getDelButton().setDisabled(len == 0);
     },
 
     updateUser:function (button) {
@@ -48,7 +47,7 @@ Ext.define('AM.controller.Users', {
             form = win.down('form'),
             values = form.getValues(),
             record = form.getRecord(),
-            store = this.getUsersStore();
+            store = this.getMaterialsStore();
 
         if (!form.getForm().isValid()) {
             Ext.Msg.alert('错误', '数据非法，请重新填写！');
@@ -65,6 +64,5 @@ Ext.define('AM.controller.Users', {
         record = this.getList().getSelectionModel().getSelection()[0];
 
         form.loadRecord(record);
-        form.getForm().findField('workNum').setDisabled(true);
     }
 });

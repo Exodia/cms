@@ -26,56 +26,54 @@ Ext.define('AM.view.datamgr.Edit', {
                 items: [
                     {
                         colspan: 2,
-                        name: 'workNum',
-                        fieldLabel: '工号',
+                        name: 'code',
+                        fieldLabel: '物质编码',
                         labelWidth: 60,
-                        minValue: 0,
                         width: 260,
                         padding: 5
                     },
                     {
+                        colspan: 2,
                         name: 'name',
-                        fieldLabel: '姓名',
+                        fieldLabel: '物料名称',
                         labelWidth: 60,
                         width: 150,
                         padding: 5,
                         margin: '0 20 0 0'
                     },
                     {
-                        xtype: 'user_type',
-                        name: 'userType'
-                    },
-                    {
+                        name: 'type',
                         colspan: 2,
-                        name: 'address',
-                        fieldLabel: '住址',
+                        fieldLabel: '规格型号',
                         labelWidth: 60,
                         allowBlank: true,
                         width: 260,
                         padding: 5
                     },
                     {
-                        name: 'contact',
-                        colspan: 2,
-                        fieldLabel: '联系方式',
+                        name: 'unit',
+                        fieldLabel: '计量单位',
                         labelWidth: 60,
-                        width: 260,
-                        padding: 5
-                    },
-                    {
-                        colspan: 2,
-                        name: 'email',
-                        fieldLabel: 'Email',
-                        labelWidth: 60,
-                        width: 260,
-                        vtype: 'email',
-                        vtypeText: '请输入合法的Email地址',
                         allowBlank: true,
+                        width: 260,
                         padding: 5
                     },
                     {
-                        xtype: 'sale_group',
-                        name: 'saleGroup'
+                        name: 'costPrice',
+                        fieldLabel: '成本价格',
+                        labelWidth: 60,
+                        allowBlank: true,
+                        xtype: 'number',
+                        width: 120,
+                        padding: 5
+                    },
+                    {
+                        name: 'sellPrice',
+                        fieldLabel: '销售价格',
+                        labelWidth: 60,
+                        allowBlank: true,
+                        width: 120,
+                        padding: 5
                     }
                 ]
             }

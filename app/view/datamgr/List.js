@@ -2,7 +2,7 @@ Ext.define('AM.view.datamgr.List', {
     extend:'Ext.grid.Panel',
     requires:['AM.view.datamgr.Edit'],
     alias:'widget.data_list',
-    store:'Users',
+    store:'Materials',
     title: "物料总览",
     dockedItems:[
         {
@@ -27,8 +27,8 @@ Ext.define('AM.view.datamgr.List', {
     ],
     initComponent:function () {
         this.columns = [
-            {header:'物质编码', dataIndex:'productCode', flex:1},
-            {header:'物料名称', dataIndex:'productName', flex:0.5},
+            {header:'物质编码', dataIndex:'code', flex:1},
+            {header:'物料名称', dataIndex:'name', flex:0.5},
             {header:'规格型号', dataIndex:'type', flex:0.5},
             {header:'计量单位', dataIndex:'unit', flex:0.5},
             {header:'成本价格', dataIndex:'costPrice', flex:1},
