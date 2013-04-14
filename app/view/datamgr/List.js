@@ -4,27 +4,6 @@ Ext.define('AM.view.datamgr.List', {
     alias:'widget.data_list',
     store:'Materials',
     title: "物料总览",
-    dockedItems:[
-        {
-            xtype:'toolbar',
-            items:[
-                {
-                    iconCls:'icon-add',
-                    itemId:'J_DataAdd',
-                    text:'新增',
-                    scope:this
-                },
-                '-',
-                {
-                    iconCls:'icon-edit',
-                    itemId:'J_DataEdit',
-                    text:'编辑',
-                    disabled:true,
-                    scope:this
-                }
-            ]
-        }
-    ],
     initComponent:function () {
         this.columns = [
             {header:'物质编码', dataIndex:'code', flex:1},
@@ -35,6 +14,25 @@ Ext.define('AM.view.datamgr.List', {
             {header:'销售指导价格', dataIndex:'sellPrice', flex:1}
         ];
         this.dockedItems = [
+            {
+                xtype:'toolbar',
+                items:[
+                    {
+                        iconCls:'icon-add',
+                        itemId:'J_DataAdd',
+                        text:'新增',
+                        scope:this
+                    },
+                    '-',
+                    {
+                        iconCls:'icon-edit',
+                        itemId:'J_DataEdit',
+                        text:'编辑',
+                        disabled:true,
+                        scope:this
+                    }
+                ]
+            },
             {
                 xtype: 'pagingtoolbar',
                 store: this.store,
