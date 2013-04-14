@@ -28,7 +28,7 @@ Ext.define('AM.view.order.SearchPanel', {
             fieldLabel: '销售日期',
             name: 'date',
             xtype: 'datefield',
-            editable: false,
+            editable: true,
             format: 'Y年m月d日',
             submitFormat: 'Y-m-d'
         },

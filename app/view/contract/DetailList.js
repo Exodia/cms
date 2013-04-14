@@ -93,7 +93,7 @@ Ext.define('AM.view.contract.DetailList', {
             flex: 0.5,
             editor: {
                 xtype: 'numberfield',
-                minValue: 1,
+                minValue: 0,
                 allowDecimals: false,
                 allowBlank: false,
                 name: 'contractAmount'
