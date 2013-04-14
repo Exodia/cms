@@ -1,16 +1,22 @@
 Ext.define('AM.view.datamgr.Panel', {
-    extend: 'Ext.panel.Panel',
+    extend: 'Ext.tab.Panel',
+    requires: ['AM.view.datamgr.List'],
     alias: 'widget.datamgrpanel',
-    title: '数据管理',
-    layout: {
-        type: 'vbox',
-        align: 'center'
-    },
+
     items: [
         {
+          xtype: 'data_list'
+        },
+
+        {
+            layout: {
+                type: 'vbox',
+                align: 'center'
+            },
             xtype: 'form',
             title: '导入数据',
             width: 400,
+            height: 200,
             bodyPadding: 10,
             frame: true,
             draggable: true,
