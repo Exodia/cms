@@ -34,6 +34,14 @@ Ext.define('AM.view.datamgr.List', {
             {header:'成本价格', dataIndex:'costPrice', flex:1},
             {header:'销售指导价格', dataIndex:'sellPrice', flex:1}
         ];
+        this.dockedItems = [
+            {
+                xtype: 'pagingtoolbar',
+                store: this.store,
+                dock: 'bottom',
+                displayInfo: true
+            }
+        ];
         this.callParent(arguments);
     }
 });

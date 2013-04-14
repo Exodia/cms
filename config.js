@@ -101,7 +101,7 @@ AM.OrderStatus = [
     '<font color="#1e90ff">待审核</font>',
     '<font color="green">审核通过</font>',
     '<font color="red">审核未通过</font>',
-    '取消',
+    '已取消',
     '已绑定'
 ];
 AM.ContractStatus = [
