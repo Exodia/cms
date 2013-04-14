@@ -26,20 +26,25 @@ Ext.define('AM.view.order.SearchPanel', {
             name: 'orderCode'
         },
         {
-            fieldLabel: '销售日期',
-            name: 'date',
+            fieldLabel: '订单开始时段',
             xtype: 'datefield',
             editable: true,
+            name: 'startDate',
             format: 'Y年m月d日',
             submitFormat: 'Y-m-d'
         },
         {
+            fieldLabel: '订单结束时段',
+            xtype: 'datefield',
+            editable: true,
+            name: 'endDate',
+            format: 'Y年m月d日',
+            submitFormat: 'Y-m-d'
+        },
+
+        {
             xtype: 'sale_group',
             name: 'saleGroup'
-        },
-        {
-            fieldLabel: '合同号',
-            name: 'contractOrder'
         },
         {
             fieldLabel: '订单状态',
