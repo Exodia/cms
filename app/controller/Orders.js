@@ -114,18 +114,21 @@ Ext.define('AM.controller.Orders', {
 
     cancelOrder: function (btn) {
         btn.setDisabled(true);
-        this.application.confirm('注意', '确定要执行<font color="red">取消订单</font>操作?', function () {
-            var order = btn.up('order_detail').order;
-            order.set('status', 3);
-            this.application.save(order, this, {
-                error: function () {
-                    btn.setDisabled(false);
-                },
-                success: function () {
-                    btn.setText("已取消");
-                    Ext.Msg.alert('', '订单操作成功!');
-                }
-            });
+        this.application.confirm('注意', '确定要执行<font color="red">取消订单</font>操作?', function (btnId) {
+            if (btnId == 'ok') {
+                var order = btn.up('order_detail').order;
+                order.set('status', 3);
+                this.application.save(order, this, {
+                    error: function () {
+                        btn.setDisabled(false);
+                    },
+                    success: function () {
+                        btn.setText("已取消");
+                        Ext.Msg.alert('', '订单操作成功!');
+                    }
+                });
+            }
+
 
         }, this);
     },
